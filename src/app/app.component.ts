@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dontavious-green-AngularPrj';
+
+  isLoggedIn: boolean = false;
+  isRegistering: boolean = false;
+
 }
