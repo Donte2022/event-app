@@ -4,13 +4,21 @@
 </div>
 
 <div>
-    <input name="userName" placeholder="Username">
+    <input [(ngModel)]="userName" placeholder="Username">
 </div>
 <div>
-    <input name="password" placeholder="Password">
+    <input [(ngModel)]="password" placeholder="Password">
 </div>
 
 <div>
     <button type="button" (click)="onJoinClick()">Join</button>
     <button type="button" (click)="onLoginClick()">Login</button>
+</div>
+
+<div>
+    {{errorMessagesServer}}
+</div>
+
+<div>
+    {{accounts | json}}
 </div>

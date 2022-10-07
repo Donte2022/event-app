@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
+  errorMessages: string = "";
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  cancelAccount() {
+    const newAccount = {
+      "id": new Date().getTime(),
+      "firstName": "Dontavious",
+      "lastName": "Green",
+      "userId": "DontaviousG2022",
+      "password": "password123",
+      "emailAddress": "green.dontavious@gmail.com"
+
+    }
   }
 
 }
