@@ -10,57 +10,65 @@
     <div>
         <label>First Name: </label>
         <input name="firstName" ngModel type="text">
+        {{firstNameErrorMessages}}
+        <br>
     </div>
     <div>
         <label>Last Name: </label>
         <input name="lastName" ngModel type="text">
-    </div>
-    <div>
-        <label>Email: </label>
-        <input name="email" ngModel type="text">
+        {{lastNameErrorMessages}}
+        <br>
     </div>
     <div>
         <label>Username: </label>
         <input name="userName" ngModel type="text">
+        {{userNameErrorMessages}}
+        <br>
+    </div>
+    <div>
+        <label>Email: </label>
+        <input name="email" ngModel type="text">
+        <br>
+        {{emailNameErrorMessages}}
+        <br>
+        {{email2NameErrorMessages}}
+        <br>
+        {{email3NameErrorMessages}}
+        <br>
     </div>
     <div>
         <label>Password: </label>
         <input name="password" ngModel type="text">
+        <br>
+        {{passwordErrorMessages}}
+        <br>
+        {{password2ErrorMessages}}
+        <br>
+        {{password3ErrorMessages}}
+        <br>
+        {{password4ErrorMessages}}
+        <br>
+        <!--add Upper Case check here-->
+<!--        {{password5ErrorMessages}}-->
+<!--        <br>-->
+        <!--add Lower Case check here-->
+<!--        {{password5ErrorMessages}}-->
+        <!--<br>-->
+        <!--add Special Character Check here-->
+        <!--{{password6ErrorMessages}}-->
+        <!--<br>-->
         <!--come back and make the messages change text to red-->
-        <br>
-        <label>Password must be 8 to 12 characters long</label>
-        <br>
-        <label>must have at least one upper case</label>
-        <br>
-        <label>one lower case character</label>
-        <br>
-        <label> must not contain no more than 15 characters total</label>
-        <br>
-        <label></label>
+<!--        <br>-->
+<!--        <label>Password must be 8 to 12 characters long</label>-->
+<!--        <br>-->
+<!--        <label>must have at least one upper case</label>-->
+<!--        <br>-->
+<!--        <label>one lower case character</label>-->
+<!--        <br>-->
+<!--        <label> must not contain no more than 15 characters total</label>-->
+<!--        <br>-->
+<!--        <label></label>-->
     </div>
-
-<div>
-    <!--RRegistration Error messages-->
-    {{firstNameErrorMessages}}
-    <br>
-    {{lastNameErrorMessages}}
-    <br>
-    {{userNameErrorMessages}}
-    <br>
-    {{emailNameErrorMessages}}
-    <br>
-    {{email2NameErrorMessages}}
-    <br>
-    {{email3NameErrorMessages}}
-    <br>
-    {{passwordErrorMessages}}
-    <br>
-    {{password2ErrorMessages}}
-    <br>
-    {{password3ErrorMessages}}
-    <br>
-    {{password4ErrorMessages}}
-</div>
 
     <div class="justify-content-around">
         <!--Specify types to avoid conflicts with form

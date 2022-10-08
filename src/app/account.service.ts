@@ -20,13 +20,16 @@ export class AccountService {
   $passwordError = new BehaviorSubject<string | null>(null);
   $password2Error = new BehaviorSubject<string | null>(null);
   $password3Error = new BehaviorSubject<string | null>(null);
-  $password4Error = new BehaviorSubject<string | null>(null);
+  //$password4Error = new BehaviorSubject<string | null>(null);
+  //$password5Error = new BehaviorSubject<string | null>(null);
+  //$password6Error = new BehaviorSubject<string | null>(null);
+  $email0Error = new BehaviorSubject<string | null>(null);
   $emailError = new BehaviorSubject<string | null>(null);
   $email2Error = new BehaviorSubject<string | null>(null);
   $email3Error = new BehaviorSubject<string | null>(null);
 
 
-
+  private RegErrorEmailEmpty = "You must include an email address."
   private RegErrorEmaillength = "Your email address must be greater than 5 characters long."
   private RegErrorEmailAtSymbol = "Your email address must contain an '@' symbol."
   private RegErrorEmailDotSymbol = "Your email address must contain an '.' symbol."
@@ -36,6 +39,8 @@ export class AccountService {
   private RegErrorPasswordMinLength = "You must include a password.";
   private RegErrorPasswordShort = "Your password must be at least 5 characters in length.";
   private RegErrorPasswordMaxLength = "Your password must not contain no more than 15 characters total.";
+  //private RegErrorPasswordUpperChar = "Your password must include at least one Upper case.";
+  //private RegErrorPasswordLowerChar = "Your password must include at least one lower case.";
   //private RegErrorPasswordSpecialChar = "Your password must include at least one special symbol.";
 
   // $account = new BehaviorSubject<IAccount | null>(
@@ -67,15 +72,23 @@ export class AccountService {
   //Put Interface and form data together
   registerForms(registrationForm: IRegistrationForm) {
 
-    //email length is less than 5, missing @ or "." symbols send an error to user
+    //check to see if email field is blank
+    if (registrationForm.email.length < 1) {
+      this.$email0Error.next(this.RegErrorEmailEmpty);
+
+    }
+
+      //check to see if email is less than 5 characters long
     if (registrationForm.email.length < 5) {
       this.$emailError.next(this.RegErrorEmaillength);
 
     }
+    //check for special character in email address
     if (!registrationForm.email.includes('@')) {
       this.$email2Error.next(this.RegErrorEmailAtSymbol);
 
     }
+    //check if email contain the period in address
     if (!registrationForm.email.includes('.')) {
       this.$email3Error.next(this.RegErrorEmailDotSymbol);
 
@@ -99,7 +112,8 @@ export class AccountService {
     if (registrationForm.password.length < 1) {
       this.$passwordError.next(this.RegErrorPasswordMinLength);
 
-    }
+    } else
+
     //check to see if password meet minimum length if not return an error
     if (registrationForm.password.length < 5) {
       this.$password2Error.next(this.RegErrorPasswordShort);
@@ -112,18 +126,19 @@ export class AccountService {
     }
     // //check to see if password contain one UPPER case char
     // if (registrationForm.password.match() > A-Z) {
-    //   this.$password4Error.next(this.RegErrorPasswordMaxLength);
+    //   this.$password4Error.next(this.RegErrorPasswordUpperChar);
     //   return;
     // }
+
     // //check to see if password contain at least one lower case char
     // if (registrationForm.password.length > a-z) {
-    //   this.$password4Error.next(this.RegErrorPasswordMaxLength);
+    //   this.$password5Error.next(this.RegErrorPasswordLowerChar);
     //   return;
     // }
 
     //add special characters requirements for password
     // if (registrationForm.password.includes('!,@')) {
-    //   this.$password5Error.next(this.RegErrorPasswordMaxLength);
+    //   this.$password6Error.next(this.RegErrorPasswordSpecialChar);
     //   return;
     // }
   }

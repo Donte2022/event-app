@@ -13,6 +13,7 @@ export class RegistrationComponent implements OnInit {
   firstNameErrorMessages: string | null = null;
   lastNameErrorMessages: string | null = null;
   userNameErrorMessages: string | null = null;
+  email0NameErrorMessages: string | null = null;
   emailNameErrorMessages: string | null = null;
   email2NameErrorMessages: string | null = null;
   email3NameErrorMessages: string | null = null;
@@ -26,36 +27,42 @@ export class RegistrationComponent implements OnInit {
   constructor(private accountService: AccountService) {
 
     this.accountService.$firstNameError.subscribe(
-        lastNameRegError => this.firstNameErrorMessages = lastNameRegError);
+        firstNameRegError => this.firstNameErrorMessages = firstNameRegError);
 
     this.accountService.$lastNameError.subscribe(
-        RegError => this.lastNameErrorMessages = RegError);
+        lastNameRegError => this.lastNameErrorMessages = lastNameRegError);
+
+    this.accountService.$email0Error.subscribe(
+        email0RegError => this.email0NameErrorMessages = email0RegError);
 
     this.accountService.$emailError.subscribe(
-        lastNameRegError => this.emailNameErrorMessages = lastNameRegError);
+        emailRegError => this.emailNameErrorMessages = emailRegError);
 
     this.accountService.$email2Error.subscribe(
-        lastNameRegError => this.email2NameErrorMessages = lastNameRegError);
+        email2RegError => this.email2NameErrorMessages = email2RegError);
 
     this.accountService.$email3Error.subscribe(
-        lastNameRegError => this.email3NameErrorMessages = lastNameRegError);
+        email3RegError => this.email3NameErrorMessages = email3RegError);
 
     this.accountService.$userNameError.subscribe(
-        lastNameRegError => this.userNameErrorMessages = lastNameRegError);
+        userNameRegError => this.userNameErrorMessages = userNameRegError);
 
     this.accountService.$passwordError.subscribe(
-        lastNameRegError => this.passwordErrorMessages = lastNameRegError);
+        passwordRegError => this.passwordErrorMessages = passwordRegError);
 
     this.accountService.$password2Error.subscribe(
-        lastNameRegError => this.password2ErrorMessages = lastNameRegError);
+        password2RegError => this.password2ErrorMessages = password2RegError);
 
     this.accountService.$password3Error.subscribe(
-        lastNameRegError => this.password3ErrorMessages = lastNameRegError);
+        password3RegError => this.password3ErrorMessages = password3RegError);
 
-    this.accountService.$password4Error.subscribe(
-        lastNameRegError => this.password4ErrorMessages = lastNameRegError);
+    // this.accountService.$password4Error.subscribe(
+    //     lastNameRegError => this.password4ErrorMessages = lastNameRegError);
 
     // this.accountService.$password5Error.subscribe(
+    //     lastNameRegError => this.password5ErrorMessages = lastNameRegError);
+
+    // this.accountService.$password6Error.subscribe(
     //     lastNameRegError => this.password5ErrorMessages = lastNameRegError);
 
   }
