@@ -1,20 +1,72 @@
-<p>registration works!</p>
-
+<nav class="navbar navbar-light bg-success">
+    <div>
+        <h1>Event Creator</h1>
+    </div>
+</nav>
 <form #registrationForm="ngForm" (ngSubmit)="registerUser(registrationForm)">
 {{registrationForm.value | json}}
+
+
     <div>
-    <input name="" ngModel type="text">
-    <label></label>
+        <label>First Name: </label>
+        <input name="firstName" ngModel type="text">
+    </div>
+    <div>
+        <label>Last Name: </label>
+        <input name="lastName" ngModel type="text">
+    </div>
+    <div>
+        <label>Email: </label>
+        <input name="email" ngModel type="text">
+    </div>
+    <div>
+        <label>Username: </label>
+        <input name="userName" ngModel type="text">
+    </div>
+    <div>
+        <label>Password: </label>
+        <input name="password" ngModel type="text">
+        <!--come back and make the messages change text to red-->
+        <br>
+        <label>Password must be 8 to 12 characters long</label>
+        <br>
+        <label>must have at least one upper case</label>
+        <br>
+        <label>one lower case character</label>
+        <br>
+        <label> must not contain no more than 15 characters total</label>
+        <br>
+        <label></label>
+    </div>
+
+<div>
+    <!--RRegistration Error messages-->
+    {{firstNameErrorMessages}}
+    <br>
+    {{lastNameErrorMessages}}
+    <br>
+    {{userNameErrorMessages}}
+    <br>
+    {{emailNameErrorMessages}}
+    <br>
+    {{email2NameErrorMessages}}
+    <br>
+    {{email3NameErrorMessages}}
+    <br>
+    {{passwordErrorMessages}}
+    <br>
+    {{password2ErrorMessages}}
+    <br>
+    {{password3ErrorMessages}}
+    <br>
+    {{password4ErrorMessages}}
 </div>
 
     <div class="justify-content-around">
         <!--Specify types to avoid conflicts with form
         without types your cancel btn will submit data while canceling too-->
-    <button type="button" (click)="cancelRegistration()" class="btn btn-danger">Cancel</button>
-    <button type="submit" class="btn btn-success">Register</button>
-</div>
+        <button type="button" (click)="cancelRegistration()" class="btn btn-danger">Cancel</button>
+        <button type="submit" class="btn btn-success">Register</button>
+    </div>
 
-<div>
-    {{errorMessages}}
-</div>
 </form>
