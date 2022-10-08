@@ -1,7 +1,7 @@
 
-
-<app-login></app-login>
-
-<app-registration></app-registration>
+<div *ngIf="!isLoggedIn">
+<app-login *ngIf="!isLoggedIn"></app-login>
+<app-registration *ngIf="NewUser"></app-registration>
+</div>
 
 <app-main></app-main>

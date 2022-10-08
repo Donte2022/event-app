@@ -3,21 +3,32 @@
     <h1>Event Creator</h1>
 </div>
 </nav>
+<!--Use template ref. variable 'loginForm' to get access to the form -->
+<!--assign string 'ngForm' to make ngForm export itself
+so that I have a reference to the directive itself-->
+<!--the directive gives us access to the values in the for, -->
+<ng-form #loginForm="ngForm" (ngSubmit)="onLoginClick(loginForm)">
+    {{loginForm.value | json}}
 <div>
-    <input [(ngModel)]="userName" placeholder="Username">
+    <!--Need name attribute and ngModel to get
+     access to data within the fields-->
+    <input name="userName" ngModel placeholder="Username">
 </div>
 <div>
-    <input [(ngModel)]="password" placeholder="Password">
+    <input name="password" ngModel placeholder="Password">
 </div>
 
 <div>
     <button type="button" (click)="onJoinClick()">Join</button>
-    <button type="button" (click)="onLoginClick()">Login</button>
+    <!--uses ngSubmit in combo with the submit btn
+     to push data to login func.-->
+    <button type="submit" >Login</button>
 </div>
 
 <div>
     {{errorMessagesServer}}
 </div>
+</ng-form>
 
 <div>
 </div>

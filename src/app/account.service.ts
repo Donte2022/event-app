@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {IAccount} from "./Interface/IAccount";
 import {v4 as uuidv4} from 'uuid';
+import {ILoginForm} from "./Interface/ILoginForm";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
+
+  $creatingNewUser = new BehaviorSubject<boolean>(false);
 
   // $account = new BehaviorSubject<IAccount | null>(
   //     {
@@ -27,6 +30,10 @@ export class AccountService {
   //       password: .password,
   //       emailAddress: .emailAddress
   //   }
+
+  loginUser(form: ILoginForm){
+
+  }
 
   constructor() { }
 }

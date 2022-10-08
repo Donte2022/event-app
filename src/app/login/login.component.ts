@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {HttpService} from "../http.service";
+import {NgForm} from "@angular/forms";
+import {AccountService} from "../account.service";
+import {ILoginForm} from "../Interface/ILoginForm";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +21,8 @@ export class LoginComponent implements OnInit {
     errorMessagesServer: string = "";
 
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService,
+              private accountService: AccountService) {
       //retrieve data from observable(promise)
       this.httpService.getAccounts().subscribe( {
           //this func is executed if data is received
@@ -37,13 +41,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
- onJoinClick() {
+    onJoinClick() {
+      this.accountService.$creatingNewUser.next(true);
     console.log("Joining EO")
 
     }
 
 
-    onLoginClick() {
-      console.log("loggin in")
+    onLoginClick(form: NgForm) {
+      this.accountService.loginUser(
+          form.value as ILoginForm
+      );
     }
 }
