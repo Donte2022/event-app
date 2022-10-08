@@ -12,13 +12,16 @@ so that I have a reference to the directive itself-->
 <div>
     <!--Need name attribute and ngModel to get
      access to data within the fields-->
-    <input name="userName" ngModel placeholder="Username">
+    <input name="userName" type="text" ngModel placeholder="Username">
 </div>
 <div>
-    <input name="password" ngModel placeholder="Password">
+    <input name="password" type="text" ngModel placeholder="Password">
 </div>
 
 <div>
+    <!--Specify types to avoid conflicts with form
+        without types your Join btn will submit data while trying to
+         register a new user too-->
     <button type="button" (click)="onJoinClick()">Join</button>
     <!--uses ngSubmit in combo with the submit btn
      to push data to login func.-->

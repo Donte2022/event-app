@@ -1,10 +1,20 @@
 <p>registration works!</p>
 
-<div class="justify-content-around">
-    <button name="cancelAccount" type="button" class="btn btn-danger">Cancel</button>
+<form #registrationForm="ngForm" (ngSubmit)="registerUser(registrationForm)">
+{{registrationForm.value | json}}
+    <div>
+    <input name="" ngModel type="text">
+    <label></label>
+</div>
+
+    <div class="justify-content-around">
+        <!--Specify types to avoid conflicts with form
+        without types your cancel btn will submit data while canceling too-->
+    <button type="button" (click)="cancelRegistration()" class="btn btn-danger">Cancel</button>
     <button type="submit" class="btn btn-success">Register</button>
 </div>
 
 <div>
     {{errorMessages}}
 </div>
+</form>

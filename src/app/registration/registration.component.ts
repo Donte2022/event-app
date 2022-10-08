@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from "@angular/forms";
+import {AccountService} from "../account.service";
 
 @Component({
   selector: 'app-registration',
@@ -9,7 +11,7 @@ export class RegistrationComponent implements OnInit {
 
   errorMessages: string = "";
 
-  constructor() { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
   }
@@ -26,4 +28,15 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
+  registerUser(registrationForm: NgForm) {
+    console.log("bep bep")
+
+  }
+
+  cancelRegistration() {
+    //cancel registration and bring user back to login
+    this.accountService.$creatingNewUser.next(false);
+
+
+  }
 }
