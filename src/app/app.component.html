@@ -1,7 +1,13 @@
 
+
+<!--Show all in Div if your not logged in-->
 <div *ngIf="!isLoggedIn">
-<app-login *ngIf="!isLoggedIn"></app-login>
+    <!--If your not registering show the login page-->
+<app-login *ngIf="!NewUser"></app-login>
+    <!--If your registering show this page-->
 <app-registration *ngIf="NewUser"></app-registration>
 </div>
-
+<!--hides pages below unless user is logged in-->
+<div *ngIf="isLoggedIn">
 <app-main></app-main>
+</div>
