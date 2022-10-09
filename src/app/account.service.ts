@@ -3,14 +3,15 @@ import {BehaviorSubject} from "rxjs";
 import {IAccount} from "./Interface/IAccount";
 import {v4 as uuidv4} from 'uuid';
 import {ILoginForm} from "./Interface/ILoginForm";
-import {NgForm} from "@angular/forms";
 import {IRegistrationForm} from "./Interface/IRegistrationForm";
+import {HttpService} from "./http.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
+  //Tells the app root to switch to the registration page when the join btn is clicked
   $creatingNewUser = new BehaviorSubject<boolean>(false);
 
   //Error messages for Registration
@@ -27,7 +28,7 @@ export class AccountService {
   $emailError = new BehaviorSubject<string | null>(null);
   $email2Error = new BehaviorSubject<string | null>(null);
   $email3Error = new BehaviorSubject<string | null>(null);
-
+  $RegErrorHttp = new BehaviorSubject<string | null>(null);
 
   private RegErrorEmailEmpty = "You must include an email address."
   private RegErrorEmaillength = "Your email address must be greater than 5 characters long."
@@ -42,32 +43,32 @@ export class AccountService {
   //private RegErrorPasswordUpperChar = "Your password must include at least one Upper case.";
   //private RegErrorPasswordLowerChar = "Your password must include at least one lower case.";
   //private RegErrorPasswordSpecialChar = "Your password must include at least one special symbol.";
+  private RegHttpErrorMessage = "Unable to create your account";
+  private RegHttpSuccessMessage = "Account Created! Welcome to Event Organiser.";
 
-  // $account = new BehaviorSubject<IAccount | null>(
-  //     {
-  //       "id": new Date().getTime(),
-  //       "firstName": "Dontavious",
-  //       "lastName": "Green",
-  //       "userId": "DontaviousG2022",
-  //       "password": "password123",
-  //       "emailAddress": "green.dontavious@gmail.com"
-  //     }
-  // );
 
-  // const account: IAccount = {
-  //       id: uuidv4(),
-  //       firstName: .firstName,
-  //       lastName: .lastName,
-  //       userId: .userId,
-  //       password: .password,
-  //       emailAddress: .emailAddress
-  //   }
+  //Takes data from this and create a new account in json database
+
+  $account = new BehaviorSubject<IAccount | null>(
+      {
+        "id": "0",
+        "firstName": "Dontavious",
+        "lastName": "Green",
+        "userId": "DontaviousG2022",
+        "password": "password123",
+        "emailAddress": "green.dontavious@gmail.com"
+      }
+  );
+
+
 
   loginUser(form: ILoginForm){
 
   }
 
-  constructor() { }
+  constructor(private httpService: HttpService) {
+
+  }
 
   //Put Interface and form data together
   registerForms(registrationForm: IRegistrationForm) {
@@ -141,5 +142,31 @@ export class AccountService {
     //   this.$password6Error.next(this.RegErrorPasswordSpecialChar);
     //   return;
     // }
-  }
+
+    //Validation check to see if the account already exist
+    //this.httpService.findAccount() {
+    // }
+
+      // create account after passing validation chk
+    const account: IAccount = {
+          id: uuidv4(),
+          firstName: registrationForm.firstName,
+          lastName: registrationForm.lastName,
+          userId: registrationForm.userName,
+          password: registrationForm.password,
+          emailAddress: registrationForm.email
+      }
+          this.httpService.registerAccount(account).subscribe({
+          next: (account) => {
+            console.log(account)
+            this.$RegErrorHttp.next(this.RegHttpSuccessMessage)
+          //this.$account.next(account);
+        },
+          error: (error) => {
+          console.error(error)
+          this.$RegErrorHttp.next(this.RegHttpErrorMessage)
+        },
+      });
+    }
+
 }

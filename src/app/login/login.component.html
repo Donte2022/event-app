@@ -13,10 +13,14 @@ so that I have a reference to the directive itself-->
     <!--Need name attribute and ngModel to get
      access to data within the fields-->
     <input name="userName" type="text" ngModel placeholder="Username">
-</div>
+    <div class="text-danger">
+    </div>
+    </div>
 <div>
     <input name="password" type="text" ngModel placeholder="Password">
-</div>
+    <div class="text-danger">
+    </div>
+    </div>
 
 <div>
     <!--Specify types to avoid conflicts with form
@@ -27,10 +31,9 @@ so that I have a reference to the directive itself-->
      to push data to login func.-->
     <button type="submit" >Login</button>
 </div>
-
-<div>
+    <div class="text-danger">
     {{errorMessagesServer}}
-</div>
+    </div>
 </ng-form>
 
 <div>

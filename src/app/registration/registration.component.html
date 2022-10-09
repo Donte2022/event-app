@@ -10,44 +10,54 @@
     <div>
         <label>First Name: </label>
         <input name="firstName" ngModel type="text">
-        {{firstNameErrorMessages}}
+            <div class="text-danger">
+            {{firstNameErrorMessages}}
+            </div>
         <br>
     </div>
     <div>
         <label>Last Name: </label>
         <input name="lastName" ngModel type="text">
-        {{lastNameErrorMessages}}
+            <div class="text-danger">
+            {{lastNameErrorMessages}}
+            </div>
         <br>
     </div>
     <div>
         <label>Username: </label>
         <input name="userName" ngModel type="text">
-        {{userNameErrorMessages}}
+            <div class="text-danger">
+            {{userNameErrorMessages}}
+            </div>
         <br>
     </div>
     <div>
         <label>Email: </label>
         <input name="email" ngModel type="text">
         <br>
-        {{emailNameErrorMessages}}
-        <br>
-        {{email2NameErrorMessages}}
-        <br>
-        {{email3NameErrorMessages}}
-        <br>
+            <div class="text-danger">
+            {{emailNameErrorMessages}}
+            <br>
+            {{email2NameErrorMessages}}
+            <br>
+            {{email3NameErrorMessages}}
+            <br>
+        </div>
     </div>
     <div>
         <label>Password: </label>
         <input name="password" ngModel type="text">
         <br>
-        {{passwordErrorMessages}}
-        <br>
-        {{password2ErrorMessages}}
-        <br>
-        {{password3ErrorMessages}}
-        <br>
-        {{password4ErrorMessages}}
-        <br>
+            <div class="text-danger">
+            {{passwordErrorMessages}}
+            <br>
+            {{password2ErrorMessages}}
+            <br>
+            {{password3ErrorMessages}}
+            <br>
+            {{password4ErrorMessages}}
+            <br>
+            </div>
         <!--add Upper Case check here-->
 <!--        {{password5ErrorMessages}}-->
 <!--        <br>-->
