@@ -18,11 +18,13 @@ export class LoginComponent implements OnInit {
     accounts: any = null;
     userName: string = "";
     password: string = "";
-    errorMessagesServer: string = "";
+    loginUserError: string | null = null;
+    passwordUserError: string | null = null;
 
 
   constructor(private httpService: HttpService,
               private accountService: AccountService) {
+
       //retrieve data from observable(promise)
       this.httpService.getAccounts().subscribe( {
           //this func is executed if data is received
@@ -33,9 +35,17 @@ export class LoginComponent implements OnInit {
           //this func is executed if request fails
           error: (err) => {
               console.log(err)
-              this.errorMessagesServer = err;
+              //this.errorMessagesServer = err;
           }
       })
+
+      this.accountService.$userLoginError.subscribe(
+          userLoginError => this.loginUserError = userLoginError)
+
+
+      this.accountService.$passwordLoginError.subscribe(
+          passwordLoginError => this.passwordUserError = passwordLoginError);
+
   }
 
   ngOnInit(): void {
@@ -47,10 +57,12 @@ export class LoginComponent implements OnInit {
 
     }
 
-
-    onLoginClick(form: NgForm) {
+    onLoginClick(loginForm: NgForm) {
+      console.log(loginForm.value)
       this.accountService.loginUser(
-          form.value as ILoginForm
+          loginForm.value as ILoginForm
       );
+        console.log("click")
+
     }
 }

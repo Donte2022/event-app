@@ -21,7 +21,6 @@ export class RegistrationComponent implements OnInit {
   password2ErrorMessages: string | null = null;
   password3ErrorMessages: string | null = null;
   password4ErrorMessages: string | null = null;
-  //password5ErrorMessages: string | null = null;
   registerNewUserMessageSuccess: string | null = null;
   registerNewUserMessageFailure: string | null = null;
 
@@ -61,8 +60,6 @@ export class RegistrationComponent implements OnInit {
     // this.accountService.$password4Error.subscribe(
     //     lastNameRegError => this.password4ErrorMessages = lastNameRegError);
 
-    // this.accountService.$password5Error.subscribe(
-    //     lastNameRegError => this.password5ErrorMessages = lastNameRegError);
 
     // this.accountService.$password6Error.subscribe(
     //     lastNameRegError => this.password5ErrorMessages = lastNameRegError);
