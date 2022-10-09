@@ -119,7 +119,6 @@ export class AccountService {
     } else if
     (registrationForm.email.length > 1) {
       this.$email0Error.next(this.RegValidEmailEmpty);
-      return;
     }
     //first name length is less than 0 end an error to user
     if (registrationForm.firstName.length < 1) {
@@ -127,7 +126,6 @@ export class AccountService {
     } else if
     (registrationForm.firstName.length > 1) {
       this.$firstNameError.next(this.RegValidFirstName);
-      return;
     }
 
     //password length less than 0 send an error to user
@@ -136,7 +134,6 @@ export class AccountService {
     } else if
     (registrationForm.lastName.length > 1) {
       this.$lastNameError.next(this.RegValidLastName);
-      return;
     }
 
     //if username length less than 0 send an error to user
@@ -145,15 +142,13 @@ export class AccountService {
     } else if
     (registrationForm.userName.length > 1) {
       this.$userNameError.next(this.RegValidUserNameMinLength);
-      return;
     }
     //check to see if email is less than 5 characters long
-    if (registrationForm.email.length < 5) {
+    if (registrationForm.email.length <= 4) {
       this.$emailError.next(this.RegErrorEmaillength);
     } else if
-    (registrationForm.email.length > 5) {
+    (registrationForm.email.length >= 4) {
       this.$emailError.next(this.RegValidEmaillength);
-      return;
     }
 
     //check for special character in email address
@@ -162,7 +157,6 @@ export class AccountService {
     } else if
     (registrationForm.email.includes('@')) {
       this.$email2Error.next(this.RegValidEmailAtSymbol);
-      return;
     }
 
     //check if email contain the period in address
@@ -171,7 +165,6 @@ export class AccountService {
     } else if
     (registrationForm.email.includes('.')) {
       this.$email3Error.next(this.RegValidEmailDotSymbol);
-      return;
     }
 
     //check to see if password meet minimum length if not return an error
@@ -187,7 +180,6 @@ export class AccountService {
     } else if
     (registrationForm.password.length <= 15) {
       this.$password3Error.next(this.RegValidPasswordMaxLength);
-      return;
     }
   }
 }
