@@ -116,63 +116,81 @@ export class AccountService {
     //check to see if email field is blank
     if (registrationForm.email.length < 1) {
       this.$email0Error.next(this.RegErrorEmailEmpty);
-    } else
+    } else if
+    (registrationForm.email.length > 1) {
       this.$email0Error.next(this.RegValidEmailEmpty);
-
+      return;
+    }
     //first name length is less than 0 end an error to user
     if (registrationForm.firstName.length < 1) {
       this.$firstNameError.next(this.RegErrorFirstName);
-    } else
+    } else if
+    (registrationForm.firstName.length > 1) {
       this.$firstNameError.next(this.RegValidFirstName);
-
+      return;
+    }
 
     //password length less than 0 send an error to user
     if (registrationForm.lastName.length < 1) {
       this.$lastNameError.next(this.RegErrorLastName);
-    } else
+    } else if
+    (registrationForm.lastName.length > 1) {
       this.$lastNameError.next(this.RegValidLastName);
-
+      return;
+    }
 
     //if username length less than 0 send an error to user
     if (registrationForm.userName.length < 1) {
       this.$userNameError.next(this.RegErrorUserNameMinLength);
-    } else
+    } else if
+    (registrationForm.userName.length > 1) {
       this.$userNameError.next(this.RegValidUserNameMinLength);
-
+      return;
+    }
     //check to see if email is less than 5 characters long
     if (registrationForm.email.length < 5) {
       this.$emailError.next(this.RegErrorEmaillength);
-    } else
+    } else if
+    (registrationForm.email.length > 5) {
       this.$emailError.next(this.RegValidEmaillength);
-
+      return;
+    }
 
     //check for special character in email address
     if (!registrationForm.email.includes('@')) {
       this.$email2Error.next(this.RegErrorEmailAtSymbol);
-    } else
+    } else if
+    (registrationForm.email.includes('@')) {
       this.$email2Error.next(this.RegValidEmailAtSymbol);
-
+      return;
+    }
 
     //check if email contain the period in address
     if (!registrationForm.email.includes('.')) {
       this.$email3Error.next(this.RegErrorEmailDotSymbol);
-    } else
+    } else if
+    (registrationForm.email.includes('.')) {
       this.$email3Error.next(this.RegValidEmailDotSymbol);
-
+      return;
+    }
 
     //check to see if password meet minimum length if not return an error
-    if (registrationForm.password.length < 5) {
+    if (registrationForm.password.length <= 5) {
       this.$password2Error.next(this.RegErrorPasswordShort);
-    } else
+    } else if
+    (registrationForm.password.length >= 5) {
       this.$password2Error.next(this.RegValidPasswordShort);
-
+    }
     //check to see if password is too long if so return this error
-    if (registrationForm.password.length > 15) {
+    if (registrationForm.password.length >= 15) {
       this.$password3Error.next(this.RegErrorPasswordMaxLength);
-    } else
+    } else if
+    (registrationForm.password.length <= 15) {
       this.$password3Error.next(this.RegValidPasswordMaxLength);
-    return;
-
+      return;
+    }
+  }
+}
 
     // //check to see if password contain one UPPER case char
     // if (registrationForm.password.match() > A-Z) {
@@ -197,49 +215,34 @@ export class AccountService {
     // }
 
     // create account after passing validation chk
-  if
-
-        (registrationForm.password.length <15,
-        registrationForm.password.length > 5,
-        registrationForm.email.includes('.'),
-        registrationForm.email.includes('@'),
-        registrationForm.email.length > 5,
-        registrationForm.password.length > 1,
-        registrationForm.userName.length > 1,
-        registrationForm.lastName.length > 1,
-        registrationForm.firstName.length > 1,
-        registrationForm.email.length < 1)
+  //if
 
 
-
-
-
-
-
-    {
-      const account: IAccount = {
-        id: uuidv4(),
-        firstName: registrationForm.firstName,
-        lastName: registrationForm.lastName,
-        userId: registrationForm.userName,
-        password: registrationForm.password,
-        emailAddress: registrationForm.email
-      }
-
-      //Set of instructions to run if registration was a success or failure
-      this.httpService.registerAccount(account).subscribe({
-        next: (account) => {
-          console.log(account)
-          //Send a confirmation message if registration was successful
-          this.$RegSuccessHttp.next(this.RegHttpSuccessMessage)
-        },
-        error: (error) => {
-          console.error(error)
-          //Send an error message if registration was a failure
-          this.$RegErrorHttp.next(this.RegHttpErrorMessage)
-        },
-      });
-    }
-
-  }
-}
+//
+//     {
+//       const account: IAccount = {
+//         id: uuidv4(),
+//         firstName: registrationForm.firstName,
+//         lastName: registrationForm.lastName,
+//         userId: registrationForm.userName,
+//         password: registrationForm.password,
+//         emailAddress: registrationForm.email
+//       }
+//
+//       //Set of instructions to run if registration was a success or failure
+//       this.httpService.registerAccount(account).subscribe({
+//         next: (account) => {
+//           console.log(account)
+//           //Send a confirmation message if registration was successful
+//           this.$RegSuccessHttp.next(this.RegHttpSuccessMessage)
+//         },
+//         error: (error) => {
+//           console.error(error)
+//           //Send an error message if registration was a failure
+//           this.$RegErrorHttp.next(this.RegHttpErrorMessage)
+//         },
+//       });
+//     }
+//
+//   }
+// }
