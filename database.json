@@ -8,25 +8,62 @@
       "password": "password123",
       "emailAddress": "green.dontavious@gmail.com"
     },
+    {},
     {
-
+      "id": "2e4dab7b-51f6-4574-83c3-556c2868322f",
+      "firstName": "Dontavious",
+      "lastName": "Green",
+      "userId": "tyjtydr",
+      "password": "password123",
+      "emailAddress": "dontavious.o.green@gmail.com"
+    },
+    {
+      "id": "dd5f5dfe-afdf-4708-9144-1daa5bca6ada",
+      "firstName": "amy",
+      "lastName": "Lee",
+      "userId": "AmyLee2022",
+      "password": "password321",
+      "emailAddress": "AmyLee@gmail.com"
+    },
+    {
+      "id": "8b745638-4cd3-49f4-af2c-5489f24b606d",
+      "firstName": "David",
+      "lastName": "Larner",
+      "userId": "DLarner23",
+      "password": "pasword246",
+      "emailAddress": "Dlarner@gmail.com"
+    },
+    {
+      "id": "d1ad4ed4-1e8a-473c-b0c0-84fcfd690c60",
+      "firstName": "Kimberlee",
+      "lastName": "Jones",
+      "userId": "KJones",
+      "password": "password357",
+      "emailAddress": "KJones@gmail.com"
+    },
+    {
+      "id": "28c884bd-66f4-4af1-a6e9-e52bda2eeec9",
+      "firstName": "Mandy",
+      "lastName": "Peoples",
+      "userId": "MPeoples02",
+      "password": "password1458",
+      "emailAddress": "MandyP@gmail.com"
+    },
+    {
+      "id": "4292bf54-8bed-4bf4-a124-8ce01dae5bac",
+      "firstName": "Bob",
+      "lastName": "Ross",
+      "userId": "BRoss2022",
+      "password": "bobtheboss",
+      "emailAddress": "BRoss@gmail.com"
     }
   ],
   "Events": [
-      {
-
-      },
-      {
-
-      }
-    ],
+    {},
+    {}
+  ],
   "Contacts": [
-    {
-
-    },
-    {
-
-    }
+    {},
+    {}
   ]
-
 }

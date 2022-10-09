@@ -22,6 +22,8 @@ export class RegistrationComponent implements OnInit {
   password3ErrorMessages: string | null = null;
   password4ErrorMessages: string | null = null;
   //password5ErrorMessages: string | null = null;
+  registerNewUserMessageSuccess: string | null = null;
+  registerNewUserMessageFailure: string | null = null;
 
 
   constructor(private accountService: AccountService) {
@@ -65,21 +67,28 @@ export class RegistrationComponent implements OnInit {
     // this.accountService.$password6Error.subscribe(
     //     lastNameRegError => this.password5ErrorMessages = lastNameRegError);
 
+    this.accountService.$RegSuccessHttp.subscribe(
+        $RegSuccessHttp => this.registerNewUserMessageSuccess = $RegSuccessHttp);
+
+    this.accountService.$RegErrorHttp.subscribe(
+        $RegErrorHttp => this.registerNewUserMessageFailure = $RegErrorHttp);
+
+
   }
   ngOnInit(): void {
   }
 
-  cancelAccount() {
-    const newAccount = {
-      "id": new Date().getTime(),
-      "firstName": "Dontavious",
-      "lastName": "Green",
-      "userId": "DontaviousG2022",
-      "password": "password123",
-      "emailAddress": "green.dontavious@gmail.com"
-
-    }
-  }
+  // cancelAccount() {
+  //   const newAccount = {
+  //     "id": new Date().getTime(),
+  //     "firstName": "Dontavious",
+  //     "lastName": "Green",
+  //     "userId": "DontaviousG2022",
+  //     "password": "password123",
+  //     "emailAddress": "green.dontavious@gmail.com"
+  //
+  //   }
+  // }
 
   //sends data from user input 'registration form' to be validated
   registerUser(registrationForm: NgForm) {

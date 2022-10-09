@@ -28,6 +28,7 @@ export class AccountService {
   $emailError = new BehaviorSubject<string | null>(null);
   $email2Error = new BehaviorSubject<string | null>(null);
   $email3Error = new BehaviorSubject<string | null>(null);
+  $RegSuccessHttp = new BehaviorSubject<string | null>(null);
   $RegErrorHttp = new BehaviorSubject<string | null>(null);
 
   private RegErrorEmailEmpty = "You must include an email address."
@@ -43,22 +44,22 @@ export class AccountService {
   //private RegErrorPasswordUpperChar = "Your password must include at least one Upper case.";
   //private RegErrorPasswordLowerChar = "Your password must include at least one lower case.";
   //private RegErrorPasswordSpecialChar = "Your password must include at least one special symbol.";
-  private RegHttpErrorMessage = "Unable to create your account";
-  private RegHttpSuccessMessage = "Account Created! Welcome to Event Organiser.";
+  private RegHttpSuccessMessage = "Account Created! Welcome to Event Organiser!";
+  private RegHttpErrorMessage = "Unable to create your account please try again.";
 
 
   //Takes data from this and create a new account in json database
 
-  $account = new BehaviorSubject<IAccount | null>(
-      {
-        "id": "0",
-        "firstName": "Dontavious",
-        "lastName": "Green",
-        "userId": "DontaviousG2022",
-        "password": "password123",
-        "emailAddress": "green.dontavious@gmail.com"
-      }
-  );
+  // $account = new BehaviorSubject<IAccount | null>(
+  //     {
+  //       "id": "0",
+  //       "firstName": "Dontavious",
+  //       "lastName": "Green",
+  //       "userId": "DontaviousG2022",
+  //       "password": "password123",
+  //       "emailAddress": "green.dontavious@gmail.com"
+  //     }
+  // );
 
 
 
@@ -156,15 +157,19 @@ export class AccountService {
           password: registrationForm.password,
           emailAddress: registrationForm.email
       }
+
+          //Set of instructions to run if registration was a success or failure
+
           this.httpService.registerAccount(account).subscribe({
           next: (account) => {
             console.log(account)
-            this.$RegErrorHttp.next(this.RegHttpSuccessMessage)
-          //this.$account.next(account);
+            //Send a confirmation message if registration was successful
+            this.$RegSuccessHttp.next(this.RegHttpSuccessMessage)
         },
           error: (error) => {
-          console.error(error)
-          this.$RegErrorHttp.next(this.RegHttpErrorMessage)
+            console.error(error)
+              //Send an error message if registration was a failure
+            this.$RegErrorHttp.next(this.RegHttpErrorMessage)
         },
       });
     }
