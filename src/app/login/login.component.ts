@@ -18,8 +18,10 @@ export class LoginComponent implements OnInit {
     accounts: any = null;
     userName: string = "";
     password: string = "";
+    //Login Error Messages
     loginUserError: string | null = null;
     passwordUserError: string | null = null;
+    //Login data from user
 
 
   constructor(private httpService: HttpService,
@@ -63,6 +65,9 @@ export class LoginComponent implements OnInit {
           loginForm.value as ILoginForm
       );
         console.log("click")
-
+    }
+    
+    testBtn() {
+      console.log("test")
     }
 }

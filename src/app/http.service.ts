@@ -6,11 +6,20 @@ import {IAccount} from "./Interface/IAccount";
   providedIn: 'root'
 })
 export class HttpService {
+  
+
+  
 
   constructor(private httpClient: HttpClient) {
 
   }
 
+  findUserAccounts(username: string) {
+    //return an observable for data to retrieve usernames for login validation
+    return this.httpClient.get("http://localhost:3000/Accounts" + username);
+    
+  }
+  
   getAccounts() {
     //return an observable for data
     return this.httpClient.get("http://localhost:3000/Accounts");

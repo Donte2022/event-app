@@ -7,7 +7,8 @@
 <!--assign string 'ngForm' to make ngForm export itself
 so that I have a reference to the directive itself-->
 <!--the directive gives us access to the values in the for, -->
-<ng-form #loginForm="ngForm" (ngSubmit)="onLoginClick(loginForm)">
+<div>
+<form #loginForm="ngForm" (ngSubmit)="onLoginClick(loginForm)">
     {{loginForm.value | json}}
 <div>
     <!--Need name attribute and ngModel to get
@@ -18,7 +19,7 @@ so that I have a reference to the directive itself-->
     </div>
     </div>
 <div>
-    <input name="password" type="text" ngModel placeholder="Password">
+    <input name="password" type="password" ngModel placeholder="Password">
     <div class="text-danger">
         {{passwordUserError}}
     </div>
@@ -28,12 +29,16 @@ so that I have a reference to the directive itself-->
     <!--Specify types to avoid conflicts with form
         without types your Join btn will submit data while trying to
          register a new user too-->
-    <button type="button" (click)="onJoinClick()">Join</button>
+    <button type="button" (click)="onJoinClick()" class="btn btn-success">Join</button>
     <!--uses ngSubmit in combo with the submit btn
      to push data to login func.-->
-    <button type="submit" >Login</button>
+    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="button" (click)="testBtn()">Test</button>
+
 </div>
-</ng-form>
+</form>
+</div>
+
 
 <div>
 </div>

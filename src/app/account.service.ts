@@ -37,7 +37,8 @@ export class AccountService {
   //Login Error Messages
   private UserLogingError = "You must include a user ID";
   private PasswordLoginError = "You must include a password";
-
+  private userLoginValidError = "";
+  private passwordLoginValidError = "";
   //Registration Error Messages
   private RegErrorEmailEmpty = "You must include an email address.";
   private RegErrorEmaillength = "Your email address must be greater than 5 characters long.";
@@ -99,14 +100,22 @@ export class AccountService {
     //upon login btn click perform field validation
     if (loginForm.userName.length < 1) {
       this.$userLoginError.next(this.UserLogingError);
-
+    } else if
+    (loginForm.userName.length > 1) {
+      this.$userLoginError.next(this.userLoginValidError);
     }
     //Check to see if password is blank during login
     if (loginForm.password.length < 1) {
       this.$passwordLoginError.next(this.PasswordLoginError);
-
+    } else if
+    (loginForm.password.length > 1) {
+      this.$passwordLoginError.next(this.passwordLoginValidError);
     }
-    console.log("verifying")
+    this.httpService.findUserAccounts(loginForm.userName).subscribe({
+    next: (accountList) => {
+      console.log(accountList)
+    }
+    })
     return;
   }
 
@@ -210,7 +219,7 @@ export class AccountService {
   //if
 
 
-//
+
 //     {
 //       const account: IAccount = {
 //         id: uuidv4(),
