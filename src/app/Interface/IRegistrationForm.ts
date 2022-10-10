@@ -2,6 +2,6 @@ export interface IRegistrationForm {
     firstName: string;
     lastName: string;
     email: string;
-    userName: string;
+    userId: string;
     password: string;
 }

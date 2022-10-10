@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     isRegistering: boolean = false;
     //change any to specific type after creating a UI
     accounts: any = null;
-    userName: string = "";
+    userId: string = "";
     password: string = "";
     //Login Error Messages
     loginUserError: string | null = null;
@@ -70,11 +70,7 @@ export class LoginComponent implements OnInit {
       console.log(loginForm.value)
       this.accountService.loginUser(
           loginForm.value as ILoginForm
-      );
-        console.log("click")
-    }
+      );   }
     
-    testBtn() {
-      console.log("test")
-    }
+    
 }

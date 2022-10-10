@@ -12,7 +12,7 @@ export class RegistrationComponent implements OnInit {
 
   firstNameErrorMessages: string | null = null;
   lastNameErrorMessages: string | null = null;
-  userNameErrorMessages: string | null = null;
+  userIdErrorMessages: string | null = null;
   email0NameErrorMessages: string | null = null;
   emailNameErrorMessages: string | null = null;
   email2NameErrorMessages: string | null = null;
@@ -45,8 +45,8 @@ export class RegistrationComponent implements OnInit {
     this.accountService.$email3Error.subscribe(
         email3RegError => this.email3NameErrorMessages = email3RegError);
 
-    this.accountService.$userNameError.subscribe(
-        userNameRegError => this.userNameErrorMessages = userNameRegError);
+    this.accountService.$userIdError.subscribe(
+        userIdRegError => this.userIdErrorMessages = userIdRegError);
 
     this.accountService.$passwordError.subscribe(
         passwordRegError => this.passwordErrorMessages = passwordRegError);

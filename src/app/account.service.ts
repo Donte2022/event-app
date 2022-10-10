@@ -23,7 +23,7 @@ export class AccountService {
   //Error messages for Registration
   $firstNameError = new BehaviorSubject<string | null>(null);
   $lastNameError = new BehaviorSubject<string | null>(null);
-  $userNameError = new BehaviorSubject<string | null>(null);
+  $userIdError = new BehaviorSubject<string | null>(null);
   $passwordError = new BehaviorSubject<string | null>(null);
   $password2Error = new BehaviorSubject<string | null>(null);
   $password3Error = new BehaviorSubject<string | null>(null);
@@ -44,6 +44,7 @@ export class AccountService {
   private invalidUserName = "Your username was not found. Please try again";
   private invalidPassword = "Your password is incorrect. Please try again";
   private invalidLogin = "Unable to login account. Please try again later";
+  private invalidCreds  ="Your password did not match your userID.";
 
   //Registration Error Messages
   private RegErrorEmailEmpty = "You must include an email address.";
@@ -106,10 +107,10 @@ export class AccountService {
     console.log(loginForm)
 
     //upon login btn click perform field validation
-    if (loginForm.userName.length < 1) {
+    if (loginForm.userId.length < 1) {
       this.$userLoginError.next(this.UserLogingError);
     } else if
-    (loginForm.userName.length > 1) {
+    (loginForm.userId.length > 1) {
       this.$userLoginError.next(this.userLoginValidError);
     }
     //Check to see if password is blank during login
@@ -120,35 +121,49 @@ export class AccountService {
       this.$passwordLoginError.next(this.passwordLoginValidError);
     // Run code below if no errors were found during login
     } if (
-        loginForm.userName.length > 1 &&
+        loginForm.userId.length > 1 &&
         loginForm.password.length > 1
     )
       //Look for account in json database
-    this.httpService.findUserAccounts(loginForm.userName).subscribe({
+    this.httpService.findUserAccounts(loginForm.userId).subscribe({
       next: (accountList) => {
        console.log(accountList)
-        //run a func to switch over to the main page after
-        //finding a valid account
-       // this.accounts = accountList;
+
+        const accounts = accountList.find(
+            accountList =>  accountList === loginForm
+        );
+          if (!foundAccount) {
+          this.$userLoginError.next(this.invalidCreds);
+          return;
+        }
+
+        // const foundAccount = accountList.find((account:any) => (
+         //     IAccount:any => IAccount.password === loginForm.password
+         // )
+
+        //login user in
+         this.$accounts.next(foundAccount);
+
       },
       //this func is executed if request fails
       error: (error) => {
-        console.log(error)
+        console.log(error);
         //send an error message if login was an http failure
         this.$httpLoginError.next(this.RegHttpErrorMessage)
       }
-    })
+      });
+
   }
 
      // )
-      // const userNameAccounts = accountList(
-      //     account => account.userName === loginForm.userName
-  //     if (!userNameAccounts) {
+      // const userIdAccounts = accountList(
+      //     account => account.userId === loginForm.userId
+  //     if (!userIdAccounts) {
   //       this.$userLoginError.next(this.invalidUserName);
   //       return;
   //     }
   //   //login
-  //   this.$account.next(userNameAccounts);
+  //   this.$account.next(userIdAccounts);
   //   },
   //     error: (error) => {
   //     console.log(error)
@@ -184,11 +199,11 @@ export class AccountService {
     }
 
     //if username length less than 0 send an error to user
-    if (registrationForm.userName.length < 1) {
-      this.$userNameError.next(this.RegErrorUserNameMinLength);
+    if (registrationForm.userId.length < 1) {
+      this.$userIdError.next(this.RegErrorUserNameMinLength);
     } else if
-    (registrationForm.userName.length > 1) {
-      this.$userNameError.next(this.RegValidUserNameMinLength);
+    (registrationForm.userId.length > 1) {
+      this.$userIdError.next(this.RegValidUserNameMinLength);
     }
     //check to see if email is less than 5 characters long
     if (registrationForm.email.length <= 4) {
@@ -253,7 +268,7 @@ export class AccountService {
     (registrationForm.email.length > 1 &&
         registrationForm.firstName.length > 1 &&
         registrationForm.lastName.length > 1 &&
-        registrationForm.userName.length > 1 &&
+        registrationForm.userId.length > 1 &&
         registrationForm.email.length >= 4 &&
         registrationForm.email.includes('@') &&
         registrationForm.email.includes('.') &&
@@ -264,7 +279,7 @@ export class AccountService {
         id: uuidv4(),
         firstName: registrationForm.firstName,
         lastName: registrationForm.lastName,
-        userId: registrationForm.userName,
+        userId: registrationForm.userId,
         password: registrationForm.password,
         emailAddress: registrationForm.email
       }
