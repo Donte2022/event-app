@@ -18,6 +18,7 @@ export class AccountService {
   $userLoginError = new BehaviorSubject<string | null>(null);
   $passwordLoginError = new BehaviorSubject<string | null>(null);
   $invalidLoginError = new BehaviorSubject<string | null>(null);
+  $httpLoginError = new BehaviorSubject<string | null>(null);
 
   //Error messages for Registration
   $firstNameError = new BehaviorSubject<string | null>(null);
@@ -43,6 +44,7 @@ export class AccountService {
   private invalidUserName = "Your username was not found. Please try again";
   private invalidPassword = "Your password is incorrect. Please try again";
   private invalidLogin = "Unable to login account. Please try again later";
+
   //Registration Error Messages
   private RegErrorEmailEmpty = "You must include an email address.";
   private RegErrorEmaillength = "Your email address must be greater than 5 characters long.";
@@ -57,7 +59,9 @@ export class AccountService {
   //private RegErrorPasswordLowerChar = "Your password must include at least one lower case.";
   //private RegErrorPasswordSpecialChar = "Your password must include at least one special symbol.";
   private RegHttpSuccessMessage = "Account Created! Welcome to Event Organiser!";
-  private RegHttpErrorMessage = "Unable to create your account please try again.";
+ private RegHttpErrorMessage = "Unable to login into your account please try again.";
+
+
   //Registration validated fields
   private RegValidEmailEmpty = null;
   private RegValidEmaillength = null;
@@ -101,26 +105,44 @@ export class AccountService {
   loginUser(loginForm: ILoginForm) {
     console.log(loginForm)
 
-  //   //upon login btn click perform field validation
-  //   if (loginForm.userName.length < 1) {
-  //     this.$userLoginError.next(this.UserLogingError);
-  //   } else if
-  //   (loginForm.userName.length > 1) {
-  //     this.$userLoginError.next(this.userLoginValidError);
-  //   }
-  //   //Check to see if password is blank during login
-  //   if (loginForm.password.length < 1) {
-  //     this.$passwordLoginError.next(this.PasswordLoginError);
-  //   } else if
-  //   (loginForm.password.length > 1) {
-  //     this.$passwordLoginError.next(this.passwordLoginValidError);
-  //   }
-  //   this.httpService.findUserAccounts(loginForm.userName).subscribe({
-  //   next: (accountList) => {
-  //     console.log(accountList)
-  //     const userNameAccounts = accountList.find(
-  //         account => account.userName === loginForm.userName
-  //     );
+    //upon login btn click perform field validation
+    if (loginForm.userName.length < 1) {
+      this.$userLoginError.next(this.UserLogingError);
+    } else if
+    (loginForm.userName.length > 1) {
+      this.$userLoginError.next(this.userLoginValidError);
+    }
+    //Check to see if password is blank during login
+    if (loginForm.password.length < 1) {
+      this.$passwordLoginError.next(this.PasswordLoginError);
+    } else if
+    (loginForm.password.length > 1) {
+      this.$passwordLoginError.next(this.passwordLoginValidError);
+    // Run code below if no errors were found during login
+    } if (
+        loginForm.userName.length > 1 &&
+        loginForm.password.length > 1
+    )
+      //Look for account in json database
+    this.httpService.findUserAccounts(loginForm.userName).subscribe({
+      next: (accountList) => {
+       console.log(accountList)
+        //run a func to switch over to the main page after
+        //finding a valid account
+       // this.accounts = accountList;
+      },
+      //this func is executed if request fails
+      error: (error) => {
+        console.log(error)
+        //send an error message if login was an http failure
+        this.$httpLoginError.next(this.RegHttpErrorMessage)
+      }
+    })
+  }
+
+     // )
+      // const userNameAccounts = accountList(
+      //     account => account.userName === loginForm.userName
   //     if (!userNameAccounts) {
   //       this.$userLoginError.next(this.invalidUserName);
   //       return;
@@ -131,9 +153,9 @@ export class AccountService {
   //     error: (error) => {
   //     console.log(error)
   //       this.
-  //     }
-  // });
-  }
+  //      },
+  // // });
+  //   })
 
   //Put Interface and form data together
   registerForms(registrationForm: IRegistrationForm) {
@@ -225,7 +247,7 @@ export class AccountService {
     //Validation check to see if the account already exist
     //this.httpService.findAccount() {
     // }
-      
+
   }  if
         //Check for all fields are error free, if so it creates the account
     (registrationForm.email.length > 1 &&
