@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     //Login Error Messages
     loginUserError: string | null = null;
     passwordUserError: string | null = null;
+    loginAccountError: string | null = null;
     //Login data from user
 
 
@@ -47,6 +48,9 @@ export class LoginComponent implements OnInit {
 
       this.accountService.$passwordLoginError.subscribe(
           passwordLoginError => this.passwordUserError = passwordLoginError);
+      
+      this.accountService.$invalidLoginError.subscribe(
+          loginError => this.loginAccountError = loginError);
 
   }
 

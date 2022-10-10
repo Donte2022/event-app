@@ -17,6 +17,7 @@ export class AccountService {
   //Error Message for Login
   $userLoginError = new BehaviorSubject<string | null>(null);
   $passwordLoginError = new BehaviorSubject<string | null>(null);
+  $invalidLoginError = new BehaviorSubject<string | null>(null);
 
   //Error messages for Registration
   $firstNameError = new BehaviorSubject<string | null>(null);
@@ -39,6 +40,9 @@ export class AccountService {
   private PasswordLoginError = "You must include a password";
   private userLoginValidError = "";
   private passwordLoginValidError = "";
+  private invalidUserName = "Your username was not found. Please try again";
+  private invalidPassword = "Your password is incorrect. Please try again";
+  private invalidLogin = "Unable to login account. Please try again later";
   //Registration Error Messages
   private RegErrorEmailEmpty = "You must include an email address.";
   private RegErrorEmaillength = "Your email address must be greater than 5 characters long.";
@@ -114,9 +118,21 @@ export class AccountService {
     this.httpService.findUserAccounts(loginForm.userName).subscribe({
     next: (accountList) => {
       console.log(accountList)
-    }
-    })
-    return;
+      const userNameAccounts = accountList.find(
+          account => account.userName === loginForm.userName
+      );
+      if (!userNameAccounts) {
+        this.$userLoginError.next(this.invalidUserName);
+        return;
+      }
+    //login
+    this.$account.next(userNameAccounts);
+    },
+      error: (error) => {
+      console.log(error)
+        this.
+      }
+  });
   }
 
   //Put Interface and form data together
