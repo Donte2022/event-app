@@ -210,29 +210,22 @@ export class AccountService {
     // //check to see if password contain one UPPER case char
     // if (registrationForm.password.match() > A-Z) {
     //   this.$password4Error.next(this.RegErrorPasswordUpperChar);
-    //   return;
     // }
 
     // //check to see if password contain at least one lower case char
     // if (registrationForm.password.length > a-z) {
     //   this.$password5Error.next(this.RegErrorPasswordLowerChar);
-    //   return;
     // }
 
     //add special characters requirements for password
     // if (registrationForm.password.includes('!,@')) {
     //   this.$password6Error.next(this.RegErrorPasswordSpecialChar);
-    //   return;
     // }
 
     //Validation check to see if the account already exist
     //this.httpService.findAccount() {
     // }
-
-    // create account after passing validation chk
-    //if
-
-
+      
   }  if
         //Check for all fields are error free, if so it creates the account
     (registrationForm.email.length > 1 &&
