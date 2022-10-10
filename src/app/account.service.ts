@@ -101,38 +101,38 @@ export class AccountService {
   loginUser(loginForm: ILoginForm) {
     console.log(loginForm)
 
-    //upon login btn click perform field validation
-    if (loginForm.userName.length < 1) {
-      this.$userLoginError.next(this.UserLogingError);
-    } else if
-    (loginForm.userName.length > 1) {
-      this.$userLoginError.next(this.userLoginValidError);
-    }
-    //Check to see if password is blank during login
-    if (loginForm.password.length < 1) {
-      this.$passwordLoginError.next(this.PasswordLoginError);
-    } else if
-    (loginForm.password.length > 1) {
-      this.$passwordLoginError.next(this.passwordLoginValidError);
-    }
-    this.httpService.findUserAccounts(loginForm.userName).subscribe({
-    next: (accountList) => {
-      console.log(accountList)
-      const userNameAccounts = accountList.find(
-          account => account.userName === loginForm.userName
-      );
-      if (!userNameAccounts) {
-        this.$userLoginError.next(this.invalidUserName);
-        return;
-      }
-    //login
-    this.$account.next(userNameAccounts);
-    },
-      error: (error) => {
-      console.log(error)
-        this.
-      }
-  });
+  //   //upon login btn click perform field validation
+  //   if (loginForm.userName.length < 1) {
+  //     this.$userLoginError.next(this.UserLogingError);
+  //   } else if
+  //   (loginForm.userName.length > 1) {
+  //     this.$userLoginError.next(this.userLoginValidError);
+  //   }
+  //   //Check to see if password is blank during login
+  //   if (loginForm.password.length < 1) {
+  //     this.$passwordLoginError.next(this.PasswordLoginError);
+  //   } else if
+  //   (loginForm.password.length > 1) {
+  //     this.$passwordLoginError.next(this.passwordLoginValidError);
+  //   }
+  //   this.httpService.findUserAccounts(loginForm.userName).subscribe({
+  //   next: (accountList) => {
+  //     console.log(accountList)
+  //     const userNameAccounts = accountList.find(
+  //         account => account.userName === loginForm.userName
+  //     );
+  //     if (!userNameAccounts) {
+  //       this.$userLoginError.next(this.invalidUserName);
+  //       return;
+  //     }
+  //   //login
+  //   this.$account.next(userNameAccounts);
+  //   },
+  //     error: (error) => {
+  //     console.log(error)
+  //       this.
+  //     }
+  // });
   }
 
   //Put Interface and form data together
@@ -205,9 +205,7 @@ export class AccountService {
     } else if
     (registrationForm.password.length <= 15) {
       this.$password3Error.next(this.RegValidPasswordMaxLength);
-    }
-  }
-}
+
 
     // //check to see if password contain one UPPER case char
     // if (registrationForm.password.match() > A-Z) {
@@ -232,34 +230,44 @@ export class AccountService {
     // }
 
     // create account after passing validation chk
-  //if
+    //if
 
 
+  }  if
+        //Check for all fields are error free, if so it creates the account
+    (registrationForm.email.length > 1 &&
+        registrationForm.firstName.length > 1 &&
+        registrationForm.lastName.length > 1 &&
+        registrationForm.userName.length > 1 &&
+        registrationForm.email.length >= 4 &&
+        registrationForm.email.includes('@') &&
+        registrationForm.email.includes('.') &&
+        registrationForm.password.length >= 5 &&
+        registrationForm.password.length <= 15
+    ){
+      const account: IAccount = {
+        id: uuidv4(),
+        firstName: registrationForm.firstName,
+        lastName: registrationForm.lastName,
+        userId: registrationForm.userName,
+        password: registrationForm.password,
+        emailAddress: registrationForm.email
+      }
 
-//     {
-//       const account: IAccount = {
-//         id: uuidv4(),
-//         firstName: registrationForm.firstName,
-//         lastName: registrationForm.lastName,
-//         userId: registrationForm.userName,
-//         password: registrationForm.password,
-//         emailAddress: registrationForm.email
-//       }
-//
-//       //Set of instructions to run if registration was a success or failure
-//       this.httpService.registerAccount(account).subscribe({
-//         next: (account) => {
-//           console.log(account)
-//           //Send a confirmation message if registration was successful
-//           this.$RegSuccessHttp.next(this.RegHttpSuccessMessage)
-//         },
-//         error: (error) => {
-//           console.error(error)
-//           //Send an error message if registration was a failure
-//           this.$RegErrorHttp.next(this.RegHttpErrorMessage)
-//         },
-//       });
-//     }
-//
-//   }
-// }
+      //Set of instructions to run if registration was a success or failure
+      this.httpService.registerAccount(account).subscribe({
+        next: (account) => {
+          console.log(account)
+          //Send a confirmation message if registration was successful
+          this.$RegSuccessHttp.next(this.RegHttpSuccessMessage)
+        },
+        error: (error) => {
+          console.error(error)
+          //Send an error message if registration was a failure
+          this.$RegErrorHttp.next(this.RegHttpErrorMessage)
+        },
+      });
+    }
+     return true;
+  }
+}
