@@ -1,66 +1,73 @@
-<p>events works!</p>
+<nav class="navbar navbar-light bg-success">
+    <div>
+        <h1>Event Creator</h1>
+    </div>
+</nav>
 
 <div>
 <div (click)="leaveEventPage()" class="btn btn-secondary">Back</div>
 </div>
 
-<div class="event">
+<div name="event" >
     <form #eventForm="ngForm" (ngSubmit)="onNewEventClick(eventForm)">
-        <div>
-            <label>Event Name: </label>
-            <input name="eventName" ngModel type="text">
+
+        <div class="input-group mb-0">
+            <span class="input-group-text">Event Name: </span>
+            <input name="eventName" ngModel type="text" class="form-control">
         </div>
 
-        <div>
-            <label>Event Date: </label>
-            <input name="meetingDate" ngModel type="Date">
+        <div class="input-group mb-0">
+            <span class="input-group-text">Event Date: </span>
+            <input name="meetingDate" ngModel type="Date" class="form-control">
         </div>
 
-        <div>
-            <label>Event Start Time: </label>
-            <input name="eventTimeStart" ngModel type="number">
+        <div class="input-group mb-0">
+            <span class="input-group-text">Event Start Time: </span>
+            <input name="eventTimeStart" ngModel type="number" class="form-control">
         </div>
 
-        <div>
-            <label>Event End Time: </label>
-            <input name="eventTimeEnd" ngModel type="number">
+        <div class="input-group mb-0">
+            <span class="input-group-text">Event End Time: </span>
+            <input name="eventTimeEnd" ngModel type="number" class="form-control">
         </div>
 
-        <div>
-            <label>Location: </label>
-            <input name="location" ngModel type="text">
+        <div class="input-group mb-0">
+            <span class="input-group-text">Location: </span>
+            <input name="location" ngModel type="text"  class="form-control">
         </div>
 
-        <div>
-            <label>Host of Event: </label>
-            <input name="ContactPersonName" ngModel type="text">
+        <div class="input-group mb-0">
+            <span class="input-group-text">Host of Event: </span>
+            <input name="ContactPersonName" ngModel type="text" class="form-control">
         </div>
 
-        <div>
-            <label>Host of Event Number: </label>
-            <input name="ContactPersonNumber" ngModel type="number">
+        <div class="input-group mb-0">
+            <span class="input-group-text">Host of Event Number: </span>
+            <input name="ContactPersonNumber" ngModel type="number" class="form-control">
         </div>
 
-        <div>
-            <label>Host of Event Email Address: </label>
-            <input name="ContactPersonEmail" ngModel type="text">
+        <div class="input-group mb-0">
+            <span class="input-group-text">Host of Event Email Address: </span>
+            <input name="ContactPersonEmail" ngModel type="text" class="form-control">
         </div>
 
-        <div>
-            <label>Cost to Attend: </label>
-            <input name="costToAttend" ngModel type="number">
+        <div class="input-group mb-0">
+            <span class="input-group-text">Cost to Attend: </span>
+            <input name="costToAttend" ngModel type="number" class="form-control">
         </div>
 
-        <div>
-            <label>Additional Notes: </label>
-            <input name="notes" ngModel type="text">
+        <div class="input-group mb-0">
+            <span class="input-group-text">Additional Notes: </span>
+            <input name="notes" ngModel type="text" class="form-control">
         </div>
+
+        <div class="d-flex justify-content-around">
+            <button (click)="inviteUsers()" class="btn btn-primary">Invite Users</button>
+            <button (click)="onUpdateClick()" class="btn btn-success">Update Event</button>
+            <button (click)="onDeleteClick()" class="btn btn-danger">Delete Event</button>
+
+    </div>
+
     </form>
 
-
-    <div class="d-flex justify-content-around">
-        <button (click)="onDeleteClick()" class="btn btn-danger">Delete Event</button>
-        <button (click)="onUpdateClick()" class="btn btn-success">Update Event</button>
-        <button (click)="inviteUsers()" class="btn btn-success">Invite Users</button>
-    </div>
 </div>
