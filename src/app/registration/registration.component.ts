@@ -10,6 +10,7 @@ import {IRegistrationForm} from "../Interface/IRegistrationForm";
 })
 export class RegistrationComponent implements OnInit {
 
+  //Error messages for registration field
   firstNameErrorMessages: string | null = null;
   lastNameErrorMessages: string | null = null;
   userIdErrorMessages: string | null = null;

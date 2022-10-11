@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventsService } from '../events.service';
 
 @Component({
   selector: 'app-events',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private eventService: EventsService) { }
 
   ngOnInit(): void {
   }
 
-}
+  cancelCreateEvent() {
+    console.log("canceling creaitng event")
+      //cancel registration and bring user back to the login
+      this.eventService.$createNewEvent.next(false);
+
+    }
+  }
+
