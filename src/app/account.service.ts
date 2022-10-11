@@ -81,16 +81,18 @@ export class AccountService {
 
 
 
-  $account = new BehaviorSubject<IAccount | null>(
-      {
-        "id": "0",
-        "firstName": "Dontavious",
-        "lastName": "Green",
-        "userId": "DontaviousG2022",
-        "password": "password123",
-        "emailAddress": "green.dontavious@gmail.com"
-      }
-  );
+  $account = new BehaviorSubject<IAccount | null>(null);
+  
+  //Shortcut to stay logged in to work on the prj
+  //     {
+  //       "id": "0",
+  //       "firstName": "Dontavious",
+  //       "lastName": "Green",
+  //       "userId": "DontaviousG2022",
+  //       "password": "password123",
+  //       "emailAddress": "green.dontavious@gmail.com"
+  //     }
+  // );
 
 
 
@@ -141,7 +143,7 @@ export class AccountService {
          
 
         //login user in
-        // this.$accounts.next(foundAccount);
+         this.$account.next(foundaccounts);
 
       },
       //this func is executed if request fails
