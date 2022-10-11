@@ -17,6 +17,8 @@ export class EventsComponent implements OnInit {
     console.log("canceling creaitng event")
       //cancel registration and bring user back to the login
       this.eventService.$createNewEvent.next(false);
+      this.eventService.$createInvites.next(false);
+      this.eventService.$viewEventsandInvites.next(true);
 
     }
   }

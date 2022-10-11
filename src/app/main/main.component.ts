@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../events.service';
+import { InvitesService } from '../invites.service';
 
 @Component({
   selector: 'app-main',
@@ -8,7 +9,8 @@ import { EventsService } from '../events.service';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private eventService: EventsService) { }
+  constructor(private eventService: EventsService,
+              private inviteService: InvitesService) { }
 
   ngOnInit(): void {
   }
@@ -18,5 +20,9 @@ export class MainComponent implements OnInit {
     this.eventService.newEvent()
     
   }
-  
+
+  inviteUsers() {
+    console.log("Inviting users")
+    this.inviteService.manageInvites()
+  }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AccountService} from "./account.service";
 import { EventsService } from './events.service';
+import { InvitesService } from './invites.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,14 @@ import { EventsService } from './events.service';
 export class AppComponent {
     title = 'dontavious-green-AngularPrj';
     isCreatingEvent: boolean = false;
-    isLoggedIn: boolean = false;
+    isViewingMainPage: boolean = false;    
     isCreatingInvite: boolean = false;
     NewUser: boolean = false;
+    isLoggedIn: boolean = false;
 
     constructor(private accountService: AccountService,
-                private eventService: EventsService) {
+                private eventService: EventsService,
+                private inviteService: InvitesService) {
 
         //listen to when the 'join' btn is clicked
         //and switches the page
@@ -30,6 +33,27 @@ export class AppComponent {
         
         this.eventService.$createNewEvent.subscribe(event => {
             this.isCreatingEvent = event ? true : false;
+        });
+
+        this.eventService.$createInvites.subscribe(event => {
+            this.isCreatingInvite = event ? true : false;
+        });
+
+        this.eventService.$viewEventsandInvites.subscribe(event => {
+            this.isViewingMainPage = event ? true : false;
+        });
+        
+        
+        this.inviteService.$manageInvites.subscribe(event => {
+            this.isCreatingInvite = event ? true : false;
+        });
+
+        this.inviteService.$createNewEvents.subscribe(event => {
+            this.isCreatingEvent = event ? true : false;
+        });
+        
+        this.inviteService.$lookAtEventList.subscribe(event => {
+            this.isViewingMainPage = event ? true : false;
         })
 
     }
