@@ -18,7 +18,7 @@ export class HttpService {
   findUserAccounts(userId: string) {
     //return an observable for data to retrieve usernames for login validation
     return this.httpClient.get(
-        "http://localhost:3000/Accounts?userId=" + `/${userId}`,
+        "http://localhost:3000/Accounts?userId=" + `${userId}`,
         ) as Observable<IAccount[]>;
   }
   

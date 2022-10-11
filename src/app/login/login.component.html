@@ -14,12 +14,11 @@ so that I have a reference to the directive itself-->
     <!--Need name attribute and ngModel to get
      access to data within the fields-->
     <input name="userId" type="text" ngModel placeholder="UserId">
-    <div class="text-danger">
-        {{loginUserError}}
-    </div>
+
     </div>
 <div>
     <input name="password" type="password" ngModel placeholder="Password">
+    <br>
     <div class="text-danger">
         {{passwordUserError}}
     </div>
@@ -33,10 +32,11 @@ so that I have a reference to the directive itself-->
     <!--uses ngSubmit in combo with the submit btn
      to push data to login func.-->
     <button type="submit" class="btn btn-primary">Login</button>
+    <br>
+    <div class="text-danger">
+        {{loginUserError}}
+    </div>
 
-        <div class="text-danger">
-            {{loginAccountError}}
-        </div>
 
 </div>
 </form>

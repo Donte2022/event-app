@@ -132,14 +132,13 @@ export class AccountService {
         const foundaccounts = accountList.find(
             account =>  account.userId === loginForm.userId
         );
-        //   if (!foundAccount) {
-        //   this.$userLoginError.next(this.invalidCreds);
-        //   return;
-        // }
+          if (!foundaccounts) {
+          this.$userLoginError.next(this.invalidCreds);
+          return;
+        }
+          console.log(foundaccounts)
 
-        // const foundAccount = accountList.find((account:any) => (
-         //     IAccount:any => IAccount.password === loginForm.password
-         // )
+         
 
         //login user in
         // this.$accounts.next(foundAccount);
