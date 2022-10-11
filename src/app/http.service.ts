@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {IAccount} from "./Interface/IAccount";
 import { Observable } from 'rxjs';
+import { IEvents } from './Interface/IEvents';
 
 @Injectable({
   providedIn: 'root'
@@ -46,8 +47,11 @@ export class HttpService {
     this.httpClient.get("http://localhost:3000/Events");
   }
 
-  createEvent() {
-
+  addNewEvent() {
+    return this.httpClient.post(
+        "http://localhost:3000/Events",
+        eventForm
+      ) as Observable<IEvents>
   }
 
 

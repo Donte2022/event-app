@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { EventsService } from '../events.service';
 import { IEvents } from '../Interface/IEvents';
 
@@ -41,8 +42,10 @@ export class EventsComponent implements OnInit {
     
   }
 
-  onNewEventClick(eventForm: any) {
-    
+  onNewEventClick(eventForm: NgForm) {
+    this.eventService.newEvent(
+        eventForm.value as IEvents
+    );
   }
 }
 
