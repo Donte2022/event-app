@@ -81,18 +81,19 @@ export class AccountService {
 
 
 
-  $account = new BehaviorSubject<IAccount | null>(null);
+  $account = new BehaviorSubject<IAccount | null>(
+      //null);
   
   //Shortcut to stay logged in to work on the prj
-  //     {
-  //       "id": "0",
-  //       "firstName": "Dontavious",
-  //       "lastName": "Green",
-  //       "userId": "DontaviousG2022",
-  //       "password": "password123",
-  //       "emailAddress": "green.dontavious@gmail.com"
-  //     }
-  // );
+      {
+        "id": "0",
+        "firstName": "Dontavious",
+        "lastName": "Green",
+        "userId": "DontaviousG2022",
+        "password": "password123",
+        "emailAddress": "green.dontavious@gmail.com"
+      }
+  );
 
 
 

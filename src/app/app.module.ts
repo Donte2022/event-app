@@ -8,6 +8,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MainComponent } from './main/main.component';
+import { EventsComponent } from './events/events.component';
+import { InvitationComponent } from './invitation/invitation.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { MainComponent } from './main/main.component';
     LoginComponent,
     RegistrationComponent,
     MainComponent,
+    EventsComponent,
+    InvitationComponent,
 
   ],
   imports: [
