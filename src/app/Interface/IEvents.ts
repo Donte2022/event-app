@@ -1,7 +1,8 @@
 export interface IEvents
 {
+    id: string;
     eventName: string;
-        meetingDate: string;
+        meetingDate: Date
     eventTimeStart: number;
     eventTimeEnd: number;
     location: string;

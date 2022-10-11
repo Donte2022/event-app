@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { EventsService } from '../events.service';
+import { IEvents } from '../Interface/IEvents';
 
 @Component({
   selector: 'app-events',
@@ -8,18 +9,40 @@ import { EventsService } from '../events.service';
 })
 export class EventsComponent implements OnInit {
 
-  constructor(private eventService: EventsService) { }
+  @Input() event!:IEvents;
+  
+  constructor(private eventService: EventsService) {
+    
+  }
 
   ngOnInit(): void {
   }
 
-  cancelCreateEvent() {
-    console.log("canceling creaitng event")
+  leaveEventPage() {
+    console.log("leaving event page")
       //cancel registration and bring user back to the login
       this.eventService.$createNewEvent.next(false);
       this.eventService.$createInvites.next(false);
       this.eventService.$viewEventsandInvites.next(true);
 
     }
+
+  onDeleteClick() {
+    console.log("deleting event")
+    this.eventService.deleteEvent(this.event.id);  
   }
+
+  onUpdateClick() {
+    console.log("updating event")
+    this.eventService.updateEvent(this.event.id);
+  }
+
+  inviteUsers() {
+    
+  }
+
+  onNewEventClick(eventForm: any) {
+    
+  }
+}
 

@@ -1,5 +1,66 @@
 <p>events works!</p>
 
+<div>
+<div (click)="leaveEventPage()" class="btn btn-secondary">Back</div>
+</div>
 
-<div (click)="cancelCreateEvent()" class="btn btn-danger"
->Cancel</div>
+<div class="event">
+    <form #eventForm="ngForm" (ngSubmit)="onNewEventClick(eventForm)">
+        <div>
+            <label>Event Name: </label>
+            <input name="eventName" ngModel type="text">
+        </div>
+
+        <div>
+            <label>Event Date: </label>
+            <input name="meetingDate" ngModel type="Date">
+        </div>
+
+        <div>
+            <label>Event Start Time: </label>
+            <input name="eventTimeStart" ngModel type="number">
+        </div>
+
+        <div>
+            <label>Event End Time: </label>
+            <input name="eventTimeEnd" ngModel type="number">
+        </div>
+
+        <div>
+            <label>Location: </label>
+            <input name="location" ngModel type="text">
+        </div>
+
+        <div>
+            <label>Host of Event: </label>
+            <input name="ContactPersonName" ngModel type="text">
+        </div>
+
+        <div>
+            <label>Host of Event Number: </label>
+            <input name="ContactPersonNumber" ngModel type="number">
+        </div>
+
+        <div>
+            <label>Host of Event Email Address: </label>
+            <input name="ContactPersonEmail" ngModel type="text">
+        </div>
+
+        <div>
+            <label>Cost to Attend: </label>
+            <input name="costToAttend" ngModel type="number">
+        </div>
+
+        <div>
+            <label>Additional Notes: </label>
+            <input name="notes" ngModel type="text">
+        </div>
+    </form>
+
+
+    <div class="d-flex justify-content-around">
+        <button (click)="onDeleteClick()" class="btn btn-danger">Delete Event</button>
+        <button (click)="onUpdateClick()" class="btn btn-success">Update Event</button>
+        <button (click)="inviteUsers()" class="btn btn-success">Invite Users</button>
+    </div>
+</div>

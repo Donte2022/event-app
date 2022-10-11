@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../account.service';
 import { EventsService } from '../events.service';
 import { InvitesService } from '../invites.service';
 
@@ -10,19 +11,22 @@ import { InvitesService } from '../invites.service';
 export class MainComponent implements OnInit {
 
   constructor(private eventService: EventsService,
-              private inviteService: InvitesService) { }
+              private inviteService: InvitesService,
+              private accountService: AccountService) { }
 
   ngOnInit(): void {
   }
 
   createEvent() {
-    console.log("creating event")
-    this.eventService.newEvent()
+    this.eventService.switchToEventPage()
     
   }
 
   inviteUsers() {
-    console.log("Inviting users")
     this.inviteService.manageInvites()
+  }
+
+  logOut() {
+    this.accountService.logOutUser()
   }
 }

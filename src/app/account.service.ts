@@ -107,7 +107,6 @@ export class AccountService {
 
   //username and password verification
   loginUser(loginForm: ILoginForm) {
-    console.log(loginForm)
 
     //upon login btn click perform field validation
     if (loginForm.userId.length < 1) {
@@ -130,7 +129,6 @@ export class AccountService {
       //Look for account in json database
     this.httpService.findUserAccounts(loginForm.userId).subscribe({
       next: (accountList) => {
-       console.log(accountList)
 
         const foundaccounts = accountList.find(
             account =>  account.userId === loginForm.userId
@@ -139,9 +137,6 @@ export class AccountService {
           this.$userLoginError.next(this.invalidCreds);
           return;
         }
-          console.log(foundaccounts)
-
-         
 
         //login user in
          this.$account.next(foundaccounts);
@@ -149,7 +144,6 @@ export class AccountService {
       },
       //this func is executed if request fails
       error: (error) => {
-        console.log(error);
         //send an error message if login was an http failure
         this.$httpLoginError.next(this.RegHttpErrorMessage)
       }
@@ -198,7 +192,6 @@ export class AccountService {
     (registrationForm.email.length >= 4) {
       this.$emailError.next(this.RegValidEmaillength);
     }
-
     //check for special character in email address
     if (!registrationForm.email.includes('@')) {
       this.$email2Error.next(this.RegErrorEmailAtSymbol);
@@ -206,7 +199,6 @@ export class AccountService {
     (registrationForm.email.includes('@')) {
       this.$email2Error.next(this.RegValidEmailAtSymbol);
     }
-
     //check if email contain the period in address
     if (!registrationForm.email.includes('.')) {
       this.$email3Error.next(this.RegErrorEmailDotSymbol);
@@ -214,7 +206,6 @@ export class AccountService {
     (registrationForm.email.includes('.')) {
       this.$email3Error.next(this.RegValidEmailDotSymbol);
     }
-
     //check to see if password meet minimum length if not return an error
     if (registrationForm.password.length <= 5) {
       this.$password2Error.next(this.RegErrorPasswordShort);
@@ -228,7 +219,6 @@ export class AccountService {
     } else if
     (registrationForm.password.length <= 15) {
       this.$password3Error.next(this.RegValidPasswordMaxLength);
-
 
     // //check to see if password contain one UPPER case char
     // if (registrationForm.password.match() > A-Z) {
@@ -274,12 +264,10 @@ export class AccountService {
       //Set of instructions to run if registration was a success or failure
       this.httpService.registerAccount(account).subscribe({
         next: (account) => {
-          console.log(account)
           //Send a confirmation message if registration was successful
           this.$RegSuccessHttp.next(this.RegHttpSuccessMessage)
         },
         error: (error) => {
-          console.error(error)
           //Send an error message if registration was a failure
           this.$RegErrorHttp.next(this.RegHttpErrorMessage)
         },
