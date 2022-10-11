@@ -47,7 +47,7 @@ export class HttpService {
     this.httpClient.get("http://localhost:3000/Events");
   }
 
-  addNewEvent() {
+  addNewEvent(eventForm: IEvents) {
     return this.httpClient.post(
         "http://localhost:3000/Events",
         eventForm

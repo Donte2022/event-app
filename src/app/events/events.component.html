@@ -60,14 +60,13 @@
             <span class="input-group-text">Additional Notes: </span>
             <input name="notes" ngModel type="text" class="form-control">
         </div>
-
+        <br>
         <div class="d-flex justify-content-around">
+            <button type="submit" class="btn btn-primary">Submit Event</button>
             <button (click)="inviteUsers()" class="btn btn-primary">Invite Users</button>
             <button (click)="onUpdateClick()" class="btn btn-success">Update Event</button>
             <button (click)="onDeleteClick()" class="btn btn-danger">Delete Event</button>
-
-    </div>
-
+        </div>
     </form>
 
 </div>
