@@ -67,10 +67,8 @@ export class LoginComponent implements OnInit {
     }
 
     onLoginClick(loginForm: NgForm) {
-      console.log(loginForm.value)
       this.accountService.loginUser(
           loginForm.value as ILoginForm
-      );   }
-    
-    
+      );  
+    }
 }

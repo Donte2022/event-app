@@ -80,27 +80,27 @@ export class AccountService {
   private RegValidHttpErrorMessage = null;
 
 
-  //Takes data from this and create a new account in json database
 
-  // $account = new BehaviorSubject<IAccount | null>(
-  //     {
-  //       "id": "0",
-  //       "firstName": "Dontavious",
-  //       "lastName": "Green",
-  //       "userId": "DontaviousG2022",
-  //       "password": "password123",
-  //       "emailAddress": "green.dontavious@gmail.com"
-  //     }
-  // );
+  $account = new BehaviorSubject<IAccount | null>(
+      {
+        "id": "0",
+        "firstName": "Dontavious",
+        "lastName": "Green",
+        "userId": "DontaviousG2022",
+        "password": "password123",
+        "emailAddress": "green.dontavious@gmail.com"
+      }
+  );
+
+
 
 
   constructor(private httpService: HttpService) {
-
   }
 
-  // logOutUser() {
-  //   this.$account.next(null);
-  // }
+  logOutUser() {
+    this.$account.next(null);
+  }
 
   //username and password verification
   loginUser(loginForm: ILoginForm) {
@@ -129,20 +129,20 @@ export class AccountService {
       next: (accountList) => {
        console.log(accountList)
 
-        const accounts = accountList.find(
-            accountList =>  accountList === loginForm
+        const foundaccounts = accountList.find(
+            account =>  account.userId === loginForm.userId
         );
-          if (!foundAccount) {
-          this.$userLoginError.next(this.invalidCreds);
-          return;
-        }
+        //   if (!foundAccount) {
+        //   this.$userLoginError.next(this.invalidCreds);
+        //   return;
+        // }
 
         // const foundAccount = accountList.find((account:any) => (
          //     IAccount:any => IAccount.password === loginForm.password
          // )
 
         //login user in
-         this.$accounts.next(foundAccount);
+        // this.$accounts.next(foundAccount);
 
       },
       //this func is executed if request fails
@@ -155,22 +155,6 @@ export class AccountService {
 
   }
 
-     // )
-      // const userIdAccounts = accountList(
-      //     account => account.userId === loginForm.userId
-  //     if (!userIdAccounts) {
-  //       this.$userLoginError.next(this.invalidUserName);
-  //       return;
-  //     }
-  //   //login
-  //   this.$account.next(userIdAccounts);
-  //   },
-  //     error: (error) => {
-  //     console.log(error)
-  //       this.
-  //      },
-  // // });
-  //   })
 
   //Put Interface and form data together
   registerForms(registrationForm: IRegistrationForm) {
@@ -274,7 +258,8 @@ export class AccountService {
         registrationForm.email.includes('.') &&
         registrationForm.password.length >= 5 &&
         registrationForm.password.length <= 15
-    ){
+    )
+    {
       const account: IAccount = {
         id: uuidv4(),
         firstName: registrationForm.firstName,
