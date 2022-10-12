@@ -19,9 +19,9 @@ export class EventsService {
   $eventError8 = new BehaviorSubject<string | null>(null);
   $eventError9 = new BehaviorSubject<string | null>(null);
   $eventError0 = new BehaviorSubject<string | null>(null);
-
+  
   //error messages for creating an event
-  private eventNameError = "You must include an event name";
+  private eventNameError = "You must include a name for the event";
   private eventMeetingDateError = "You must include a meeting Date for the event";
   private eventimeStartError = "You must include a start time for your event";
   private eventTimeEndError = "You must include an end time for your event";
@@ -43,78 +43,88 @@ export class EventsService {
   newEvent(eventForm: IEvents) {
 
       //conditions to check for empty fields in before creating the event
-    if (eventForm.eventName.length < 1) {
+    if (eventForm.eventName === null) {
       this.$eventError.next(this.eventNameError);
     } else if
-    (eventForm.eventName.length > 1) {
+    (eventForm.eventName !== null) {
       this.$eventError.next(this.eventNameError);
     }
+
       if (eventForm.meetingDate === null) {
         this.$eventError2.next(this.eventMeetingDateError);
       } else if
       (eventForm.meetingDate !== null) {
         this.$eventError2.next(this.eventMeetingDateError);
-        }
+      }
+
       if (eventForm.eventTimeStart === null) {
         this.$eventError3.next(this.eventimeStartError);
       } else if
       (eventForm.eventTimeStart !== null) {
         this.$eventError3.next(this.eventimeStartError);
       }
+
         if (eventForm.eventTimeEnd === null) {
           this.$eventError4.next(this.eventTimeEndError);
         } else if
         (eventForm.eventTimeEnd !== null) {
           this.$eventError4.next(this.eventTimeEndError);
         }
-        if (eventForm.location.length < 1) {
+
+        if (eventForm.location === null) {
           this.$eventError5.next(this.eventLocationError);
         } else if
-        (eventForm.location.length > 1) {
+        (eventForm.location !== null) {
           this.$eventError5.next(this.eventLocationError);
         }
-          if (eventForm.contactPersonName.length < 1) {
+
+          if (eventForm.contactPersonName === null) {
             this.$eventError6.next(this.eventContactNameError);
           } else if
-          (eventForm.contactPersonName.length > 1) {
+          (eventForm.contactPersonName !== null) {
             this.$eventError6.next(this.eventContactNameError);
           }
+
             if (eventForm.contactPersonNumber === null) {
               this.$eventError7.next(this.eventContactNumberError);
             } else if
             (eventForm.contactPersonNumber !== null) {
               this.$eventError7.next(this.eventContactNumberError);
             }
-            if (eventForm.contactPersonEmail.length > 1) {
+
+            if (eventForm.contactPersonEmail === null) {
               this.$eventError8.next(this.eventContactEmailError);
             } else if
-            (eventForm.contactPersonEmail.length < 1) {
+            (eventForm.contactPersonEmail !== null) {
               this.$eventError8.next(this.eventContactEmailError);
             }
+
             if (eventForm.costToAttend === null) {
               this.$eventError9.next(this.eventCostError);
             } else if
             (eventForm.costToAttend !== null) {
               this.$eventError9.next(this.eventCostError);
             }
-            if (eventForm.notes.length < 1) {
+
+            if (eventForm.notes === null) {
               this.$eventError0.next(this.eventNoteError);
             } else if
-            (eventForm.notes.length > 1) {
+            (eventForm.notes !== null) {
               this.$eventError0.next(this.eventNoteError);
+            }
 
               //conditions to pass before creating the event
-            }
-            if (eventForm.eventName.length > 1 &&
+
+            if (eventForm.eventName !== null &&
                 eventForm.meetingDate !== null &&
                 eventForm.eventTimeStart !== null &&
                 eventForm.eventTimeEnd !== null &&
-                eventForm.location.length > 1 &&
-                eventForm.contactPersonName.length > 1 &&
+                eventForm.location !== null &&
+                eventForm.contactPersonName !== null &&
                 eventForm.contactPersonNumber !== null &&
-                eventForm.contactPersonEmail.length < 1 &&
+                eventForm.contactPersonEmail !== null &&
                 eventForm.costToAttend !== null &&
-                eventForm.notes.length > 1
+                eventForm.notes != null
             ) {
               //Data from the form and IEvent interface used 
               //to create the event

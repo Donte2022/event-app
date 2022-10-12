@@ -21,7 +21,8 @@ export class EventsComponent implements OnInit {
   eventContactEmailMessage: string | null = null;
   eventCostMessage: string | null = null;
   eventNoteMessage: string | null = null;
-
+  eventFailureMessage: string | null = null;
+  eventSuccessMessage: string | null = null;
 
   @Input() event!:IEvents;
   
@@ -56,6 +57,12 @@ export class EventsComponent implements OnInit {
 
     this.eventService.$eventError0.subscribe(
         eventError0 => this.eventNoteMessage = eventError0);
+
+    this.eventService.$eventFailureHttp.subscribe(
+        eventFailureMessage => this.eventFailureMessage = eventFailureMessage);
+
+    this.eventService.$eventSuccessHttp.subscribe(
+        eventSuccessMessage => this.eventSuccessMessage = eventSuccessMessage);
 
   }
 

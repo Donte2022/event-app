@@ -7,9 +7,9 @@ export interface IEvents
     eventTimeEnd: number;
     location: string;
     contactPersonName: string;
-        contactPersonNumber: number;
+        contactPersonNumber: string;
         contactPersonEmail: string;
-        costToAttend: number;
+        costToAttend: string;
         notes: string;
 
 }

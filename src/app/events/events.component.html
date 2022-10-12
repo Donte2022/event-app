@@ -16,19 +16,35 @@
             <input name="eventName" ngModel type="text" class="form-control">
         </div>
 
+        <div class="text-danger">
+        {{eventNameMessage}}
+        </div>
+
         <div class="input-group mb-0">
             <span class="input-group-text">Event Date: </span>
             <input name="meetingDate" ngModel type="Date" class="form-control">
         </div>
 
+        <div class="text-danger">
+        {{eventMeetingDateMessage}}
+        </div>
+
         <div class="input-group mb-0">
             <span class="input-group-text">Event Start Time: </span>
-            <input name="eventTimeStart" ngModel type="number" class="form-control">
+            <input name="eventTimeStart" ngModel type="time" class="form-control">
+        </div>
+
+        <div class="text-danger">
+        {{eventTimeStartMessage}}
         </div>
 
         <div class="input-group mb-0">
             <span class="input-group-text">Event End Time: </span>
-            <input name="eventTimeEnd" ngModel type="number" class="form-control">
+            <input name="eventTimeEnd" ngModel type="time" class="form-control">
+        </div>
+
+        <div class="text-danger">
+        {{eventTimeEndMessage}}
         </div>
 
         <div class="input-group mb-0">
@@ -36,30 +52,56 @@
             <input name="location" ngModel type="text"  class="form-control">
         </div>
 
+        <div class="text-danger">
+        {{eventLocationMessage}}
+        </div>
+
+
         <div class="input-group mb-0">
             <span class="input-group-text">Host of Event: </span>
             <input name="ContactPersonName" ngModel type="text" class="form-control">
         </div>
 
+        <div class="text-danger">
+        {{eventContactNameMessage}}
+        </div>
+
         <div class="input-group mb-0">
             <span class="input-group-text">Host of Event Number: </span>
-            <input name="ContactPersonNumber" ngModel type="number" class="form-control">
+            <input name="ContactPersonNumber" ngModel type="tel" class="form-control">
+        </div>
+
+        <div class="text-danger">
+        {{eventContactNumberMessage}}
         </div>
 
         <div class="input-group mb-0">
             <span class="input-group-text">Host of Event Email Address: </span>
-            <input name="ContactPersonEmail" ngModel type="text" class="form-control">
+            <input name="ContactPersonEmail" ngModel type="email" class="form-control">
+        </div>
+
+        <div class="text-danger">
+        {{eventContactEmailMessage}}
         </div>
 
         <div class="input-group mb-0">
             <span class="input-group-text">Cost to Attend: </span>
-            <input name="costToAttend" ngModel type="number" class="form-control">
+            <input name="costToAttend" ngModel type="text" class="form-control">
+        </div>
+
+        <div class="text-danger">
+            {{eventCostMessage}}
         </div>
 
         <div class="input-group mb-0">
             <span class="input-group-text">Additional Notes: </span>
             <input name="notes" ngModel type="text" class="form-control">
         </div>
+
+        <div class="text-danger">
+        {{eventNoteMessage}}
+        </div>
+
         <br>
         <div class="d-flex justify-content-around">
             <button type="submit" class="btn btn-primary">Submit Event</button>
@@ -67,6 +109,16 @@
             <button (click)="onUpdateClick()" class="btn btn-success">Update Event</button>
             <button (click)="onDeleteClick()" class="btn btn-danger">Delete Event</button>
         </div>
+
+        <div class="text-danger">
+            {{eventFailureMessage}}
+        </div>
+
+        <div class="text-success">
+        {{eventSuccessMessage}}
+        </div>
+
+
     </form>
 
 </div>
