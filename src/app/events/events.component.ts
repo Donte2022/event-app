@@ -23,8 +23,9 @@ export class EventsComponent implements OnInit {
   eventNoteMessage: string | null = null;
   eventFailureMessage: string | null = null;
   eventSuccessMessage: string | null = null;
+  // Use to delete an event
+  event: any;
 
-  @Input() event!:IEvents;
   
   constructor(private eventService: EventsService) {
 

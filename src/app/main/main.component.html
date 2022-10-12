@@ -18,7 +18,7 @@
 <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="text-center">
 <ngb-panel *ngFor="let listOfEvents of eventFromDatabase">
     <ng-template  ngbPanelTitle>
-      <span> <b>{{eventFromDatabase.eventName}}</b> </span>
+      <span> <b>{{listOfEvents.eventName}}</b> </span>
     </ng-template>
     <ng-template ngbPanelContent >
     <app-display>

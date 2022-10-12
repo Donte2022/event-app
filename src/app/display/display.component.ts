@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { EventsService } from '../events.service';
 import { HttpService } from '../http.service';
 import { IEvents } from '../Interface/IEvents';
 
@@ -9,14 +10,14 @@ import { IEvents } from '../Interface/IEvents';
 })
 export class DisplayComponent implements OnInit {
 
-  //@Input() event!;IEvents;
   
-  //events!: IEvents;
+  
   eventFromDatabase: any = null;
 
+  updatedEventList!: IEvents;
 
-
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService,
+              private eventService: EventsService) {
 
     //retrieve data from observable(promise)
     this.httpService.getEvents().subscribe( {
@@ -31,6 +32,8 @@ export class DisplayComponent implements OnInit {
         //this.errorMessagesServer = err;
       }
     })
+
+
 
     //this.eventList = this.eventFromDatabase;
     // this.displayList = [...this.eventList]

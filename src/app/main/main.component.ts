@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AccountService } from '../account.service';
 import { EventsService } from '../events.service';
 import { HttpService } from '../http.service';
@@ -13,6 +13,8 @@ import { InvitesService } from '../invites.service';
 })
 export class MainComponent implements OnInit {
 
+  @Input() event!:IEvents;
+  
   eventFromDatabase: any = null;
   
   constructor(private eventService: EventsService,
@@ -24,6 +26,7 @@ export class MainComponent implements OnInit {
     this.httpService.getEvents().subscribe( {
       //this func is executed if data is received
       next: (data) => {
+        console.log(data)
         console.log(data)
         this.eventFromDatabase = data;
       },

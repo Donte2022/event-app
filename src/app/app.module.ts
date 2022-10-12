@@ -10,6 +10,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MainComponent } from './main/main.component';
 import { EventsComponent } from './events/events.component';
 import { InvitationComponent } from './invitation/invitation.component';
+import { DisplayComponent } from './display/display.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { InvitationComponent } from './invitation/invitation.component';
     MainComponent,
     EventsComponent,
     InvitationComponent,
+    DisplayComponent,
 
   ],
   imports: [

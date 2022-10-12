@@ -1,4 +1,6 @@
-<div>
+<div class="event">
+<!--    <ngb-panel *ngFor="let listOfEvents of eventFromDatabase">-->
+<!--        <ng-container *ngFor="let listOfEvents of eventFromDatabase">-->
     <div>
         <span class="fw-bold">Event Name: </span>
         {{eventFromDatabase.eventName}}</div>
@@ -29,8 +31,10 @@
         {{eventFromDatabase.notes}}</div>
     <br>
     <div class="d-flex justify-content-around">
-        <button>Manage Invite</button>
-        <button>Update</button>
-        <button>Delete</button>
+        <button class="btn btn-success">Manage Invite</button>
+        <button class="btn btn-primary">Update</button>
+        <button class="btn btn-danger">Delete</button>
     </div>
+<!--        </ng-container>-->
+<!--    </ngb-panel>-->
 </div>
