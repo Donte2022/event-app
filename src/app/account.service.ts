@@ -239,9 +239,9 @@ export class AccountService {
     //this.httpService.findAccount() {
     // }
 
-  }  if
-        //Check for all fields are error free, if so it creates the account
-    (registrationForm.email.length > 1 &&
+      //Check for all fields are error free, if so it creates the account
+    }  if   
+        (registrationForm.email.length > 1 &&
         registrationForm.firstName.length > 1 &&
         registrationForm.lastName.length > 1 &&
         registrationForm.userId.length > 1 &&
@@ -252,6 +252,7 @@ export class AccountService {
         registrationForm.password.length <= 15
     )
     {
+      
       const account: IAccount = {
         id: uuidv4(),
         firstName: registrationForm.firstName,
