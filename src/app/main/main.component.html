@@ -3,22 +3,14 @@
         <h1>Event Creator</h1>
     </div>
 </nav>
-
-<div class="input-group mb-0" >
-    <button (click)="createEvent()" class="btn btn-primary">Create Event</button>
-</div>
-<div class="input-group mb-0" >
-    <button (click)="logOut()" class="btn btn-danger">Log Out</button>
-</div>
-<div>
-    <div class="input-group mb-0" >
-        <button (click)="inviteUsers()" class="btn btn-success">Invite Users</button>
-    </div>
+<div class="d-flex justify-content-between">
+    <button (click)="createEvent()" class="btn btn-primary btn-lg">Create Event</button>
+    <button (click)="logOut()" class="btn btn-danger btn-lg">Log Out</button>
 </div>
 <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="text-center">
 <ngb-panel *ngFor="let listOfEvents of eventFromDatabase">
     <ng-template  ngbPanelTitle>
-      <span> <b>{{listOfEvents.eventName}}</b> </span>
+      <span><b>Event Name: </b>{{listOfEvents.eventName}}</span>
     </ng-template>
     <ng-template ngbPanelContent >
     <app-display>

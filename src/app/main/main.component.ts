@@ -40,7 +40,8 @@ export class MainComponent implements OnInit {
     //this.eventList = this.eventFromDatabase;
    // this.displayList = [...this.eventList]
 
-   }
+
+  }
 
   ngOnInit(): void {
   }

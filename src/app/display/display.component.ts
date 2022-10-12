@@ -11,7 +11,8 @@ import { IEvents } from '../Interface/IEvents';
 export class DisplayComponent implements OnInit {
 
   
-  
+  userInput: string = "";
+
   eventFromDatabase: any = null;
 
   updatedEventList!: IEvents;
@@ -44,7 +45,41 @@ export class DisplayComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
-  
+  manageInvite() {
+    console.log("Inviting others")
+  }
+
+  updateEvent() {
+    console.log("Updating event..")
+    const id = parseInt(this.userInput);
+    this.httpService.updateSelectedEvent(id).subscribe({
+      next: (updateData) => {
+        console.log("Event updated!")
+      },
+      error: (error) => {
+        console.log("Event update FAIL!")
+      }
+    })
+  }
+
+  deleteEvent() {
+    console.log("deleting event")
+    //convert text to number
+    const id = parseInt(this.userInput);
+    //returns an observable
+    this.httpService.deleteSelectedEvent(id).subscribe({
+      next: (deleteData) => {
+        console.log("Event deleted!")
+        console.log(deleteData)
+      },
+      error: (error) => {
+        console.log("Event delete FAIL")
+        console.log(error)
+      }
+    })
+
+  }
+
+
   
 }
