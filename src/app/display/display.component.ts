@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {first, pipe } from 'rxjs';
 import { EventsService } from '../events.service';
 import { HttpService } from '../http.service';
 import { IEvents } from '../Interface/IEvents';
@@ -21,7 +22,9 @@ export class DisplayComponent implements OnInit {
               private eventService: EventsService) {
 
     //retrieve data from observable(promise)
-    this.httpService.getEvents().subscribe( {
+    this.httpService.getEvents()
+    // pipe(first())
+     .subscribe( {
       //this func is executed if data is received
       next: (data) => {
         console.log(data)
@@ -50,33 +53,50 @@ export class DisplayComponent implements OnInit {
   }
 
   updateEvent() {
-    console.log("Updating event..")
-    const id = parseInt(this.userInput);
-    this.httpService.updateSelectedEvent(id).subscribe({
-      next: (updateData) => {
-        console.log("Event updated!")
-      },
-      error: (error) => {
-        console.log("Event update FAIL!")
-      }
-    })
+    // console.log("Updating event..")
+    // const updateUser = {
+    //       id: parseInt(this.updatedUserInputId),
+    //       eventName:
+    //       meetingDate:
+    // eventTimeStart:
+    // eventTimeEnd:
+    // location:
+    // contactPersonName:
+    // contactPersonNumber:
+    // contactPersonEmail:
+    // costToAttend:
+    // notes:
+    // }
+    //
+    // //pipe is used to put your subscription into the first func
+    // //which takes the first piece of info back and unsubscribe afterwards
+    // this.httpService.updateSelectedEvent(updateUser)
+    // pipe(first()).subscribe({
+    //   next: (updateData) => {
+    //     console.log("Event updated!")
+    //   },
+    //   error: (error) => {
+    //     console.log("Event update FAIL!")
+    //   }
+    // })
   }
 
   deleteEvent() {
-    console.log("deleting event")
-    //convert text to number
-    const id = parseInt(this.userInput);
-    //returns an observable
-    this.httpService.deleteSelectedEvent(id).subscribe({
-      next: (deleteData) => {
-        console.log("Event deleted!")
-        console.log(deleteData)
-      },
-      error: (error) => {
-        console.log("Event delete FAIL")
-        console.log(error)
-      }
-    })
+    // console.log("deleting event")
+    // //convert text to number
+    // const id = parseInt(this.userInput);
+    // //returns an observable
+    // this.httpService.deleteSelectedEvent(id)
+    // pipe(first()).subscribe({
+    //   next: (deleteData) => {
+    //     console.log("Event deleted!")
+    //     console.log(deleteData)
+    //   },
+    //   error: (error) => {
+    //     console.log("Event delete FAIL")
+    //     console.log(error)
+    //   }
+    // })
 
   }
 
