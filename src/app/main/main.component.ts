@@ -14,9 +14,6 @@ import { InvitesService } from '../invites.service';
 export class MainComponent implements OnInit {
 
   eventFromDatabase: any = null;
-  eventList! : IEvents[];
-  //displayList!: IEvents[];
-  //displayList = JSON.stringify(this.eventFromDatabase);
   
   constructor(private eventService: EventsService,
               private inviteService: InvitesService,
@@ -36,11 +33,11 @@ export class MainComponent implements OnInit {
         //this.errorMessagesServer = err;
       }
     })
-    
+
     //this.eventList = this.eventFromDatabase;
    // this.displayList = [...this.eventList]
-    
-  }
+
+   }
 
   ngOnInit(): void {
   }
