@@ -439,8 +439,8 @@
     {},
     {
       "id": "de1cd901-b72a-4305-af41-d5a28937d789",
-      "eventName": "",
-      "meetingDate": "",
+      "event Name": "",
+      "Meeting Date": "",
       "eventTimeStart": "",
       "eventTimeEnd": "",
       "location": "",
@@ -576,6 +576,26 @@
       "location": "",
       "costToAttend": "",
       "notes": ""
+    },
+    {
+      "id": "2c7135f6-5e45-4baa-ae2f-427f369db0cf",
+      "eventName": "dfbdfbdfz",
+      "meetingDate": "2022-10-13",
+      "eventTimeStart": "07:37",
+      "eventTimeEnd": "07:39",
+      "location": "rhdtyty",
+      "costToAttend": "989898",
+      "notes": "8p89p89"
+    },
+    {
+      "id": "da64f6e9-5772-41e9-b8ab-af297b8246c4",
+      "eventName": "wefewfwe",
+      "meetingDate": "",
+      "eventTimeStart": "",
+      "eventTimeEnd": "",
+      "location": "efewfewf",
+      "costToAttend": "ewfewfwef",
+      "notes": "wefwefew"
     }
   ],
   "Invites": [

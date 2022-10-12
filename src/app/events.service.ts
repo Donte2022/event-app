@@ -55,12 +55,12 @@ export class EventsService {
   //function to create an event
   newEvent(eventForm: IEvents) {
 
-    console.log(eventForm.contactPersonEmail)
-    console.log(eventForm.contactPersonNumber)
-    console.log(eventForm.eventName)
-    console.log(eventForm.contactPersonName)
-    console.log(eventForm.eventTimeStart)
-    console.log(eventForm.eventTimeEnd)
+    console.log("email",eventForm.contactPersonEmail)
+    console.log("number",eventForm.contactPersonNumber)
+    console.log("eventName",eventForm.eventName)
+    console.log("hostName",eventForm.contactPersonName)
+    console.log("timeStart",eventForm.eventTimeStart)
+    console.log("timeEnd",eventForm.eventTimeEnd)
 
       //conditions to check for empty fields in before creating the event
     if (eventForm.eventName.length < 1) {

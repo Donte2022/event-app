@@ -44,7 +44,9 @@ export class HttpService {
   }
 
   getEvents() {
-    this.httpClient.get("http://localhost:3000/Events");
+   return this.httpClient.get(
+       "http://localhost:3000/Events",
+       ) as Observable<IEvents[]>;
   }
 
   addNewEvent(eventForm: IEvents) {
