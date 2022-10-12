@@ -2,9 +2,9 @@ export interface IEvents
 {
     id: string;
     eventName: string;
-        meetingDate: Date
-    eventTimeStart: number;
-    eventTimeEnd: number;
+        meetingDate: string;
+    eventTimeStart: string;
+    eventTimeEnd: string;
     location: string;
     contactPersonName: string;
         contactPersonNumber: string;

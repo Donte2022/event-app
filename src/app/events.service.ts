@@ -55,6 +55,13 @@ export class EventsService {
   //function to create an event
   newEvent(eventForm: IEvents) {
 
+    console.log(eventForm.contactPersonEmail)
+    console.log(eventForm.contactPersonNumber)
+    console.log(eventForm.eventName)
+    console.log(eventForm.contactPersonName)
+    console.log(eventForm.eventTimeStart)
+    console.log(eventForm.eventTimeEnd)
+
       //conditions to check for empty fields in before creating the event
     if (eventForm.eventName.length < 1) {
       this.$eventError.next(this.eventNameError);
@@ -71,17 +78,17 @@ export class EventsService {
         this.$eventError2.next(this.eventMeetingDateEmpty);
       }
 
-      if (eventForm.eventTimeStart === null) {
+      if (eventForm.eventTimeStart.length < 1) {
         this.$eventError3.next(this.eventimeStartError);
       } else if
-      (eventForm.eventTimeStart !== null) {
+      (eventForm.eventTimeStart.length < 1) {
         this.$eventError3.next(this.eventimeStartEmpty);
       }
 
-        if (eventForm.eventTimeEnd === null) {
+        if (eventForm.eventTimeEnd.length < 1) {
           this.$eventError4.next(this.eventTimeEndError);
         } else if
-        (eventForm.eventTimeEnd !== null) {
+        (eventForm.eventTimeEnd.length > 1) {
           this.$eventError4.next(this.eventTimeEndEmpty);
         }
 
@@ -100,16 +107,18 @@ export class EventsService {
         }
 
         if (eventForm.contactPersonNumber === null) {
-          this.$eventError7.next(this.eventContactNumberError);
+          this.$eventError7.next(this.eventContactNumberError)
+          console.log(eventForm.contactPersonNumber);
         } else if
         (eventForm.contactPersonNumber !== null) {
           this.$eventError7.next(this.eventContactNumberEmpty);
         }
 
-        if (eventForm.contactPersonEmail === null) {
-          this.$eventError8.next(this.eventContactEmailError);
+        if (typeof (eventForm.contactPersonEmail) === undefined) {
+          //this.$eventError8.next(this.eventContactEmailError)
+          console.log(typeof(eventForm.contactPersonEmail));
         } else if
-        (eventForm.contactPersonEmail !== null) {
+        (eventForm.contactPersonEmail !== undefined) {
           this.$eventError8.next(this.eventContactEmailEmpty);
         }
 
@@ -132,8 +141,8 @@ export class EventsService {
                 if 
                 (eventForm.eventName.length > 1 &&
                 eventForm.meetingDate !== null &&
-                eventForm.eventTimeStart !== null &&
-                eventForm.eventTimeEnd !== null &&
+                eventForm.eventTimeStart.length > 1 &&
+                eventForm.eventTimeEnd.length > 1 &&
                 eventForm.location.length > 1 &&
                 eventForm.contactPersonName !== null &&
                 eventForm.contactPersonNumber !== null &&
