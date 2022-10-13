@@ -15,7 +15,8 @@ export class MainComponent implements OnInit {
 
   @Input() event!:IEvents;
   
-  eventFromDatabase: any = null;
+  eventFromDatabase: any = [];
+  
   
   constructor(private eventService: EventsService,
               private inviteService: InvitesService,
@@ -29,6 +30,7 @@ export class MainComponent implements OnInit {
         console.log(data)
         console.log(data)
         this.eventFromDatabase = data;
+        console.log(this.eventFromDatabase)
       },
       //this func is executed if request fails
       error: (error) => {

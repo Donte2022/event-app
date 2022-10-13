@@ -1,41 +1,55 @@
-<!--<div class="event" *ngFor="let listOfEvents of eventFromDatabase">-->
-        <div class="event" *ngFor="let listOfEvents of eventFromDatabase">
-    <!--       <div>-->
-<!--           <span class="fw-bold">Event Name: </span>-->
-<!--        {{listOfEvents.eventName}}</div>-->
-        <div>
-            <span class="fw-bold">Meeting Date:  </span>
-<!--            {{eventFromDatabase.meetingDate}}-->
-                {{listOfEvents}}
-        </div>
-<!--    <div>-->
-<!--        <span class="fw-bold">Event Time Start: </span>-->
-<!--        {{listOfEvents.eventTimeStart}}</div>-->
-<!--    <div>-->
-<!--        <span class="fw-bold">Event Time End: </span>-->
-<!--        {{listOfEvents.eventTimeEnd}}</div>-->
-<!--    <div>-->
-<!--        <span class="fw-bold">Location: </span>-->
-<!--        {{listOfEvents.Location}}</div>-->
-<!--    <div>-->
-<!--        <span class="fw-bold">Host of Event Name: </span>-->
-<!--        {{listOfEvents.contactPersonName}}</div>-->
-<!--    <div>-->
-<!--        <span class="fw-bold">Host of Event Number: </span>-->
-<!--        {{listOfEvents.contactPersonNumber}}</div>-->
-<!--    <div>-->
-<!--        <span class="fw-bold">Host of Event Email: </span>-->
-<!--        {{listOfEvents.contactPersonEmail}}</div>-->
-<!--    <div><span class="fw-bold">Cost to Attend: </span>-->
-<!--        {{listOfEvents.costToAttend}}</div>-->
-<!--    <div>-->
-<!--        <span class="fw-bold">Notes: </span>-->
-<!--        {{listOfEvents.notes}}</div>-->
-        </div>
-        <br>
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="text-center">
+    <ngb-panel *ngFor="let listOfEvents of updatedEventList">
+        <ng-template  ngbPanelTitle>
+            <span> <b>Event: </b>{{listOfEvents.eventName}}</span>
+            </ng-template>
+
+        <ng-template ngbPanelContent >
+
+            <div class="container">
+
+    <div>
+        <span class="fw-bold" >Event Name: </span> </div>
+        {{listOfEvents.eventName}}
+
+    <div>
+        <span class="fw-bold">Meeting Date:  </span> </div>
+        {{listOfEvents.meetingDate}}
+    <div>
+        <span class="fw-bold">Event Time Start: </span> </div>
+        {{listOfEvents.eventTimeStart}}
+    <div>
+        <span class="fw-bold">Event Time End: </span> </div>
+        {{listOfEvents.eventTimeEnd}}
+    <div>
+        <span class="fw-bold">Location: </span> </div>
+        {{listOfEvents.location}}
+    <div>
+        <span class="fw-bold">Host of Event Name: </span> </div>
+        {{listOfEvents.contactPersonName}}
+    <div>
+        <span class="fw-bold">Host of Event Number: </span> </div>
+        {{listOfEvents.contactPersonNumber}}
+    <div>
+        <span class="fw-bold">Host of Event Email: </span> </div>
+        {{listOfEvents.contactPersonEmail}}
+
+    <div>
+        <span class="fw-bold">Cost to Attend: </span> </div>
+        {{listOfEvents.costToAttend}}
+
+    <div>
+        <span class="fw-bold">Notes: </span> </div>
+        {{listOfEvents.notes}}
+                <br>
+    <br>
     <div class="d-flex justify-content-around">
-        <button (click)="manageInvite()" class="btn btn-success">Manage Invite</button>
-        <button (click)="updateEvent()" class="btn btn-primary">Update</button>
-        <button (click)="deleteEvent()" class="btn btn-danger">Delete</button>
+        <button class="btn btn-success">Manage Invite</button>
+        <button class="btn btn-primary">Update</button>
+        <button class="btn btn-danger">Delete</button>
     </div>
+</div>
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>
 

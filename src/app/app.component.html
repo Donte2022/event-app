@@ -9,9 +9,7 @@
 </div>
 <!--hides pages below unless user is logged in-->
 <div *ngIf="isLoggedIn">
-<app-main *ngIf ="!isCreatingEvent && !isCreatingInvite">
-    <app-display></app-display>
-</app-main>
+<app-main *ngIf ="!isCreatingEvent && !isCreatingInvite"></app-main>
     <app-events *ngIf ="!isViewingMainPage && !isCreatingInvite"></app-events>
     <app-invitation *ngIf ="!isViewingMainPage && !isCreatingEvent"></app-invitation>
 </div>

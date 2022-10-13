@@ -7,14 +7,22 @@
     <button (click)="createEvent()" class="btn btn-primary btn-lg">Create Event</button>
     <button (click)="logOut()" class="btn btn-danger btn-lg">Log Out</button>
 </div>
-<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="text-center">
-<ngb-panel *ngFor="let listOfEvents of eventFromDatabase">
-    <ng-template  ngbPanelTitle>
-      <span><b>Event Name: </b>{{listOfEvents.eventName}}</span>
-    </ng-template>
-    <ng-template ngbPanelContent >
-    <app-display>
-    </app-display>
-    </ng-template>
-</ngb-panel>
-</ngb-accordion>
+
+
+
+<!--<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="text-center">-->
+<!--    <ngb-panel *ngFor="let listOfEvents of eventFromDatabase">-->
+<!--        <ng-template  ngbPanelTitle >-->
+
+<!--            <span> <b>Event: </b>-->
+<!--                {{listOfEvents.eventName}}-->
+<!--            </span>-->
+<!--        </ng-template>-->
+<!--        <ng-template ngbPanelContent >-->
+
+<!--        </ng-template>-->
+<!--    </ngb-panel>-->
+<!--</ngb-accordion>-->
+
+<app-display>
+</app-display>

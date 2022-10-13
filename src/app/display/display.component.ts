@@ -13,10 +13,8 @@ export class DisplayComponent implements OnInit {
 
   
   userInput: string = "";
-
-  eventFromDatabase: any = null;
-
-  updatedEventList!: IEvents;
+  
+  updatedEventList!: IEvents[];
 
   constructor(private httpService: HttpService,
               private eventService: EventsService) {
@@ -28,7 +26,8 @@ export class DisplayComponent implements OnInit {
       //this func is executed if data is received
       next: (data) => {
         console.log(data)
-        this.eventFromDatabase = data;
+        this.updatedEventList = data;
+        console.log(this.updatedEventList)
       },
       //this func is executed if request fails
       error: (error) => {
