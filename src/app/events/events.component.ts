@@ -79,19 +79,19 @@ export class EventsComponent implements OnInit {
 
     }
 
-  onDeleteClick() {
-    console.log("deleting event")
-    this.eventService.deleteEvent(this.event.id);  
-  }
-
-  onUpdateClick() {
-    console.log("updating event")
-    this.eventService.updateEvent(this.event.id);
-  }
-
-  inviteUsers() {
-    
-  }
+  // onDeleteClick() {
+  //   console.log("deleting event")
+  //   this.eventService.deleteEvent(this.event.id);  
+  // }
+  //
+  // onUpdateClick() {
+  //   console.log("updating event")
+  //   this.eventService.updateEvent(this.event.id);
+  // }
+  //
+  // inviteUsers() {
+  //  
+  // }
 
   onNewEventClick(eventForm: NgForm) {
     this.eventService.newEvent(
