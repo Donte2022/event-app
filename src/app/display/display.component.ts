@@ -116,5 +116,12 @@ export class DisplayComponent implements OnInit {
   }
 
 
+  deleteInvite() {
+    console.log("deleting invitation")
+  }
 
+  updateInvite() {
+    console.log("updating invite")
+
+  }
 }
