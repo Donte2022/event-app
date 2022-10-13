@@ -15,13 +15,31 @@ export class DisplayComponent implements OnInit {
 
 
   userInput: string = "";
-
   updatedEventList!: IEvents[];
+
+  //Delete and Update Messages
+  deleteFailMessage: string | null = null;
+  deleteSuccessMessage: string | null = null;
+  // updateFailMessage: string | null = null;
+  // updateSuccessMessage: string | null = null;
 
   constructor(private httpService: HttpService,
               private eventService: EventsService,
               private inviteService: InvitesService,
               private displayService: DisplayService ) {
+
+    this.displayService.$deleteMyEventError.subscribe(
+        deleteIdFail => this.deleteFailMessage = deleteIdFail);
+
+    this.displayService.$deleteMyEventSuccess.subscribe(
+        deleteIdSuccess => this.deleteSuccessMessage = deleteIdSuccess);
+
+    // this.displayService.$updateMyEventFail.subscribe(
+    //     $RegSuccessHttp => this.updateFailMessage = updateMy);
+    //
+    // this.displayService.$updateMyEventSuccess.subscribe(
+    //     $RegErrorHttp => this.updateSuccessMessage = $RegErrorHttp);
+
 
     //retrieve data from observable(promise)
     this.httpService.getEvents()
@@ -89,22 +107,10 @@ export class DisplayComponent implements OnInit {
     // })
   }
 
-  deleteEvent() {
-     console.log("deleting event")
-    // //convert text to number
-    // const id = parseInt(this.userInput);
-    // //returns an observable
-    // this.httpService.deleteSelectedEvent(id)
-    // pipe(first()).subscribe({
-    //   next: (deleteData) => {
-    //     console.log("Event deleted!")
-    //     console.log(deleteData)
-    //   },
-    //   error: (error) => {
-    //     console.log("Event delete FAIL")
-    //     console.log(error)
-    //   }
-    // })
+  deleteEvent(deleteThisEvent:any)
+    {
+      console.log(deleteThisEvent.id)
+     this.displayService.deleteMyEvent(deleteThisEvent.id);
 
   }
 
