@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { AccountService } from '../account.service';
 import { EventsService } from '../events.service';
 import { HttpService } from '../http.service';
@@ -13,7 +14,11 @@ import { InvitesService } from '../invites.service';
 })
 export class MainComponent implements OnInit {
 
-  @Input() event!:IEvents;
+  $manageInvites = new BehaviorSubject<boolean>(false);
+  $createNewEvents = new BehaviorSubject<boolean>(false);
+  $lookAtEventList = new BehaviorSubject<boolean>(true);
+  
+  // @Input() event!:IEvents;
   
   eventFromDatabase: any = [];
   

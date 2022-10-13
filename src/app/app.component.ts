@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AccountService} from "./account.service";
+import { DisplayService } from './display.service';
 import { EventsService } from './events.service';
 import { InvitesService } from './invites.service';
 
@@ -18,7 +19,8 @@ export class AppComponent {
 
     constructor(private accountService: AccountService,
                 private eventService: EventsService,
-                private inviteService: InvitesService) {
+                private inviteService: InvitesService,
+                private displayService: DisplayService) {
 
         //listen to when the 'join' btn is clicked
         //and switches the page
@@ -56,6 +58,17 @@ export class AppComponent {
             this.isViewingMainPage = event ? true : false;
         })
 
+        this.displayService.$createNewEvents.subscribe(event => {
+            this.isCreatingEvent = event ? true : false;
+        });
+
+        this.displayService.$lookAtEventList.subscribe(event => {
+            this.isViewingMainPage = event ? true : false;
+        });
+
+        this.displayService.$manageInvites.subscribe(event => {
+            this.isCreatingInvite = event ? true : false;
+        });
     }
 
 

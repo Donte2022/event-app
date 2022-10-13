@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {first, pipe } from 'rxjs';
+import { DisplayService } from '../display.service';
 import { EventsService } from '../events.service';
 import { HttpService } from '../http.service';
 import { IEvents } from '../Interface/IEvents';
+import { InvitesService } from '../invites.service';
 
 @Component({
   selector: 'app-display',
@@ -11,13 +13,15 @@ import { IEvents } from '../Interface/IEvents';
 })
 export class DisplayComponent implements OnInit {
 
-  
+
   userInput: string = "";
-  
+
   updatedEventList!: IEvents[];
 
   constructor(private httpService: HttpService,
-              private eventService: EventsService) {
+              private eventService: EventsService,
+              private inviteService: InvitesService,
+              private displayService: DisplayService ) {
 
     //retrieve data from observable(promise)
     this.httpService.getEvents()
@@ -49,10 +53,15 @@ export class DisplayComponent implements OnInit {
 
   manageInvite() {
     console.log("Inviting others")
+    this.inviteService.$lookAtEventList.next(false),
+        this.inviteService.$manageInvites.next(true);
+
   }
 
   updateEvent() {
-    // console.log("Updating event..")
+    console.log("Updating event..")
+    this.displayService.$createNewEvents.next(true),
+        this.displayService.$lookAtEventList.next(false)
     // const updateUser = {
     //       id: parseInt(this.updatedUserInputId),
     //       eventName:
@@ -81,7 +90,7 @@ export class DisplayComponent implements OnInit {
   }
 
   deleteEvent() {
-    // console.log("deleting event")
+     console.log("deleting event")
     // //convert text to number
     // const id = parseInt(this.userInput);
     // //returns an observable
@@ -100,5 +109,5 @@ export class DisplayComponent implements OnInit {
   }
 
 
-  
+
 }

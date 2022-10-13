@@ -8,6 +8,9 @@ import {v4 as uuidv4} from 'uuid';
 })
 export class EventsService {
 
+  $manageInvites = new BehaviorSubject<boolean>(false);
+  $createNewEvents = new BehaviorSubject<boolean>(false);
+  $lookAtEventList = new BehaviorSubject<boolean>(true);
 
   //Error messages for empty fields while creating an event
   $eventError = new BehaviorSubject<string | null>(null);

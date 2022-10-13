@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InvitesService } from '../invites.service';
 
 @Component({
   selector: 'app-invitation',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvitationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private inviteService: InvitesService) { }
 
   ngOnInit(): void {
   }
+
+  backToEventList() {
+    console.log ("going back..")
+    this.inviteService.$manageInvites.next(false),
+        this.inviteService.$lookAtEventList.next(true);
+  }
+
+  sendInvite() {
+    console.log("sending invites...")
+  }
+
 
 }
