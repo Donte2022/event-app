@@ -5,6 +5,17 @@
 </nav>
 <div class="d-flex justify-content-between">
     <button (click)="createEvent()" class="btn btn-primary btn-lg">Create Event</button>
+
+    <div>
+        <div class="text-danger">
+            {{deleteFailMessage}}
+        </div>
+
+        <div class="text-success">
+            {{deleteSuccessMessage}}
+        </div>
+    </div>
+
     <button (click)="logOut()" class="btn btn-danger btn-lg">Log Out</button>
 </div>
 

@@ -17,22 +17,22 @@ export class DisplayComponent implements OnInit {
   userInput: string = "";
   updatedEventList!: IEvents[];
 
-  //Delete and Update Messages
-  deleteFailMessage: string | null = null;
-  deleteSuccessMessage: string | null = null;
-  // updateFailMessage: string | null = null;
-  // updateSuccessMessage: string | null = null;
+  // //Delete and Update Messages
+  // deleteFailMessage: string | null = null;
+  // deleteSuccessMessage: string | null = null;
+  // // updateFailMessage: string | null = null;
+  // // updateSuccessMessage: string | null = null;
 
   constructor(private httpService: HttpService,
               private eventService: EventsService,
               private inviteService: InvitesService,
               private displayService: DisplayService ) {
 
-    this.displayService.$deleteMyEventError.subscribe(
-        deleteIdFail => this.deleteFailMessage = deleteIdFail);
-
-    this.displayService.$deleteMyEventSuccess.subscribe(
-        deleteIdSuccess => this.deleteSuccessMessage = deleteIdSuccess);
+    // this.displayService.$deleteMyEventError.subscribe(
+    //     deleteIdFail => this.deleteFailMessage = deleteIdFail);
+    //
+    // this.displayService.$deleteMyEventSuccess.subscribe(
+    //     deleteIdSuccess => this.deleteSuccessMessage = deleteIdSuccess);
 
     // this.displayService.$updateMyEventFail.subscribe(
     //     $RegSuccessHttp => this.updateFailMessage = updateMy);
@@ -76,7 +76,8 @@ export class DisplayComponent implements OnInit {
 
   }
 
-  updateEvent() {
+  updateEvent(updateThisEvent: any) {
+    console.log(updateThisEvent)
     console.log("Updating event..")
     this.displayService.$createNewEvents.next(true),
         this.displayService.$lookAtEventList.next(false)

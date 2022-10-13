@@ -50,17 +50,17 @@
     <br>
     <div class="d-flex justify-content-around">
         <button (click)="manageInvite()" class="btn btn-success">Manage Invite</button>
-        <button (click)="updateEvent()" class="btn btn-primary">Update</button>
+        <button (click)="updateEvent(listOfEvents)" class="btn btn-primary">Update</button>
 
-        <div>
-            <div class="text-danger">
-                {{deleteFailMessage}}
-            </div>
+<!--        <div>-->
+<!--            <div class="text-danger">-->
+<!--                {{deleteFailMessage}}-->
+<!--            </div>-->
 
-            <div class="text-success">
-                {{deleteSuccessMessage}}
-            </div>
-        </div>
+<!--            <div class="text-success">-->
+<!--                {{deleteSuccessMessage}}-->
+<!--            </div>-->
+<!--        </div>-->
 
         <button (click)="deleteEvent(listOfEvents)" class="btn btn-danger">Delete</button>
     </div>

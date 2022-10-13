@@ -59,14 +59,14 @@ export class HttpService {
   deleteSelectedEvent(deleteThisEvent:any) {
     console.log(deleteThisEvent)
     return this.httpClient.delete(
-        "http://localhost:3000/Events?id=" + `${deleteThisEvent}`,
+        "http://localhost:3000/Events/" + deleteThisEvent,
     ) as Observable<IEvents[]>
   }
 
 
   updateSelectedEvent(id:number) {
     return this.httpClient.put(
-        "http://localhost:3000/Events/${id}", {id}
+        "http://localhost:3000/Events/", {id}
     ) as Observable<IEvents[]>
     
   }

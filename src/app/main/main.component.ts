@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AccountService } from '../account.service';
+import { DisplayService } from '../display.service';
 import { EventsService } from '../events.service';
 import { HttpService } from '../http.service';
 import { IEvents } from '../Interface/IEvents';
@@ -19,6 +20,12 @@ export class MainComponent implements OnInit {
   $lookAtEventList = new BehaviorSubject<boolean>(true);
   
   // @Input() event!:IEvents;
+
+  //Delete and Update Messages
+  deleteFailMessage: string | null = null;
+  deleteSuccessMessage: string | null = null;
+  // updateFailMessage: string | null = null;
+  // updateSuccessMessage: string | null = null;
   
   eventFromDatabase: any = [];
   
@@ -26,7 +33,15 @@ export class MainComponent implements OnInit {
   constructor(private eventService: EventsService,
               private inviteService: InvitesService,
               private accountService: AccountService,
+              private displayService: DisplayService,
               private httpService: HttpService) {
+
+    this.displayService.$deleteMyEventError.subscribe(
+        deleteIdFail => this.deleteFailMessage = deleteIdFail);
+
+    this.displayService.$deleteMyEventSuccess.subscribe(
+        deleteIdSuccess => this.deleteSuccessMessage = deleteIdSuccess);
+
 
     //retrieve data from observable(promise)
     this.httpService.getEvents().subscribe( {
