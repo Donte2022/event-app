@@ -65,7 +65,7 @@ export class AppComponent {
             this.isCreatingEvent = event ? true : false;
         });
         
-        this.inviteService.$lookAtEventList.subscribe(event => {
+        this.inviteService.$isViewingMainPage.subscribe(event => {
             this.isViewingMainPage = event ? true : false;
         })
 

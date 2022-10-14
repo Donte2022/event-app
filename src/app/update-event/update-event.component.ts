@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { EventsService } from '../events.service';
+import { UpdateEventService } from '../update-event.service';
 
 @Component({
   selector: 'app-update-event',
@@ -9,18 +10,19 @@ import { EventsService } from '../events.service';
 })
 export class UpdateEventComponent implements OnInit {
   
-  // $lookAtEventList = new BehaviorSubject<boolean>(false);
-  // $manageInvites = new BehaviorSubject<boolean>(false);
-  // $isUpdatingEvent = new BehaviorSubject<boolean>(false);
-  // $createNewEvents = new BehaviorSubject<boolean>(false);
 
 
-  constructor(private eventService: EventsService) { }
+
+  constructor(private eventService: EventsService,
+              private updateEventService: UpdateEventService) { }
 
   ngOnInit(): void {
   }
 
     onClickBack() {
         console.log("going back")
+      this.updateEventService.$isUpdatingEvent.next(false)
+      this.updateEventService.$isViewingMainPage.next(true)
+
     }
 }

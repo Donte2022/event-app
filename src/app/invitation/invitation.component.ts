@@ -16,7 +16,7 @@ export class InvitationComponent implements OnInit {
   backToEventList() {
     console.log ("going back..")
     this.inviteService.$manageInvites.next(false),
-        this.inviteService.$lookAtEventList.next(true);
+        this.inviteService.$isViewingMainPage.next(true);
   }
 
   sendInvite() {

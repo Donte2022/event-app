@@ -73,8 +73,8 @@ export class DisplayComponent implements OnInit {
 
   manageInvite() {
     console.log("Inviting others")
-    this.updateEventService.$isViewingMainPage.next(false)
-        // this.updateEventService.$manageInvites.next(true);
+    this.inviteService.$isViewingMainPage.next(false)
+    this.inviteService.$manageInvites.next(true);
 
   }
 

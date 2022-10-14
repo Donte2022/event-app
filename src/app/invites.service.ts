@@ -8,7 +8,7 @@ export class InvitesService {
 
   $manageInvites = new BehaviorSubject<boolean>(false);
   $createNewEvents = new BehaviorSubject<boolean>(false);
-  $lookAtEventList = new BehaviorSubject<boolean>(false);
+  $isViewingMainPage = new BehaviorSubject<boolean>(false);
   $isUpdatingEvent = new BehaviorSubject<boolean>(false);
 
 
