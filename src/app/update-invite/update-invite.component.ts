@@ -21,4 +21,12 @@ export class UpdateInviteComponent implements OnInit {
 
 
   }
+
+  onClickAddPerson() {
+    console.log("adding person")
+  }
+
+  onClickDeletePerson() {
+
+  }
 }

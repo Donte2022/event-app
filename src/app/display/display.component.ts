@@ -131,8 +131,8 @@ export class DisplayComponent implements OnInit {
   updateInvite(updateThisInvite:any) {
     console.log("updating invite")
     console.log(updateThisInvite)
-    // this.inviteService.$isViewingMainPage.next(false),
-    //     this.inviteService.$isupdatingInvite.next(true)
+    this.inviteService.$isViewingMainPage.next(false),
+     this.inviteService.$isupdatingInvite.next(true)
 
 
 

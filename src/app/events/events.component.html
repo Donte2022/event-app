@@ -5,8 +5,13 @@
 </nav>
 
 <div>
-<button (click)="leaveEventPage()" class="btn btn-secondary">Back</button>
+    <button (click)="leaveEventPage()" class="btn btn-secondary">Back to main</button>
 </div>
+
+<div>
+    <b>Create Event</b>
+</div>
+
 
 <div name="event" >
     <form #eventForm="ngForm" (ngSubmit)="onNewEventClick(eventForm)">
@@ -115,10 +120,7 @@
         </div>
                 <br>
         <div class="d-flex justify-content-around">
-<!--            <button (click)="onUpdateClick()" class="btn btn-success">Update Event</button>-->
             <button type="submit" class="btn btn-primary">Submit Event</button>
-<!--            <button (click)="inviteUsers()" class="btn btn-primary">Invite Users</button>-->
-<!--            <button (click)="onDeleteClick()" class="btn btn-danger">Delete Event</button>-->
         </div>
 
 

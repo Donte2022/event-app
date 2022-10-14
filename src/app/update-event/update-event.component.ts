@@ -25,4 +25,8 @@ export class UpdateEventComponent implements OnInit {
       this.updateEventService.$isViewingMainPage.next(true)
 
     }
+
+  onUpEventClick(eventForm: any) {
+    
+  }
 }
