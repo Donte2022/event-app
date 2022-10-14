@@ -83,25 +83,25 @@ export class AppComponent {
         });
 
         //updateService Switch
-        this.updateEventService.$lookAtEventList.subscribe(event => {
+        this.updateEventService.$isViewingMainPage.subscribe(event => {
             this.isViewingMainPage = event ? true : false;
         });
 
-        this.updateEventService.$manageInvites.subscribe(event => {
-            this.isCreatingInvite = event ? true : false;
-        });
+        // this.updateEventService.$manageInvites.subscribe(event => {
+        //     this.isCreatingInvite = event ? true : false;
+        // });
 
-        this.updateEventService.$createNewEvents.subscribe(event => {
+        this.updateEventService.$isCreatingEvent.subscribe(event => {
             this.isCreatingEvent = event ? true : false;
         });
         
-        this.updateEventService.$updateMyEvent.subscribe(event => {
+        this.updateEventService.$isUpdatingEvent.subscribe(event => {
             this.isUpdatingEvent = event ? true : false;
         });
 
-        this.updateEventService.$updateMyInvite.subscribe(event => {
-            this.isUpdatingInvite = event ? true : false;
-        });
+        // this.updateEventService.$updateMyInvite.subscribe(event => {
+        //     this.isUpdatingInvite = event ? true : false;
+        // });
         
     }
 

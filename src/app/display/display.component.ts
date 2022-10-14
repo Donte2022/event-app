@@ -73,19 +73,19 @@ export class DisplayComponent implements OnInit {
 
   manageInvite() {
     console.log("Inviting others")
-    this.updateEventService.$lookAtEventList.next(false),
-        this.updateEventService.$manageInvites.next(true);
+    this.updateEventService.$isViewingMainPage.next(false)
+        // this.updateEventService.$manageInvites.next(true);
 
   }
 
   updateEvent(updateThisEvent: any) {
     console.log(updateThisEvent)
     console.log("Updating event..")
-    this.updateEventService.$updateMyEvent.next(true)
-        this.updateEventService.$lookAtEventList.next(false),
-        this.updateEventService.$createNewEvents.next(false),
-        this.updateEventService.$manageInvites.next(false),
-        this.updateEventService.$updateMyInvite.next(false)
+    this.updateEventService.$isUpdatingEvent.next(true)
+        this.updateEventService.$isViewingMainPage.next(false),
+        this.updateEventService.$isCreatingEvent.next(false)
+        // this.updateEventService.$manageInvites.next(false),
+        // this.updateEventService.$updateMyInvite.next(false)
     // const updateUser = {
     //       id: parseInt(this.updatedUserInputId),
     //       eventName:

@@ -6,11 +6,11 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UpdateEventService {
 
-   $updateMyEvent = new BehaviorSubject<boolean>(false);
-  $manageInvites = new BehaviorSubject<boolean>(false);
-  $createNewEvents = new BehaviorSubject<boolean>(false);
-  $lookAtEventList = new BehaviorSubject<boolean>(false);
-  $updateMyInvite = new BehaviorSubject<boolean>(false);
+  $isUpdatingEvent = new BehaviorSubject<boolean>(false);
+  // $manageInvites = new BehaviorSubject<boolean>(false);
+  $isCreatingEvent = new BehaviorSubject<boolean>(false);
+  $isViewingMainPage = new BehaviorSubject<boolean>(false);
+  // $updateMyInvite = new BehaviorSubject<boolean>(false);
   
   constructor() {
     
