@@ -28,7 +28,8 @@ export class MainComponent implements OnInit {
   // updateSuccessMessage: string | null = null;
   
   eventFromDatabase: any = [];
-  
+
+
   
   constructor(private eventService: EventsService,
               private inviteService: InvitesService,
@@ -51,6 +52,9 @@ export class MainComponent implements OnInit {
         console.log(data)
         this.eventFromDatabase = data;
         console.log(this.eventFromDatabase)
+        for (let banana of Object.values(this.eventFromDatabase)) {
+          console.log(banana)
+        }
       },
       //this func is executed if request fails
       error: (error) => {
@@ -61,6 +65,7 @@ export class MainComponent implements OnInit {
 
     //this.eventList = this.eventFromDatabase;
    // this.displayList = [...this.eventList]
+
 
 
   }
