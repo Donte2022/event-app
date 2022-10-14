@@ -68,6 +68,14 @@ export class HttpService {
     return this.httpClient.put(
         "http://localhost:3000/Events/${id}", {id}
     ) as Observable<IEvents[]>
-    
   }
+
+  deleteSelectedInvitation(deleteThisInvitaion:any) {
+    console.log(deleteThisInvitaion)
+    return this.httpClient.delete(
+        "http://localhost:3000/Events/" + deleteThisInvitaion,
+    ) as Observable<IEvents[]>
+
+  }
+
 }

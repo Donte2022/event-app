@@ -10,7 +10,7 @@
 </div>
 <!--hides pages below unless user is logged in-->
     <div *ngIf="isLoggedIn">
-        <div *ngIf="!isCreatingEvent && !isUpdatingEvent && !isCreatingInvite">
+        <div *ngIf="!isCreatingEvent && !isUpdatingEvent && !isCreatingInvite && !isUpdatingInvite">
             <app-main></app-main>
         </div>
             <div *ngIf = "isCreatingEvent && !isViewingMainPage">
@@ -20,9 +20,12 @@
     <app-invitation ></app-invitation>
         </div>
 
-<app-update-event *ngIf = "!isCreatingEvent && !isViewingMainPage && !isCreatingInvite  && !isUpdatingInvite && isUpdatingEvent"></app-update-event>
+        <div *ngIf = "!isCreatingEvent && !isViewingMainPage && !isCreatingInvite  && !isUpdatingInvite && isUpdatingEvent">
+<app-update-event>
+</app-update-event>
+        </div>
 
-        <div *ngIf = "isUpdatingEvent">
+        <div *ngIf = "!isUpdatingEvent && !isViewingMainPage && isUpdatingInvite">
         <app-update-invite > </app-update-invite>
         </div>
 </div>

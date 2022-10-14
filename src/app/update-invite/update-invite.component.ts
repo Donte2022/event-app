@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InvitesService } from '../invites.service';
 
 @Component({
   selector: 'app-update-invite',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateInviteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private inviteService: InvitesService) { }
 
   ngOnInit(): void {
   }
 
+  leaveUpdateInvitePage() {
+    console.log("leaving page")
+    this.inviteService.$isViewingMainPage.next(true),
+        this.inviteService.$isupdatingInvite.next(false)
+
+
+
+  }
 }

@@ -18,6 +18,7 @@ export class DisplayComponent implements OnInit {
   userInput: string = "";
   updatedEventList!: IEvents[];
 
+
   //Delete and Update Messages
   deleteFailMessage: string | null = null;
   deleteSuccessMessage: string | null = null;
@@ -71,16 +72,17 @@ export class DisplayComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  manageInvite() {
+  manageInvite(sendInvite:any) {
     console.log("Inviting others")
-    this.inviteService.$isViewingMainPage.next(false)
+    console.log(sendInvite)
+    this.inviteService.$isViewingMainPage.next(false),
     this.inviteService.$manageInvites.next(true);
 
   }
 
   updateEvent(updateThisEvent: any) {
-    console.log(updateThisEvent)
     console.log("Updating event..")
+    console.log(updateThisEvent)
     this.updateEventService.$isUpdatingEvent.next(true)
         this.updateEventService.$isViewingMainPage.next(false),
         this.updateEventService.$isCreatingEvent.next(false)
@@ -113,20 +115,33 @@ export class DisplayComponent implements OnInit {
     // })
   }
 
-  deleteEvent(deleteThisEvent:any)
-    {
-      console.log(deleteThisEvent.id)
-     this.displayService.deleteMyEvent(deleteThisEvent.id);
+  deleteEvent(deleteThisEvent:any) {
+      console.log("deleting this event")
+      console.log(deleteThisEvent)
+     this.displayService.deleteMyEvent(deleteThisEvent);
 
   }
 
 
-  deleteInvite() {
-    console.log("deleting invitation")
+  deleteInvite(deleteThisInvite:any) {
+    console.log("deleting invite")
+    console.log(deleteThisInvite)
   }
 
-  updateInvite() {
+  updateInvite(updateThisInvite:any) {
     console.log("updating invite")
+    console.log(updateThisInvite)
+    // this.inviteService.$isViewingMainPage.next(false),
+    //     this.inviteService.$isupdatingInvite.next(true)
+
+
+
+  }
+
+  deleteInvitation(deleteThisInvitation:any) {
+    console.log("deleting invitation")
+    console.log(deleteThisInvitation)
+    this.displayService.deleteMyInvitation(deleteThisInvitation);
 
   }
 }
