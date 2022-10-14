@@ -8,9 +8,12 @@ import {v4 as uuidv4} from 'uuid';
 })
 export class EventsService {
 
-  $manageInvites = new BehaviorSubject<boolean>(false);
-  $createNewEvents = new BehaviorSubject<boolean>(false);
-  $lookAtEventList = new BehaviorSubject<boolean>(true);
+  // $manageInvites = new BehaviorSubject<boolean>(false);
+  // $createInvites = new BehaviorSubject<boolean>(false);
+  $createNewEvent = new BehaviorSubject<boolean>(false);
+  // $isUpdatingEvent = new BehaviorSubject<boolean>(false);
+  $isViewingMainPage = new BehaviorSubject<boolean>(false);
+
 
   //Error messages for empty fields while creating an event
   $eventError = new BehaviorSubject<string | null>(null);
@@ -206,17 +209,17 @@ export class EventsService {
   }
 
   //tells the root comp to switch from main to event page
-  $createNewEvent = new BehaviorSubject<boolean>(false);
-  $createInvites = new BehaviorSubject<boolean>(false);
-  $viewEventsandInvites = new BehaviorSubject<boolean>(false);
+  // $createNewEvent = new BehaviorSubject<boolean>(false);
+  // $createInvites = new BehaviorSubject<boolean>(false);
+  // $viewEventsandInvites = new BehaviorSubject<boolean>(false);
   
   //error messages for creating new event
 
   switchToEventPage() {
     this.$createNewEvent.next(true);
-    this.$createInvites.next(false);
-    this.$viewEventsandInvites.next(false);
-    
+    // this.$createInvites.next(false);
+    this.$isViewingMainPage.next(false);
+
 
   }
 

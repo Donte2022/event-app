@@ -82,18 +82,18 @@ export class AccountService {
 
 
   $account = new BehaviorSubject<IAccount | null>(
-      //null);
+      null);
   
   //Shortcut to stay logged in to work on the prj
-      {
-        "id": "0",
-        "firstName": "Dontavious",
-        "lastName": "Green",
-        "userId": "DontaviousG2022",
-        "password": "password123",
-        "emailAddress": "green.dontavious@gmail.com"
-      }
-  );
+  //     {
+  //       "id": "0",
+  //       "firstName": "Dontavious",
+  //       "lastName": "Green",
+  //       "userId": "DontaviousG2022",
+  //       "password": "password123",
+  //       "emailAddress": "green.dontavious@gmail.com"
+  //     }
+  // );
 
 
 
@@ -240,7 +240,7 @@ export class AccountService {
     // }
 
       //Check for all fields are error free, if so it creates the account
-    }  if   
+    }  if   //Check for all fields are error free, if so it creates the account
         (registrationForm.email.length > 1 &&
         registrationForm.firstName.length > 1 &&
         registrationForm.lastName.length > 1 &&
@@ -252,7 +252,6 @@ export class AccountService {
         registrationForm.password.length <= 15
     )
     {
-      
       const account: IAccount = {
         id: uuidv4(),
         firstName: registrationForm.firstName,

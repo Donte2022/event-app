@@ -72,13 +72,14 @@ export class MainComponent implements OnInit {
   
   
   createEvent() {
+    console.log("generating new event form...")
     this.eventService.switchToEventPage()
     
   }
 
-  inviteUsers() {
-    this.inviteService.manageInvites()
-  }
+  // inviteUsers() {
+  //   this.inviteService.manageInvites()
+  // }
 
   logOut() {
     this.accountService.logOutUser()

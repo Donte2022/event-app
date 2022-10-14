@@ -11,6 +11,8 @@ import { MainComponent } from './main/main.component';
 import { EventsComponent } from './events/events.component';
 import { InvitationComponent } from './invitation/invitation.component';
 import { DisplayComponent } from './display/display.component';
+import { UpdateEventComponent } from './update-event/update-event.component';
+import { UpdateInviteComponent } from './update-invite/update-invite.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { DisplayComponent } from './display/display.component';
     EventsComponent,
     InvitationComponent,
     DisplayComponent,
+    UpdateEventComponent,
+    UpdateInviteComponent,
 
   ],
   imports: [

@@ -74,16 +74,22 @@ export class EventsComponent implements OnInit {
     console.log("leaving event page")
       //cancel registration and bring user back to the login
       this.eventService.$createNewEvent.next(false);
-      this.eventService.$createInvites.next(false);
-      this.eventService.$viewEventsandInvites.next(true);
+      // this.eventService.$createInvites.next(false);
+      this.eventService.$isViewingMainPage.next(true);
 
     }
 
 
   onNewEventClick(eventForm: NgForm) {
+    this.eventService.$createNewEvent.next(true);
+    this.eventService.$isViewingMainPage.next(false);
     this.eventService.newEvent(
         eventForm.value as IEvents
     );
+  }
+
+  onUpdateClick() {
+
   }
 }
 

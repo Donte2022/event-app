@@ -432,21 +432,19 @@
       "userId": "CLetter",
       "password": "password9876",
       "emailAddress": "CathrineL@gmail.com"
+    },
+    {
+      "id": "d2e8f9c6-69e0-4c10-8416-b20f21c3cfa6",
+      "firstName": "Peter",
+      "lastName": "Griffin",
+      "userId": "PeteGriff",
+      "password": "peter",
+      "emailAddress": "PeterG@gmail.com"
     }
   ],
   "Events": [
     {},
     {},
-    {
-      "id": "1071a7ec-4b10-4028-8e4b-8cbd1651a94f",
-      "eventName": "wefewfwe",
-      "meetingDate": "",
-      "eventTimeStart": "",
-      "eventTimeEnd": "",
-      "location": "",
-      "costToAttend": "",
-      "notes": ""
-    },
     {
       "id": "2c7135f6-5e45-4baa-ae2f-427f369db0cf",
       "eventName": "dfbdfbdfz",
@@ -466,6 +464,26 @@
       "location": "efewfewf",
       "costToAttend": "ewfewfwef",
       "notes": "wefwefew"
+    },
+    {
+      "id": "221d098f-5274-46bd-b6ac-ae221aa2f5d9",
+      "eventName": "ergergregerger",
+      "meetingDate": "2022-10-11",
+      "eventTimeStart": "14:18",
+      "eventTimeEnd": "17:15",
+      "location": "ergergergergergerg",
+      "costToAttend": "23423423423",
+      "notes": "fgsegergregere"
+    },
+    {
+      "id": "1811ecc6-004f-4e2c-83e7-ed71029df77e",
+      "eventName": "bishop3",
+      "meetingDate": "2022-10-14",
+      "eventTimeStart": "21:15",
+      "eventTimeEnd": "21:14",
+      "location": "2f22f",
+      "costToAttend": "23fwefswfew",
+      "notes": "ewff23f23"
     }
   ],
   "Invites": [

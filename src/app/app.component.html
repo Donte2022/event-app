@@ -6,10 +6,24 @@
 <app-login *ngIf="!NewUser"></app-login>
     <!--If your registering show this page-->
 <app-registration *ngIf="NewUser"></app-registration>
+
 </div>
 <!--hides pages below unless user is logged in-->
-<div *ngIf="isLoggedIn">
-<app-main *ngIf ="!isCreatingEvent && !isCreatingInvite"></app-main>
-    <app-events *ngIf ="!isViewingMainPage && !isCreatingInvite"></app-events>
-    <app-invitation *ngIf ="!isViewingMainPage && !isCreatingEvent"></app-invitation>
+    <div *ngIf="isLoggedIn">
+        <div *ngIf="!isCreatingEvent">
+            <app-main></app-main>
+        </div>
+            <div *ngIf = "isCreatingEvent && !isViewingMainPage">
+                <app-events></app-events>
+            </div>
+<!--    <app-invitation *ngIf = "!isViewingMainPage && !isCreatingEvent && !isUpdatingEvent && !isUpdatingInvite && isCreatingInvite"></app-invitation>-->
+<!--    <app-update-event *ngIf = "!isCreatingEvent && !isViewingMainPage && !isCreatingInvite  && !isUpdatingInvite && isUpdatingEvent"></app-update-event>-->
+<!--    <app-update-invite *ngIf = "!isCreatingEvent && !isViewingMainPage && !isCreatingInvite && !isUpdatingEvent && isUpdatingInvite"></app-update-invite>-->
+
 </div>
+
+<!--app-main-->
+<!--*ngIf = "!isCreatingEvent && !isCreatingInvite && !isUpdatingInvite && !isUpdatingEvent && isViewingMainPage"-->
+
+<!--app-events-->
+<!--*ngIf = "!isViewingMainPage && !isCreatingInvite && !isUpdatingInvite && !isUpdatingEvent && isCreatingEvent"-->

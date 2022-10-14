@@ -4,24 +4,17 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class InvitesService {
+export class UpdateEventService {
 
+   $updateMyEvent = new BehaviorSubject<boolean>(false);
   $manageInvites = new BehaviorSubject<boolean>(false);
   $createNewEvents = new BehaviorSubject<boolean>(false);
   $lookAtEventList = new BehaviorSubject<boolean>(false);
-  $isUpdatingEvent = new BehaviorSubject<boolean>(false);
-
-
-  manageInvites() {
-    console.log("managing invites")
-    //     this.$lookAtEventList.next(false);
-    // this.$createNewEvents.next(false);
-    // this.$manageInvites.next(true);
-
-
+  $updateMyInvite = new BehaviorSubject<boolean>(false);
+  
+  constructor() {
+    
   }
-
   
   
-  constructor() { }
 }

@@ -4,12 +4,12 @@
 
     <div class="float Column 1">
         <div class="d-flex justify-content-around">
-        <span class="fw-bold">Event Panel</span>
+        <span class="fw-bold">Events</span>
         </div>
 <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="text-center">
     <ngb-panel *ngFor="let listOfEvents of updatedEventList">
         <ng-template  ngbPanelTitle>
-            <span> <b>Event: </b>{{listOfEvents.eventName}}</span>
+            <span><b>Date: </b> {{listOfEvents.meetingDate}} <b>Event: </b>{{listOfEvents.eventName}}</span>
             </ng-template>
 
         <ng-template ngbPanelContent >
@@ -56,9 +56,9 @@
                 <br>
     <br>
     <div class="d-flex justify-content-around">
-        <button (click)="manageInvite()" class="btn btn-success">Manage Invite</button>
-        <button (click)="updateEvent(listOfEvents)" class="btn btn-primary">Update</button>
-        <button (click)="deleteEvent(listOfEvents)" class="btn btn-danger">Delete</button>
+        <button (click)="manageInvite()" class="btn btn-success">Send Invite</button>
+        <button (click)="updateEvent(listOfEvents)" class="btn btn-primary">Update Event</button>
+        <button (click)="deleteEvent(listOfEvents)" class="btn btn-danger">Delete Event</button>
     </div>
 </div>
         </ng-template>
@@ -72,12 +72,12 @@
 
         <div class="float-md-start">
             <div class="d-flex justify-content-around">
-                <span class="fw-bold">Invite Panel</span>
+                <span class="fw-bold">Invites</span>
             </div>
             <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="text-center">
                 <ngb-panel *ngFor="let listOfEvents of updatedEventList">
                     <ng-template  ngbPanelTitle>
-                        <span> <b>Invite: </b>{{listOfEvents.eventName}}</span>
+                        <span><b>Date: </b> {{listOfEvents.meetingDate}} <b>Invite: </b>{{listOfEvents.eventName}} </span>
                     </ng-template>
 
                     <ng-template ngbPanelContent >
@@ -140,12 +140,12 @@
 
     <div class="float-md-end">
         <div class="d-flex justify-content-around">
-        <span class="fw-bold">Invitation Panel</span>
+        <span class="fw-bold">Invitations</span>
         </div>
     <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="text-center">
     <ngb-panel *ngFor="let listOfEvents of updatedEventList">
         <ng-template  ngbPanelTitle>
-            <span> <b>Invitation: </b>{{listOfEvents.eventName}}</span>
+            <span><b>Date: </b> {{listOfEvents.meetingDate}} <b>Invitation: </b>{{listOfEvents.eventName}}</span>
         </ng-template>
 
         <ng-template ngbPanelContent >
@@ -194,7 +194,7 @@
                 <div class="d-flex justify-content-around">
 <!--                    <button (click)="manageInvite()" class="btn btn-success">Manage Invite</button>-->
 <!--                    <button (click)="updateInvite()" class="btn btn-primary">Update</button>-->
-                    <button (click)="deleteInvite()" class="btn btn-danger">Delete</button>
+                    <button (click)="deleteInvite()" class="btn btn-danger">Delete Invitation</button>
                 </div>
             </div>
         </ng-template>

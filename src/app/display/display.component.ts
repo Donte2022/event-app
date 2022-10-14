@@ -5,6 +5,7 @@ import { EventsService } from '../events.service';
 import { HttpService } from '../http.service';
 import { IEvents } from '../Interface/IEvents';
 import { InvitesService } from '../invites.service';
+import { UpdateEventService } from '../update-event.service';
 
 @Component({
   selector: 'app-display',
@@ -17,16 +18,17 @@ export class DisplayComponent implements OnInit {
   userInput: string = "";
   updatedEventList!: IEvents[];
 
-  // //Delete and Update Messages
-  // deleteFailMessage: string | null = null;
-  // deleteSuccessMessage: string | null = null;
-  // // updateFailMessage: string | null = null;
-  // // updateSuccessMessage: string | null = null;
+  //Delete and Update Messages
+  deleteFailMessage: string | null = null;
+  deleteSuccessMessage: string | null = null;
+  updateFailMessage: string | null = null;
+  updateSuccessMessage: string | null = null;
 
   constructor(private httpService: HttpService,
               private eventService: EventsService,
               private inviteService: InvitesService,
-              private displayService: DisplayService ) {
+              private displayService: DisplayService,
+              private updateEventService: UpdateEventService) {
 
     // this.displayService.$deleteMyEventError.subscribe(
     //     deleteIdFail => this.deleteFailMessage = deleteIdFail);
@@ -71,16 +73,19 @@ export class DisplayComponent implements OnInit {
 
   manageInvite() {
     console.log("Inviting others")
-    this.inviteService.$lookAtEventList.next(false),
-        this.inviteService.$manageInvites.next(true);
+    this.updateEventService.$lookAtEventList.next(false),
+        this.updateEventService.$manageInvites.next(true);
 
   }
 
   updateEvent(updateThisEvent: any) {
     console.log(updateThisEvent)
     console.log("Updating event..")
-    this.displayService.$createNewEvents.next(true),
-        this.displayService.$lookAtEventList.next(false)
+    this.updateEventService.$updateMyEvent.next(true)
+        this.updateEventService.$lookAtEventList.next(false),
+        this.updateEventService.$createNewEvents.next(false),
+        this.updateEventService.$manageInvites.next(false),
+        this.updateEventService.$updateMyInvite.next(false)
     // const updateUser = {
     //       id: parseInt(this.updatedUserInputId),
     //       eventName:

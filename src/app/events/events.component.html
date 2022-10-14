@@ -103,20 +103,25 @@
         </div>
 
         <br>
+
+        <div class="text justify-content-center">
+            <div class="text-danger justify-content-center">
+                {{eventFailureMessage}}
+             </div>
+
+                <div class="text-success justify-content-center">
+                    {{eventSuccessMessage}}
+                </div>
+        </div>
+                <br>
         <div class="d-flex justify-content-around">
+<!--            <button (click)="onUpdateClick()" class="btn btn-success">Update Event</button>-->
             <button type="submit" class="btn btn-primary">Submit Event</button>
 <!--            <button (click)="inviteUsers()" class="btn btn-primary">Invite Users</button>-->
-<!--            <button (click)="onUpdateClick()" class="btn btn-success">Update Event</button>-->
 <!--            <button (click)="onDeleteClick()" class="btn btn-danger">Delete Event</button>-->
         </div>
 
-        <div class="text-danger">
-            {{eventFailureMessage}}
-        </div>
 
-        <div class="text-success">
-        {{eventSuccessMessage}}
-        </div>
 
 
     </form>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpService } from './http.service';
+import { UpdateEventService } from './update-event.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,10 @@ export class DisplayService {
 
   $manageInvites = new BehaviorSubject<boolean>(false);
   $createNewEvents = new BehaviorSubject<boolean>(false);
-  $lookAtEventList = new BehaviorSubject<boolean>(true);
-  
+  $lookAtEventList = new BehaviorSubject<boolean>(false);
+  $isUpdatingEvent = new BehaviorSubject<boolean>(false);
+
+
   //update and delete message from http
   $deleteMyEventError = new BehaviorSubject<string | null>(null);
   $deleteMyEventSuccess = new BehaviorSubject<string | null>(null);
@@ -45,7 +48,8 @@ export class DisplayService {
   }
   
   
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService,
+              private updateEventService: UpdateEventService) {
     
   }
 }
