@@ -28,14 +28,21 @@ export class UpdateEventComponent implements OnInit {
     notes: ""
 };
 
+    //http Erorr Message
+    eventUpdateFail: string | null = null;
 
-  constructor(private eventService: EventsService,
+
+    constructor(private eventService: EventsService,
               private updateEventService: UpdateEventService,
               private httpService: HttpService) {
 
       // @ts-ignore
       this.updatedEventDataValues = this.updateEventService.updatedEventData
       console.log(this.updatedEventDataValues)
+
+      
+        this.updateEventService.$eventFailureHttp.subscribe(
+            httpFailure => this.eventUpdateFail = httpFailure); 
 
 
   }
@@ -59,7 +66,8 @@ export class UpdateEventComponent implements OnInit {
   onUpdateEventClick(eventForm:IEvents) {
     console.log("retrieving data")
     console.log(eventForm)
+    this.updateEventService.sendUpdatedValues(eventForm as IEvents)
+    
 
-      
-  }
+  };
 }
