@@ -64,9 +64,10 @@ export class HttpService {
   }
 
 
-  updateSelectedEvent(id:number) {
+  updateSelectedEvent(updatedEventid:number) {
+    console.log(updatedEventid)
     return this.httpClient.put(
-        "http://localhost:3000/Events/${id}", {id}
+        "http://localhost:3000/Events/${id}", {updatedEventid}
     ) as Observable<IEvents[]>
   }
 

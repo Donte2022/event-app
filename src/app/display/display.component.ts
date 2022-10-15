@@ -80,12 +80,13 @@ export class DisplayComponent implements OnInit {
 
   }
 
-  updateEvent(updateThisEvent: any) {
+  updateEvent(updateThisEventInfo: any) {
     console.log("Updating event..")
-    console.log(updateThisEvent)
+    console.log(updateThisEventInfo)
     this.updateEventService.$isUpdatingEvent.next(true)
         this.updateEventService.$isViewingMainPage.next(false),
         this.updateEventService.$isCreatingEvent.next(false)
+    this.updateEventService.updateThisEvent(updateThisEventInfo);
         // this.updateEventService.$manageInvites.next(false),
         // this.updateEventService.$updateMyInvite.next(false)
     // const updateUser = {

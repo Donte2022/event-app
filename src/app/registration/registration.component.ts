@@ -76,17 +76,17 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // cancelAccount() {
-  //   const newAccount = {
-  //     "id": new Date().getTime(),
-  //     "firstName": "Dontavious",
-  //     "lastName": "Green",
-  //     "userId": "DontaviousG2022",
-  //     "password": "password123",
-  //     "emailAddress": "green.dontavious@gmail.com"
-  //
-  //   }
-  // }
+  cancelAccount() {
+    // const newAccount = {
+    //   "id": new Date().getTime(),
+    //   "firstName": "Dontavious",
+    //   "lastName": "Green",
+    //   "userId": "DontaviousG2022",
+    //   "password": "password123",
+    //   "emailAddress": "green.dontavious@gmail.com"
+    //
+    // }
+  }
 
   //sends data from user input 'registration form' to be validated
   registerUser(registrationForm: NgForm) {

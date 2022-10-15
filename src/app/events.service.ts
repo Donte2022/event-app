@@ -190,7 +190,7 @@ export class EventsService {
           }
 
 
-  updateEvent(id: any) {
+  updateEvent(updatedEventInfo: any) {
    // const index = this.eventList.findIndex(event => 
    //     event.id === updatedEvent.id);
    // if (index === -1) {
