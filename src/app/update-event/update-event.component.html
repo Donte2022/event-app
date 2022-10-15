@@ -15,11 +15,14 @@
 
 <div name="event" >
 <!--    template-driven form-->
-    <form #eventForm="ngForm" (ngSubmit)="onUpEventClick(eventForm)">
+
+    <form #eventForm="ngForm" (ngSubmit)="onUpdateEventClick(eventForm.value)">
+<!--     *ngFor="let eventValues for updatedEventDataValues">-->
 
         <div class="input-group mb-0">
             <span class="input-group-text">Event Name: </span>
-            <input id="eventName" name="eventName" [ngModel]="userData.eventName" type="text" class="form-control">
+<!--            template-driven form allow ngmodel to populate data into fields-->
+            <input id="eventName" name="eventName" [ngModel]="this.updatedEventDataValues.eventName" type="text" class="form-control">
         </div>
 
         <div class="text-danger">
@@ -28,7 +31,7 @@
 
         <div class="input-group mb-0">
             <span class="input-group-text">Event Date: </span>
-            <input name="meetingDate" [ngModel]="userData.meetingDate" type="Date" class="form-control">
+            <input name="meetingDate" [ngModel]="this.updatedEventDataValues.meetingDate" type="Date" class="form-control">
         </div>
 
         <div class="text-danger">
@@ -37,7 +40,7 @@
 
         <div class="input-group mb-0">
             <span class="input-group-text">Event Start Time: </span>
-            <input name="eventTimeStart" [ngModel]="userData.eventTimeStart" type="time" class="form-control">
+            <input name="eventTimeStart" [ngModel]="this.updatedEventDataValues.eventTimeStart" type="time" class="form-control">
         </div>
 
         <div class="text-danger">
@@ -46,7 +49,7 @@
 
         <div class="input-group mb-0">
             <span class="input-group-text">Event End Time: </span>
-            <input name="eventTimeEnd" [ngModel]="userData.eventTimeEnd" type="time" class="form-control">
+            <input name="eventTimeEnd" [ngModel]="this.updatedEventDataValues.eventTimeEnd" type="time" class="form-control">
         </div>
 
         <div class="text-danger">
@@ -55,7 +58,7 @@
 
         <div class="input-group mb-0">
             <span class="input-group-text">Location: </span>
-            <input name="location" [ngModel]="userData.location" type="text"  class="form-control">
+            <input name="location" [ngModel]="this.updatedEventDataValues.location" type="text"  class="form-control">
         </div>
 
         <div class="text-danger">
@@ -65,7 +68,7 @@
 
         <div class="input-group mb-0">
             <span class="input-group-text">Host of Event: </span>
-            <input name="ContactPersonName" [ngModel]="userData.ContactPersonName" type="text" class="form-control">
+            <input name="ContactPersonName" [ngModel]="this.updatedEventDataValues.contactPersonEmail" type="text" class="form-control">
         </div>
 
         <div class="text-danger">
@@ -75,7 +78,7 @@
 
         <div class="input-group mb-0">
             <span class="input-group-text">Host of Event Number: </span>
-            <input name="ContactPersonNumber" [ngModel]="userData.ContactPersonNumber" type="number" class="form-control">
+            <input name="ContactPersonNumber" [ngModel]="this.updatedEventDataValues.contactPersonNumber" type="number" class="form-control">
         </div>
 
         <div class="text-danger">
@@ -85,7 +88,7 @@
 
         <div class="input-group mb-0">
             <span class="input-group-text">Host of Event Email Address: </span>
-            <input name="ContactPersonEmail" [ngModel]="userData.ContactPersonEmail" type="email" class="form-control">
+            <input name="ContactPersonEmail" [ngModel]="this.updatedEventDataValues.contactPersonEmail" type="email" class="form-control">
         </div>
 
         <div class="text-danger">
@@ -95,7 +98,7 @@
 
         <div class="input-group mb-0">
             <span class="input-group-text">Cost to Attend: </span>
-            <input name="costToAttend" [ngModel]="userData.costToAttend" type="text" class="form-control">
+            <input name="costToAttend" [ngModel]="this.updatedEventDataValues.costToAttend" type="text" class="form-control">
         </div>
 
         <div class="text-danger">
@@ -104,7 +107,7 @@
 
         <div class="input-group mb-0">
             <span class="input-group-text">Additional Notes: </span>
-            <input name="notes" [ngModel]="userData.notes" type="text" class="form-control">
+            <input name="notes" [ngModel]="this.updatedEventDataValues.notes" type="text" class="form-control">
         </div>
 
         <div class="text-danger">
