@@ -18,15 +18,9 @@ export class UpdateEventComponent implements OnInit {
     eventTimeStartMessage: string | null = null;
     eventTimeEndMessage: string | null = null;
     eventLocationMessage: string | null = null;
-    // eventContactNameMessage: string | null = null;
-    // eventContactNumberMessage: string | null = null;
-    // eventContactEmailMessage: string | null = null;
-    // eventCostMessage: string | null = null;
-    // eventNoteMessage: string | null = null;
     eventFailureMessage: string | null = null;
     eventSuccessMessage: string | null = null;
-    
-    
+    eventClearSuccessMess: string | null = null;
     
     //Imported event Info from Db to be updated
     updatedEventDataValues = 
@@ -37,11 +31,6 @@ export class UpdateEventComponent implements OnInit {
     eventTimeStart: "",
     eventTimeEnd: "",
     location: "",
-//     contactPersonName: "",
-//     contactPersonNumber: "",
-//     contactPersonEmail: "",
-//     costToAttend: "",
-//     notes: ""
 };
 
     //http Erorr Message
@@ -74,29 +63,15 @@ export class UpdateEventComponent implements OnInit {
 
         this.updateEventService.$eventError5.subscribe(
             eventError5 => this.eventLocationMessage = eventError5);
-        //
-        // this.updateEventService.$eventError6.subscribe(
-        //     eventError6 => this.eventContactNameMessage = eventError6);
-        //
-        // this.updateEventService.$eventError7.subscribe(
-        //     eventError7 => this.eventContactNumberMessage = eventError7);
-        //
-        // this.updateEventService.$eventError8.subscribe(
-        //     eventError8 => this.eventContactNumberMessage = eventError8);
-        //
-        // this.updateEventService.$eventError9.subscribe(
-        //     eventError9 => this.eventCostMessage = eventError9);
-        //
-        // this.updateEventService.$eventError0.subscribe(
-        //     eventError0 => this.eventNoteMessage = eventError0);
 
         this.updateEventService.$eventFailureHttp.subscribe(
             eventFailureMessage => this.eventFailureMessage = eventFailureMessage);
 
         this.updateEventService.$eventSuccessHttp.subscribe(
             eventSuccessMessage => this.eventSuccessMessage = eventSuccessMessage);
-      
-      
+
+        this.updateEventService.$clearEventSuccessMessage.subscribe(
+            eventEmptySuccessMessage => this.eventSuccessMessage = eventEmptySuccessMessage);
   }
 
   onDestroy(onDestroy: any): any {

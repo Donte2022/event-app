@@ -26,7 +26,6 @@ export class EventsComponent implements OnInit {
   eventClearSuccessMess: string | null = null;
   // Use to delete an event
   event: any;
-
   
   constructor(private eventService: EventsService) {
 
@@ -45,21 +44,6 @@ export class EventsComponent implements OnInit {
     this.eventService.$eventError5.subscribe(
         eventError5 => this.eventLocationMessage = eventError5);
     
-    // this.eventService.$eventError6.subscribe(
-    //     eventError6 => this.eventContactNameMessage = eventError6);
-    //
-    // this.eventService.$eventError7.subscribe(
-    //     eventError7 => this.eventContactNumberMessage = eventError7);
-    //
-    // this.eventService.$eventError8.subscribe(
-    //     eventError8 => this.eventContactNumberMessage = eventError8);
-    //
-    // this.eventService.$eventError9.subscribe(
-    //     eventError9 => this.eventCostMessage = eventError9);
-    //
-    // this.eventService.$eventError0.subscribe(
-    //     eventError0 => this.eventNoteMessage = eventError0);
-
     this.eventService.$eventFailureHttp.subscribe(
         eventFailureMessage => this.eventFailureMessage = eventFailureMessage);
 
@@ -68,7 +52,6 @@ export class EventsComponent implements OnInit {
 
     this.eventService.$clearEventSuccessMessage.subscribe(
         eventEmptySuccessMessage => this.eventSuccessMessage = eventEmptySuccessMessage);
-
   }
 
   ngOnInit(): void {
@@ -80,10 +63,8 @@ export class EventsComponent implements OnInit {
       this.eventService.$createNewEvent.next(false);
       // this.eventService.$createInvites.next(false);
       this.eventService.$isViewingMainPage.next(true);
-
     }
-
-
+    
   onNewEventClick(eventForm: NgForm) {
     this.eventService.$createNewEvent.next(true);
     this.eventService.$isViewingMainPage.next(false);

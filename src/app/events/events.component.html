@@ -12,7 +12,6 @@
     <b>Create Event</b>
 </div>
 
-
 <div name="event" >
     <form #eventForm="ngForm" (ngSubmit)="onNewEventClick(eventForm)">
 
@@ -60,55 +59,7 @@
         <div class="text-danger">
         {{eventLocationMessage}}
         </div>
-
-
-<!--        <div class="input-group mb-0">-->
-<!--            <span class="input-group-text">Host of Event: </span>-->
-<!--            <input name="ContactPersonName" ngModel type="text" class="form-control">-->
-<!--        </div>-->
-
-<!--        <div class="text-danger">-->
-<!--        {{eventContactNameMessage}}-->
-<!--        </div>-->
-
-<!--        <div class="input-group mb-0">-->
-<!--            <span class="input-group-text">Host of Event Number: </span>-->
-<!--            <input name="ContactPersonNumber" ngModel type="number" class="form-control">-->
-<!--        </div>-->
-
-<!--        <div class="text-danger">-->
-<!--        {{eventContactNumberMessage}}-->
-<!--        </div>-->
-
-<!--        <div class="input-group mb-0">-->
-<!--            <span class="input-group-text">Host of Event Email Address: </span>-->
-<!--            <input name="ContactPersonEmail" ngModel type="email" class="form-control">-->
-<!--        </div>-->
-
-<!--        <div class="text-danger">-->
-<!--        {{eventContactEmailMessage}}-->
-<!--        </div>-->
-
-<!--        <div class="input-group mb-0">-->
-<!--            <span class="input-group-text">Cost to Attend: </span>-->
-<!--            <input name="costToAttend" ngModel type="text" class="form-control">-->
-<!--        </div>-->
-
-<!--        <div class="text-danger">-->
-<!--            {{eventCostMessage}}-->
-<!--        </div>-->
-
-<!--        <div class="input-group mb-0">-->
-<!--            <span class="input-group-text">Additional Notes: </span>-->
-<!--            <input name="notes" ngModel type="text" class="form-control">-->
-<!--        </div>-->
-
-<!--        <div class="text-danger">-->
-<!--        {{eventNoteMessage}}-->
-<!--        </div>-->
-
         <br>
-
         <div class="text justify-content-center">
             <div class="text-danger justify-content-center">
                 {{eventFailureMessage}}
@@ -122,9 +73,6 @@
         <div class="d-flex justify-content-around">
             <button type="submit" class="btn btn-primary">Submit Event</button>
         </div>
-
-
-
 
     </form>
 

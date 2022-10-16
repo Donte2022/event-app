@@ -27,7 +27,6 @@ export class HttpService {
     //return an observable for data
     return this.httpClient.get("http://localhost:3000/Accounts",
         )as Observable<IAccount>;
-
   }
 
   registerAccount(IRegistrationForm: IAccount) {
@@ -39,7 +38,6 @@ export class HttpService {
 
   getContacts() {
     this.httpClient.get("http://localhost:3000/Contacts");
-
 
   }
 
@@ -73,11 +71,6 @@ export class HttpService {
         "eventTimeStart":eventForm.eventTimeStart,
         "eventTimeEnd":eventForm.eventTimeEnd,
         "location":eventForm.location}
-        // "ContactPersonName":eventForm.contactPersonName,
-        // "ContactPersonNumber":eventForm.contactPersonNumber,
-        // "ContactPersonEmail":eventForm.contactPersonEmail,
-        // "costToAttend":eventForm.costToAttend,
-        // "notes":eventForm.notes}
     ) as Observable<IEvents[]>
   }
 

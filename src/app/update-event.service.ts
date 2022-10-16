@@ -10,25 +10,15 @@ export class UpdateEventService {
 
   updatedEventData: string = "";
 
-  // $oldEventName: IEvents[] = [];
   $oldEventName = new BehaviorSubject<IEvents[]>([]);
 
   $isUpdatingEvent = new BehaviorSubject<boolean>(false);
-  // $manageInvites = new BehaviorSubject<boolean>(false);
   $isCreatingEvent = new BehaviorSubject<boolean>(false);
   $isViewingMainPage = new BehaviorSubject<boolean>(false);
-  // $updateMyInvite = new BehaviorSubject<boolean>(false);
   $updatedEventData = new BehaviorSubject<string | null>(null);
 
   updateThisEvent(eventInfo:any) {
-    console.log("forwarding data")
-    console.log(eventInfo)
     this.updatedEventData = eventInfo;
-    console.log(this.updatedEventData)
-    console.log(eventInfo)
-    // @ts-ignore
-    console.log(this.updatedEventData.eventName)
-
     // @ts-ignore
     this.$oldEventName = this.updatedEventData.eventName
     console.log(this.$oldEventName)
@@ -74,8 +64,11 @@ export class UpdateEventService {
   //that is created was a success or a failure
   $eventSuccessHttp = new BehaviorSubject<string | null>(null);
   $eventFailureHttp = new BehaviorSubject<string | null>(null);
+  $clearEventSuccessMessage = new BehaviorSubject<string | null>(null);
+
   eventSuccessMessage = "Your event was updated!"
   eventFailureMessage = "Sorry your event was not updated. Please try again later."
+  clearEventSuccessMessage = "";
 
 
   //function to update an event
@@ -87,91 +80,58 @@ export class UpdateEventService {
     console.log("timeEnd",eventForm.eventTimeEnd)
 
     //conditions to check for empty fields in before creating the event
-    if (eventForm.eventName === undefined) {
-      this.$eventError.next(this.eventNameError);
+    if (eventForm.eventName.length < 1) {
+      this.$eventError.next(this.eventNameError)
+      this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
+      ;
     } else if
-    (eventForm.eventName !== undefined)
+    (eventForm.eventName.length > 1)
     {
       this.$eventError.next(this.eventNameEmpty);
     }
 
     if (eventForm.meetingDate === undefined) {
-      this.$eventError2.next(this.eventMeetingDateError);
+      this.$eventError2.next(this.eventMeetingDateError)
+      this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
+
     } else if
     (eventForm.meetingDate !== null) {
       this.$eventError2.next(this.eventMeetingDateEmpty);
     }
 
-    if (eventForm.eventTimeStart=== undefined) {
-      this.$eventError3.next(this.eventimeStartError);
+    if (eventForm.eventTimeStart.length < 1) {
+      this.$eventError3.next(this.eventimeStartError)
+      this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
+
     } else if
-    (eventForm.eventTimeStart.length < 1) {
+    (eventForm.eventTimeStart.length > 1) {
       this.$eventError3.next(this.eventimeStartEmpty);
     }
 
-    if (eventForm.eventTimeEnd=== undefined) {
-      this.$eventError4.next(this.eventTimeEndError);
+    if (eventForm.eventTimeEnd.length <1) {
+      this.$eventError4.next(this.eventTimeEndError)
+      this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
+
     } else if
     (eventForm.eventTimeEnd.length > 1) {
       this.$eventError4.next(this.eventTimeEndEmpty);
     }
 
-    if (eventForm.location=== undefined) {
-      this.$eventError5.next(this.eventLocationError);
+    if (eventForm.location.length < 1) {
+      this.$eventError5.next(this.eventLocationError)
+      this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
+
     } else if
-    (eventForm.location=== undefined) {
+    (eventForm.location.length > 1) {
       this.$eventError5.next(this.eventLocationEmpty);
     }
-
-    // if (eventForm.contactPersonName=== undefined) {
-    //   this.$eventError6.next(this.eventContactNameError);
-    // } else if
-    // (eventForm.contactPersonName !== null) {
-    //   this.$eventError6.next(this.eventContactNameEmpty);
-    // }
-    //
-    // if (eventForm.contactPersonNumber=== undefined) {
-    //   this.$eventError7.next(this.eventContactNumberError)
-    //   console.log(eventForm.contactPersonNumber);
-    // } else if
-    // (eventForm.contactPersonNumber !== null) {
-    //   this.$eventError7.next(this.eventContactNumberEmpty);
-    // }
-    //
-    // if (eventForm.contactPersonEmail === undefined) {
-    //   console.log(typeof(eventForm.contactPersonEmail));
-    // } else if
-    // (eventForm.contactPersonEmail !== undefined) {
-    //   this.$eventError8.next(this.eventContactEmailEmpty);
-    // }
-    //
-    // if (eventForm.costToAttend=== undefined) {
-    //   this.$eventError9.next(this.eventCostError);
-    // } else if
-    // (eventForm.costToAttend.length > 1 ) {
-    //   this.$eventError9.next(this.eventCostEmpty);
-    // }
-    //
-    // if (eventForm.notes=== undefined) {
-    //   this.$eventError0.next(this.eventNoteError);
-    // } else if
-    // (eventForm.notes.length < 1) {
-    //   this.$eventError0.next(this.eventNoteEmpty);
-    //   return false;
-    //
-    //   //conditions to pass before updating the event
-    // }
+    
     if
     (eventForm.eventName.length > 1 &&
         eventForm.meetingDate !== null &&
         eventForm.eventTimeStart.length > 1 &&
         eventForm.eventTimeEnd.length > 1 &&
-        eventForm.location.length > 1 
-        // eventForm.contactPersonName !== null &&
-        // eventForm.contactPersonNumber !== null &&
-        // eventForm.contactPersonEmail !== null &&
-        // eventForm.costToAttend.length > 1 &&
-        // eventForm.notes.length > 1
+        eventForm.location.length > 1
     )
     {
       //Data from the form and IEvent interface used
@@ -183,11 +143,6 @@ export class UpdateEventService {
         eventTimeStart: eventForm.eventTimeStart,
         eventTimeEnd: eventForm.eventTimeEnd,
         location: eventForm.location,
-        // contactPersonName: eventForm.contactPersonName,
-        // contactPersonNumber: eventForm.contactPersonNumber,
-        // contactPersonEmail: eventForm.contactPersonEmail,
-        // costToAttend: eventForm.costToAttend,
-        // notes: eventForm.notes
       }
 
       //Set of instructions to run if creating an event was succesful or a failure
@@ -209,10 +164,7 @@ export class UpdateEventService {
     }
     return true;
   }
-
-
-
-
+  
   constructor(private httpService: HttpService) {
 
 }
