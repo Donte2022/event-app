@@ -67,7 +67,17 @@ export class HttpService {
   updateSelectedEvent(eventForm:IEvents) {
     console.log(eventForm.id)
     return this.httpClient.put(
-        "http://localhost:3000/Events/" + `${eventForm.id}`, {eventForm}
+        "http://localhost:3000/Events/" + `${eventForm.id}`, 
+        {"eventName":eventForm.eventName,
+        "meetingDate":eventForm.meetingDate,
+        "eventTimeStart":eventForm.eventTimeStart,
+        "eventTimeEnd":eventForm.eventTimeEnd,
+        "location":eventForm.location,
+        "ContactPersonName":eventForm.contactPersonName,
+        "ContactPersonNumber":eventForm.contactPersonNumber,
+        "ContactPersonEmail":eventForm.contactPersonEmail,
+        "costToAttend":eventForm.costToAttend,
+        "notes":eventForm.notes}
     ) as Observable<IEvents[]>
   }
 

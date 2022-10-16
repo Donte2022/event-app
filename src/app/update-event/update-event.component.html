@@ -18,9 +18,9 @@
     <form #eventForm="ngForm" (ngSubmit)="onUpdateEventClick(eventForm.value)">
 
         <div class="input-group mb-0">
-            <span class="input-group-text">Event Id: </span>
+<!--            <span class="input-group-text">Event Id: </span>-->
             <!--            template-driven form allow ngmodel to populate data into fields-->
-            <input id="eventId" name="id" [ngModel]="this.updatedEventDataValues.id" type="text" class="form-control">
+            <input id="eventId" name="id" [ngModel]="this.updatedEventDataValues.id" type="hidden" class="form-control">
         </div>
 
 
@@ -28,7 +28,7 @@
             <span class="input-group-text">Event Name: </span>
 <!--            template-driven form allow ngmodel to populate data into fields-->
             <input id="eventName" name="eventName" [ngModel]="this.updatedEventDataValues.eventName" type="text" class="form-control">
-        </div>
+        </div> {{eventNameMessage}}
 
         <div class="text-danger">
 

@@ -83,44 +83,76 @@
   ],
   "Events": [
     {
-      "id": "2c7135f6-5e45-4baa-ae2f-427f369db0cf",
-      "eventName": "dfbdfbdfz",
-      "meetingDate": "2022-10-13",
-      "eventTimeStart": "07:37",
-      "eventTimeEnd": "07:39",
-      "location": "rhdtyty",
-      "costToAttend": "989898",
-      "notes": "8p89p89"
+      "eventName": "dfbdfbdfzyjtykuyfk",
+      "meetingDate": "2022-10-12",
+      "eventTimeStart": "23:09",
+      "eventTimeEnd": "11:09",
+      "location": "Farm Valley",
+      "costToAttend": "0.00",
+      "notes": "none",
+      "id": "2c7135f6-5e45-4baa-ae2f-427f369db0cf"
     },
     {
-      "id": "221d098f-5274-46bd-b6ac-ae221aa2f5d9",
-      "eventName": "ergergregerger",
-      "meetingDate": "2022-10-11",
-      "eventTimeStart": "14:18",
-      "eventTimeEnd": "17:15",
-      "location": "ergergergergergerg",
-      "costToAttend": "23423423423",
-      "notes": "fgsegergregere"
+      "eventName": "true blue event",
+      "meetingDate": "2022-10-19",
+      "eventTimeStart": "10:17",
+      "eventTimeEnd": "22:17",
+      "location": "Farm Valley",
+      "costToAttend": "23",
+      "notes": "none",
+      "id": "1811ecc6-004f-4e2c-83e7-ed71029df77e"
     },
     {
-      "id": "1811ecc6-004f-4e2c-83e7-ed71029df77e",
-      "eventName": "bishop3",
-      "meetingDate": "2022-10-14",
-      "eventTimeStart": "21:15",
-      "eventTimeEnd": "21:14",
-      "location": "2f22f",
-      "costToAttend": "23fwefswfew",
-      "notes": "ewff23f23"
+      "eventForm": {
+        "id": "7f3e13ac-956b-4385-aa68-1fafc7abed3a",
+        "eventName": "12latestupdated",
+        "meetingDate": "2022-10-21",
+        "eventTimeStart": "13:54",
+        "eventTimeEnd": "13:54",
+        "location": "fghddhghfhdf",
+        "ContactPersonName": "Peter Griffin",
+        "ContactPersonNumber": 12345,
+        "ContactPersonEmail": "PeterG@gmail.com",
+        "costToAttend": "877897978",
+        "notes": "fddddfhfgdf"
+      },
+      "id": "7f3e13ac-956b-4385-aa68-1fafc7abed3a"
     },
     {
-      "id": "7f3e13ac-956b-4385-aa68-1fafc7abed3a",
-      "eventName": "12latest",
-      "meetingDate": "2022-10-21",
-      "eventTimeStart": "13:54",
-      "eventTimeEnd": "13:54",
-      "location": "fghddhghfhdf",
-      "costToAttend": "877897978",
-      "notes": "fddddfhfgdf"
+      "id": "40f11f49-4698-4dbf-8b90-86e9c16b8cbb",
+      "eventName": "Halloween",
+      "meetingDate": "2022-10-31",
+      "eventTimeStart": "18:41",
+      "eventTimeEnd": "10:41",
+      "location": "Neighborhood",
+      "costToAttend": "0.00",
+      "notes": "none"
+    },
+    {
+      "eventForm": {
+        "id": "19de2eb6-627b-47da-b328-66f42017a577",
+        "eventName": "Octoberfest",
+        "meetingDate": "2022-10-19",
+        "eventTimeStart": "10:49",
+        "eventTimeEnd": "22:49",
+        "location": "Anthill Ga",
+        "costToAttend": "0.00",
+        "notes": "bring boots"
+      },
+      "id": "19de2eb6-627b-47da-b328-66f42017a577"
+    },
+    {
+      "eventForm": {
+        "id": "520414ca-4e42-479a-a599-020bf5d6c093",
+        "eventName": "Crew cuts 2",
+        "meetingDate": "2022-10-18",
+        "eventTimeStart": "22:53",
+        "eventTimeEnd": "22:53",
+        "location": "Recruiter station",
+        "costToAttend": "0.00",
+        "notes": "bring a pen"
+      },
+      "id": "520414ca-4e42-479a-a599-020bf5d6c093"
     }
   ],
   "Invites": [
