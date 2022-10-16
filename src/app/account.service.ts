@@ -27,8 +27,6 @@ export class AccountService {
   $passwordError = new BehaviorSubject<string | null>(null);
   $password2Error = new BehaviorSubject<string | null>(null);
   $password3Error = new BehaviorSubject<string | null>(null);
-  //$password4Error = new BehaviorSubject<string | null>(null);
-  //$password6Error = new BehaviorSubject<string | null>(null);
   $email0Error = new BehaviorSubject<string | null>(null);
   $emailError = new BehaviorSubject<string | null>(null);
   $email2Error = new BehaviorSubject<string | null>(null);
@@ -54,14 +52,10 @@ export class AccountService {
   private RegErrorFirstName = "You must include a first name.";
   private RegErrorLastName = "You must include a last name.";
   private RegErrorUserNameMinLength = "You must include a username.";
-  private RegErrorPasswordShort = "Your password must be at least 5 characters in length.";
+  private RegErrorPasswordShort = "You must include a password.";
   private RegErrorPasswordMaxLength = "Your password must not contain no more than 15 characters total.";
-  //private RegErrorPasswordUpperChar = "Your password must include at least one Upper case.";
-  //private RegErrorPasswordLowerChar = "Your password must include at least one lower case.";
-  //private RegErrorPasswordSpecialChar = "Your password must include at least one special symbol.";
   private RegHttpSuccessMessage = "Account Created! Welcome to Event Organiser!";
  private RegHttpErrorMessage = "Unable to login into your account please try again.";
-
 
   //Registration validated fields
   private RegValidEmailEmpty = null;
@@ -73,14 +67,9 @@ export class AccountService {
   private RegValidUserNameMinLength = null;
   private RegValidPasswordShort = null;
   private RegValidPasswordMaxLength = null;
-  //private RegValidPasswordUpperChar = null;
-  //private RegValidPasswordLowerChar = null;
-  //private RegValidPasswordSpecialChar = null;
   private RegValidHttpSuccessMessage = null;
   private RegValidHttpErrorMessage = null;
-
-
-
+  
   $account = new BehaviorSubject<IAccount | null>(
       null);
   
@@ -94,10 +83,7 @@ export class AccountService {
   //       "emailAddress": "green.dontavious@gmail.com"
   //     }
   // );
-
-
-
-
+  
   constructor(private httpService: HttpService) {
   }
 
@@ -137,10 +123,8 @@ export class AccountService {
           this.$userLoginError.next(this.invalidCreds);
           return;
         }
-
         //login user in
          this.$account.next(foundaccounts);
-
       },
       //this func is executed if request fails
       error: (error) => {
@@ -148,10 +132,8 @@ export class AccountService {
         this.$httpLoginError.next(this.RegHttpErrorMessage)
       }
       });
-
   }
-
-
+  
   //Put Interface and form data together
   registerForms(registrationForm: IRegistrationForm) {
 
@@ -207,10 +189,10 @@ export class AccountService {
       this.$email3Error.next(this.RegValidEmailDotSymbol);
     }
     //check to see if password meet minimum length if not return an error
-    if (registrationForm.password.length <= 5) {
+    if (registrationForm.password.length < 1) {
       this.$password2Error.next(this.RegErrorPasswordShort);
     } else if
-    (registrationForm.password.length >= 5) {
+    (registrationForm.password.length > 1) {
       this.$password2Error.next(this.RegValidPasswordShort);
     }
     //check to see if password is too long if so return this error
@@ -219,25 +201,7 @@ export class AccountService {
     } else if
     (registrationForm.password.length <= 15) {
       this.$password3Error.next(this.RegValidPasswordMaxLength);
-
-    // //check to see if password contain one UPPER case char
-    // if (registrationForm.password.match() > A-Z) {
-    //   this.$password4Error.next(this.RegErrorPasswordUpperChar);
-    // }
-
-    // //check to see if password contain at least one lower case char
-    // if (registrationForm.password.length > a-z) {
-    //   this.$password5Error.next(this.RegErrorPasswordLowerChar);
-    // }
-
-    //add special characters requirements for password
-    // if (registrationForm.password.includes('!,@')) {
-    //   this.$password6Error.next(this.RegErrorPasswordSpecialChar);
-    // }
-
-    //Validation check to see if the account already exist
-    //this.httpService.findAccount() {
-    // }
+      
 
       //Check for all fields are error free, if so it creates the account
     }  if   //Check for all fields are error free, if so it creates the account
@@ -248,7 +212,7 @@ export class AccountService {
         registrationForm.email.length >= 4 &&
         registrationForm.email.includes('@') &&
         registrationForm.email.includes('.') &&
-        registrationForm.password.length >= 5 &&
+        registrationForm.password.length >= 1 &&
         registrationForm.password.length <= 15
     )
     {

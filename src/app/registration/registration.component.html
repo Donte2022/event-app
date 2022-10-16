@@ -7,46 +7,59 @@
 
 
     <div>
-        <label>First Name: </label>
-        <input name="firstName" ngModel type="text">
+
+        <div class="input-group mb-0">
+            <span class="input-group-text">First Name: </span>
+        <input class="form-control" name="firstName" ngModel type="text">
+        </div>
             <div class="text-danger">
             {{firstNameErrorMessages}}
             </div>
         <br>
     </div>
     <div>
-        <label>Last Name: </label>
-        <input name="lastName" ngModel type="text">
+
+        <div class="input-group mb-0">
+            <span class="input-group-text">Last Name: </span>
+        <input class="form-control" name="lastName" ngModel type="text">
+        </div>
             <div class="text-danger">
             {{lastNameErrorMessages}}
             </div>
         <br>
     </div>
     <div>
-        <label>Username: </label>
-        <input name="userId" ngModel type="text">
+
+        <div class="input-group mb-0">
+            <span class="input-group-text">UserId: </span>
+        <input class="form-control" name="userId" ngModel type="text">
+        </div>
             <div class="text-danger">
             {{userIdErrorMessages}}
             </div>
         <br>
     </div>
     <div>
-        <label>Email: </label>
-        <input name="email" ngModel type="text">
-        <br>
+
+        <div class="input-group mb-0">
+        <span class="input-group-text">Email: </span>
+            <input class="form-control" class="form-control" name="email" ngModel type="text">
+        </div>
+
             <div class="text-danger">
             {{emailNameErrorMessages}}
             <br>
             {{email2NameErrorMessages}}
             <br>
             {{email3NameErrorMessages}}
-            <br>
         </div>
     </div>
     <div>
-        <label>Password: </label>
-        <input name="password" ngModel type="text">
-        <br>
+
+        <div class="input-group mb-0">
+            <span class="input-group-text">Password: </span>
+        <input class="form-control" name="password" ngModel type="text">
+    </div>
             <div class="text-danger">
             {{passwordErrorMessages}}
             <br>
@@ -55,28 +68,8 @@
             {{password3ErrorMessages}}
             <br>
             {{password4ErrorMessages}}
-            <br>
             </div>
-        <!--add Upper Case check here-->
-<!--        {{password5ErrorMessages}}-->
-<!--        <br>-->
-        <!--add Lower Case check here-->
-<!--        {{password5ErrorMessages}}-->
-        <!--<br>-->
-        <!--add Special Character Check here-->
-        <!--{{password6ErrorMessages}}-->
-        <!--<br>-->
-        <!--come back and make the messages change text to red-->
-<!--        <br>-->
-<!--        <label>Password must be 8 to 12 characters long</label>-->
-<!--        <br>-->
-<!--        <label>must have at least one upper case</label>-->
-<!--        <br>-->
-<!--        <label>one lower case character</label>-->
-<!--        <br>-->
-<!--        <label> must not contain no more than 15 characters total</label>-->
-<!--        <br>-->
-<!--        <label></label>-->
+
     </div>
 
     <div class="justify-content-around">

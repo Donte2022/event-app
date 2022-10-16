@@ -16,8 +16,11 @@ so that I have a reference to the directive itself-->
     <!--Need name attribute and ngModel to get
      access to data within the fields-->
 <!--    <span class="input-group-text" id="inputGroup-sizing-lg">UserID</span>-->
-    <input class="form-control" name="userId" type="text" ngModel placeholder="UserID">
 
+    <div class="input-group mb-0">
+        <span class="input-group-text">UserId: </span>
+    <input class="form-control" name="userId" type="text" ngModel placeholder="UserID">
+    </div>
     </div>
 
     <br>
@@ -27,7 +30,11 @@ so that I have a reference to the directive itself-->
 
     <div class="input-group input-group-lg">
 <!--    <span class="input-group-text" id="inputGroup2-sizing-medium">Password</span>-->
+
+        <div class="input-group mb-0">
+            <span class="input-group-text">Password: </span>
     <input class="form-control" name="password" type="password" ngModel placeholder="Password">
+        </div>
     </div>
 
     <br>

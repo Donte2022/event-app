@@ -8,9 +8,7 @@ import { IEvents } from './Interface/IEvents';
   providedIn: 'root'
 })
 export class HttpService {
-  
-
-  
+    
 
   constructor(private httpClient: HttpClient) {
 

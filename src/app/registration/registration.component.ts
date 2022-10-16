@@ -58,13 +58,6 @@ export class RegistrationComponent implements OnInit {
     this.accountService.$password3Error.subscribe(
         password3RegError => this.password3ErrorMessages = password3RegError);
 
-    // this.accountService.$password4Error.subscribe(
-    //     lastNameRegError => this.password4ErrorMessages = lastNameRegError);
-
-
-    // this.accountService.$password6Error.subscribe(
-    //     lastNameRegError => this.password5ErrorMessages = lastNameRegError);
-
     this.accountService.$RegSuccessHttp.subscribe(
         $RegSuccessHttp => this.registerNewUserMessageSuccess = $RegSuccessHttp);
 
@@ -76,18 +69,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  cancelAccount() {
-    // const newAccount = {
-    //   "id": new Date().getTime(),
-    //   "firstName": "Dontavious",
-    //   "lastName": "Green",
-    //   "userId": "DontaviousG2022",
-    //   "password": "password123",
-    //   "emailAddress": "green.dontavious@gmail.com"
-    //
-    // }
-  }
-
+  
   //sends data from user input 'registration form' to be validated
   registerUser(registrationForm: NgForm) {
     this.accountService.registerForms(
