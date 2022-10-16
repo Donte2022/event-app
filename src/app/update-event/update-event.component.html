@@ -18,6 +18,13 @@
     <form #eventForm="ngForm" (ngSubmit)="onUpdateEventClick(eventForm.value)">
 
         <div class="input-group mb-0">
+            <span class="input-group-text">Event Id: </span>
+            <!--            template-driven form allow ngmodel to populate data into fields-->
+            <input id="eventId" name="id" [ngModel]="this.updatedEventDataValues.id" type="text" class="form-control">
+        </div>
+
+
+        <div class="input-group mb-0">
             <span class="input-group-text">Event Name: </span>
 <!--            template-driven form allow ngmodel to populate data into fields-->
             <input id="eventName" name="eventName" [ngModel]="this.updatedEventDataValues.eventName" type="text" class="form-control">
@@ -107,15 +114,9 @@
             <span class="input-group-text">Additional Notes: </span>
             <input name="notes" [ngModel]="this.updatedEventDataValues.notes" type="text" class="form-control">
         </div>
-        <br>
         <div class="text-danger">
             {{eventUpdateFail}}
         </div>
-
-        <br>
-
-
-
 
         <br>
         <div class="d-flex justify-content-around">

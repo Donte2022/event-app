@@ -40,7 +40,7 @@ export class UpdateEventComponent implements OnInit {
       this.updatedEventDataValues = this.updateEventService.updatedEventData
       console.log(this.updatedEventDataValues)
 
-      
+      //http Error Message from service
         this.updateEventService.$eventFailureHttp.subscribe(
             httpFailure => this.eventUpdateFail = httpFailure); 
 
