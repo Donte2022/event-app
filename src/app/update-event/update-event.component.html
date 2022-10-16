@@ -28,10 +28,10 @@
             <span class="input-group-text">Event Name: </span>
 <!--            template-driven form allow ngmodel to populate data into fields-->
             <input id="eventName" name="eventName" [ngModel]="this.updatedEventDataValues.eventName" type="text" class="form-control">
-        </div> {{eventNameMessage}}
+        </div>
 
         <div class="text-danger">
-
+            {{eventNameMessage}}
         </div>
 
         <div class="input-group mb-0">
@@ -40,7 +40,7 @@
         </div>
 
         <div class="text-danger">
-
+            {{eventMeetingDateMessage}}
         </div>
 
         <div class="input-group mb-0">
@@ -49,7 +49,7 @@
         </div>
 
         <div class="text-danger">
-
+            {{eventTimeStartMessage}}
         </div>
 
         <div class="input-group mb-0">
@@ -58,7 +58,7 @@
         </div>
 
         <div class="text-danger">
-
+            {{eventTimeEndMessage}}
         </div>
 
         <div class="input-group mb-0">
@@ -67,58 +67,63 @@
         </div>
 
         <div class="text-danger">
-
+            {{eventLocationMessage}}
         </div>
 
 
-        <div class="input-group mb-0">
-            <span class="input-group-text">Host of Event: </span>
-            <input name="ContactPersonName" [ngModel]="this.updatedEventDataValues.contactPersonEmail" type="text" class="form-control">
-        </div>
+<!--        <div class="input-group mb-0">-->
+<!--            <span class="input-group-text">Host of Event: </span>-->
+<!--            <input name="ContactPersonName" [ngModel]="this.updatedEventDataValues.contactPersonEmail" type="text" class="form-control">-->
+<!--        </div>-->
 
-        <div class="text-danger">
+<!--        <div class="text-danger">-->
+<!--            {{eventContactNameMessage}}-->
+<!--        </div>-->
 
+<!--        <div class="input-group mb-0">-->
+<!--            <span class="input-group-text">Host of Event Number: </span>-->
+<!--            <input name="ContactPersonNumber" [ngModel]="this.updatedEventDataValues.contactPersonNumber" type="number" class="form-control">-->
+<!--        </div>-->
 
-        </div>
+<!--        <div class="text-danger">-->
+<!--            {{eventContactNumberMessage}}-->
+<!--        </div>-->
 
-        <div class="input-group mb-0">
-            <span class="input-group-text">Host of Event Number: </span>
-            <input name="ContactPersonNumber" [ngModel]="this.updatedEventDataValues.contactPersonNumber" type="number" class="form-control">
-        </div>
+<!--        <div class="input-group mb-0">-->
+<!--            <span class="input-group-text">Host of Event Email Address: </span>-->
+<!--            <input name="ContactPersonEmail" [ngModel]="this.updatedEventDataValues.contactPersonEmail" type="email" class="form-control">-->
+<!--        </div>-->
 
-        <div class="text-danger">
+<!--        <div class="text-danger">-->
+<!--            {{eventContactEmailMessage}}-->
+<!--        </div>-->
 
+<!--        <div class="input-group mb-0">-->
+<!--            <span class="input-group-text">Cost to Attend: </span>-->
+<!--            <input name="costToAttend" [ngModel]="this.updatedEventDataValues.costToAttend" type="text" class="form-control">-->
+<!--        </div>-->
 
-        </div>
+<!--        <div class="text-danger">-->
+<!--            {{eventCostMessage}}-->
+<!--        </div>-->
 
-        <div class="input-group mb-0">
-            <span class="input-group-text">Host of Event Email Address: </span>
-            <input name="ContactPersonEmail" [ngModel]="this.updatedEventDataValues.contactPersonEmail" type="email" class="form-control">
-        </div>
+<!--        <div class="input-group mb-0">-->
+<!--            <span class="input-group-text">Additional Notes: </span>-->
+<!--            <input name="notes" [ngModel]="this.updatedEventDataValues.notes" type="text" class="form-control">-->
+<!--        </div>-->
 
-        <div class="text-danger">
-
-
-        </div>
-
-        <div class="input-group mb-0">
-            <span class="input-group-text">Cost to Attend: </span>
-            <input name="costToAttend" [ngModel]="this.updatedEventDataValues.costToAttend" type="text" class="form-control">
-        </div>
-
-        <div class="text-danger">
-
-        </div>
-
-        <div class="input-group mb-0">
-            <span class="input-group-text">Additional Notes: </span>
-            <input name="notes" [ngModel]="this.updatedEventDataValues.notes" type="text" class="form-control">
-        </div>
-        <div class="text-danger">
-            {{eventUpdateFail}}
-        </div>
+<!--        <div class="text-danger">-->
+<!--            {{eventNoteMessage}}-->
+<!--        </div>-->
 
         <br>
+
+        <div class="text justify-content-center">
+            <div class="text-danger justify-content-center">
+                {{eventFailureMessage}}
+            </div>
+        </div>
+
         <div class="d-flex justify-content-around">
             <button type="submit" class="btn btn-primary">Update Event</button>
         </div>

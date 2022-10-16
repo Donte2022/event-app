@@ -72,12 +72,12 @@ export class HttpService {
         "meetingDate":eventForm.meetingDate,
         "eventTimeStart":eventForm.eventTimeStart,
         "eventTimeEnd":eventForm.eventTimeEnd,
-        "location":eventForm.location,
-        "ContactPersonName":eventForm.contactPersonName,
-        "ContactPersonNumber":eventForm.contactPersonNumber,
-        "ContactPersonEmail":eventForm.contactPersonEmail,
-        "costToAttend":eventForm.costToAttend,
-        "notes":eventForm.notes}
+        "location":eventForm.location}
+        // "ContactPersonName":eventForm.contactPersonName,
+        // "ContactPersonNumber":eventForm.contactPersonNumber,
+        // "ContactPersonEmail":eventForm.contactPersonEmail,
+        // "costToAttend":eventForm.costToAttend,
+        // "notes":eventForm.notes}
     ) as Observable<IEvents[]>
   }
 

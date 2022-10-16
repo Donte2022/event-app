@@ -21,11 +21,11 @@ export class EventsService {
   $eventError3 = new BehaviorSubject<string | null>(null);
   $eventError4 = new BehaviorSubject<string | null>(null);
   $eventError5 = new BehaviorSubject<string | null>(null);
-  $eventError6 = new BehaviorSubject<string | null>(null);
-  $eventError7 = new BehaviorSubject<string | null>(null);
-  $eventError8 = new BehaviorSubject<string | null>(null);
-  $eventError9 = new BehaviorSubject<string | null>(null);
-  $eventError0 = new BehaviorSubject<string | null>(null);
+  // $eventError6 = new BehaviorSubject<string | null>(null);
+  // $eventError7 = new BehaviorSubject<string | null>(null);
+  // $eventError8 = new BehaviorSubject<string | null>(null);
+  // $eventError9 = new BehaviorSubject<string | null>(null);
+  // $eventError0 = new BehaviorSubject<string | null>(null);
   
   //error messages for creating an event
   private eventNameError = "You must include a name for the event";
@@ -33,11 +33,11 @@ export class EventsService {
   private eventimeStartError = "You must include a start time for your event";
   private eventTimeEndError = "You must include an end time for your event";
   private eventLocationError = "You must include a location for your event";
-  private eventContactNameError = "You must include the host name";
-  private eventContactNumberError = "You must include the host number";
-  private eventContactEmailError = "You must include the host email address";
-  private eventCostError = "You must include a cost for the event";
-  private eventNoteError = "you must include a note about the event";
+  // private eventContactNameError = "You must include the host name";
+  // private eventContactNumberError = "You must include the host number";
+  // private eventContactEmailError = "You must include the host email address";
+  // private eventCostError = "You must include a cost for the event";
+  // private eventNoteError = "you must include a note about the event";
 
   //Event Validation fields
   private eventNameEmpty = null;
@@ -45,117 +45,130 @@ export class EventsService {
   private eventimeStartEmpty = null;
   private eventTimeEndEmpty = null;
   private eventLocationEmpty = null;
-  private eventContactNameEmpty = null;
-  private eventContactNumberEmpty = null;
-  private eventContactEmailEmpty = null;
-  private eventCostEmpty = null;
-  private eventNoteEmpty = null;
+  // private eventContactNameEmpty = null;
+  // private eventContactNumberEmpty = null;
+  // private eventContactEmailEmpty = null;
+  // private eventCostEmpty = null;
+  // private eventNoteEmpty = null;
   
   
   //error and success message that is sent to user when a new event
   //that is created was a success or a failure
   $eventSuccessHttp = new BehaviorSubject<string | null>(null);
   $eventFailureHttp = new BehaviorSubject<string | null>(null);
+  $clearEventSuccessMessage = new BehaviorSubject<string | null>(null);
   eventSuccessMessage = "Your event was created!"
   eventFailureMessage = "Sorry your event was not created. Please try again later."
-
+  clearEventSuccessMessage = "";
   //function to create an event
   newEvent(eventForm: IEvents) {
 
-    console.log("email",eventForm.contactPersonEmail)
-    console.log("number",eventForm.contactPersonNumber)
+    console.log(eventForm)
     console.log("eventName",eventForm.eventName)
-    console.log("hostName",eventForm.contactPersonName)
     console.log("timeStart",eventForm.eventTimeStart)
     console.log("timeEnd",eventForm.eventTimeEnd)
 
-      //conditions to check for empty fields in before creating the event
+
+
+    //conditions to check for empty fields in before creating the event
     if (eventForm.eventName.length < 1) {
-      this.$eventError.next(this.eventNameError);
+      this.$eventError.next(this.eventNameError)
+      this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
+      
     } else if 
-      (eventForm.eventName.length > 1)
-      {
+      (eventForm.eventName.length > 1) {
         this.$eventError.next(this.eventNameEmpty);
       }
     
-      if (eventForm.meetingDate === null) {
-        this.$eventError2.next(this.eventMeetingDateError);
+      if (eventForm.meetingDate.length < 1) {
+        this.$eventError2.next(this.eventMeetingDateError)
+        this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
+
       } else if
-      (eventForm.meetingDate !== null) {
-        this.$eventError2.next(this.eventMeetingDateEmpty);
+      (eventForm.meetingDate.length > 1) {
+        this.$eventError2.next(this.eventMeetingDateEmpty)
+
       }
 
       if (eventForm.eventTimeStart.length < 1) {
-        this.$eventError3.next(this.eventimeStartError);
+        this.$eventError3.next(this.eventimeStartError)
+        this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
+
       } else if
-      (eventForm.eventTimeStart.length < 1) {
+      (eventForm.eventTimeStart.length > 1) {
         this.$eventError3.next(this.eventimeStartEmpty);
       }
 
         if (eventForm.eventTimeEnd.length < 1) {
-          this.$eventError4.next(this.eventTimeEndError);
+          this.$eventError4.next(this.eventTimeEndError)
+          this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
+
         } else if
         (eventForm.eventTimeEnd.length > 1) {
           this.$eventError4.next(this.eventTimeEndEmpty);
         }
 
         if (eventForm.location.length <1) {
-          this.$eventError5.next(this.eventLocationError);
+          this.$eventError5.next(this.eventLocationError)
+          this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
+
         } else if
         (eventForm.location.length > 1) {
-          this.$eventError5.next(this.eventLocationEmpty);
+          this.$eventError5.next(this.eventLocationEmpty)
+          this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
+          
         }
 
-        if (eventForm.contactPersonName === null) {
-          this.$eventError6.next(this.eventContactNameError);
-        } else if
-        (eventForm.contactPersonName !== null) {
-          this.$eventError6.next(this.eventContactNameEmpty);
-        }
-
-        if (eventForm.contactPersonNumber === null) {
-          this.$eventError7.next(this.eventContactNumberError)
-          console.log(eventForm.contactPersonNumber);
-        } else if
-        (eventForm.contactPersonNumber !== null) {
-          this.$eventError7.next(this.eventContactNumberEmpty);
-        }
-
-        if (typeof (eventForm.contactPersonEmail) === undefined) {
-          //this.$eventError8.next(this.eventContactEmailError)
-          console.log(typeof(eventForm.contactPersonEmail));
-        } else if
-        (eventForm.contactPersonEmail !== undefined) {
-          this.$eventError8.next(this.eventContactEmailEmpty);
-        }
-
-        if (eventForm.costToAttend.length < 1) {
-          this.$eventError9.next(this.eventCostError);
-        } else if
-        (eventForm.costToAttend.length > 1 ) {
-          this.$eventError9.next(this.eventCostEmpty);
-        }
-
-        if (eventForm.notes.length <1 ) {
-          this.$eventError0.next(this.eventNoteError);
-        } else if
-        (eventForm.notes.length < 1) {
-          this.$eventError0.next(this.eventNoteEmpty);
-          return false;
-
-              //conditions to pass before creating the event
-            }  
+        // if (eventForm.contactPersonName === undefined) {
+        //   this.$eventError6.next(this.eventContactNameError);
+        // } else if
+        // (eventForm.contactPersonName.length > 1) {
+        //   this.$eventError6.next(this.eventContactNameEmpty);
+        // }
+        //
+        // if (eventForm.contactPersonNumber === undefined) {
+        //   this.$eventError7.next(this.eventContactNumberError)
+        //   console.log(eventForm.contactPersonNumber);
+        // } else if
+        // (eventForm.contactPersonNumber === undefined) {
+        //   this.$eventError7.next(this.eventContactNumberEmpty);
+        // }
+        //
+        // if (eventForm.contactPersonEmail === undefined) {
+        //   //this.$eventError8.next(this.eventContactEmailError)
+        //   console.log(typeof(eventForm.contactPersonEmail));
+        // } else if
+        // (eventForm.contactPersonEmail !== undefined) {
+        //   this.$eventError8.next(this.eventContactEmailEmpty);
+        // }
+        //
+        // if (eventForm.costToAttend === "") {
+        //   this.$eventError9.next(this.eventCostError);
+        // } else if
+        // (eventForm.costToAttend.length !== null) {
+        //   this.$eventError9.next(this.eventCostEmpty);
+        // }
+        //
+        // if (eventForm.notes.length <1 ) {
+        //   this.$eventError0.next(this.eventNoteError);
+        // } else if
+        // (eventForm.notes.length < 1) {
+        //   this.$eventError0.next(this.eventNoteEmpty);
+        //   return false;
+        //
+        //       //conditions to pass before creating the event
+        //     }  
                 if 
                 (eventForm.eventName.length > 1 &&
                 eventForm.meetingDate !== null &&
                 eventForm.eventTimeStart.length > 1 &&
                 eventForm.eventTimeEnd.length > 1 &&
-                eventForm.location.length > 1 &&
-                eventForm.contactPersonName !== null &&
-                eventForm.contactPersonNumber !== null &&
-                eventForm.contactPersonEmail !== null &&
-                eventForm.costToAttend.length > 1 &&
-                eventForm.notes.length > 1
+                eventForm.location.length > 1 
+                // eventForm.contactPersonName !== null &&
+                // eventForm.contactPersonNumber !== null &&
+                // eventForm.contactPersonEmail !== null &&
+                // eventForm.costToAttend.length > 1 &&
+                // eventForm.notes.length > 1
             ) 
             {
               //Data from the form and IEvent interface used 
@@ -167,11 +180,11 @@ export class EventsService {
                 eventTimeStart: eventForm.eventTimeStart,
                 eventTimeEnd: eventForm.eventTimeEnd,
                 location: eventForm.location,
-                contactPersonName: eventForm.contactPersonName,
-                contactPersonNumber: eventForm.contactPersonNumber,
-                contactPersonEmail: eventForm.contactPersonEmail,
-                costToAttend: eventForm.costToAttend,
-                notes: eventForm.notes
+                // contactPersonName: eventForm.contactPersonName,
+                // contactPersonNumber: eventForm.contactPersonNumber,
+                // contactPersonEmail: eventForm.contactPersonEmail,
+                // costToAttend: eventForm.costToAttend,
+                // notes: eventForm.notes
               }
 
               //Set of instructions to run if creating an event was succesful or a failure
@@ -182,7 +195,7 @@ export class EventsService {
               },
               error: (error) => {
                 //Send a message to the user if the event created was a failure
-                this.$eventFailureHttp.next(this.eventFailureMessage)
+                this.$eventSuccessHttp.next(this.clearEventSuccessMessage)
               },
             });
             }

@@ -18,11 +18,11 @@ export class UpdateEventComponent implements OnInit {
     eventTimeStartMessage: string | null = null;
     eventTimeEndMessage: string | null = null;
     eventLocationMessage: string | null = null;
-    eventContactNameMessage: string | null = null;
-    eventContactNumberMessage: string | null = null;
-    eventContactEmailMessage: string | null = null;
-    eventCostMessage: string | null = null;
-    eventNoteMessage: string | null = null;
+    // eventContactNameMessage: string | null = null;
+    // eventContactNumberMessage: string | null = null;
+    // eventContactEmailMessage: string | null = null;
+    // eventCostMessage: string | null = null;
+    // eventNoteMessage: string | null = null;
     eventFailureMessage: string | null = null;
     eventSuccessMessage: string | null = null;
     
@@ -37,11 +37,11 @@ export class UpdateEventComponent implements OnInit {
     eventTimeStart: "",
     eventTimeEnd: "",
     location: "",
-    contactPersonName: "",
-    contactPersonNumber: "",
-    contactPersonEmail: "",
-    costToAttend: "",
-    notes: ""
+//     contactPersonName: "",
+//     contactPersonNumber: "",
+//     contactPersonEmail: "",
+//     costToAttend: "",
+//     notes: ""
 };
 
     //http Erorr Message
@@ -60,40 +60,40 @@ export class UpdateEventComponent implements OnInit {
         this.updateEventService.$eventFailureHttp.subscribe(
             httpFailure => this.eventUpdateFail = httpFailure);
 
-        this.eventService.$eventError.subscribe(
+        this.updateEventService.$eventError.subscribe(
             eventError => this.eventNameMessage = eventError);
 
-        this.eventService.$eventError2.subscribe(
+        this.updateEventService.$eventError2.subscribe(
             eventError2 => this.eventMeetingDateMessage = eventError2);
 
-        this.eventService.$eventError3.subscribe(
+        this.updateEventService.$eventError3.subscribe(
             eventError3 => this.eventTimeStartMessage = eventError3);
 
-        this.eventService.$eventError4.subscribe(
+        this.updateEventService.$eventError4.subscribe(
             eventError4 => this.eventTimeEndMessage = eventError4);
 
-        this.eventService.$eventError5.subscribe(
+        this.updateEventService.$eventError5.subscribe(
             eventError5 => this.eventLocationMessage = eventError5);
+        //
+        // this.updateEventService.$eventError6.subscribe(
+        //     eventError6 => this.eventContactNameMessage = eventError6);
+        //
+        // this.updateEventService.$eventError7.subscribe(
+        //     eventError7 => this.eventContactNumberMessage = eventError7);
+        //
+        // this.updateEventService.$eventError8.subscribe(
+        //     eventError8 => this.eventContactNumberMessage = eventError8);
+        //
+        // this.updateEventService.$eventError9.subscribe(
+        //     eventError9 => this.eventCostMessage = eventError9);
+        //
+        // this.updateEventService.$eventError0.subscribe(
+        //     eventError0 => this.eventNoteMessage = eventError0);
 
-        this.eventService.$eventError6.subscribe(
-            eventError6 => this.eventContactNameMessage = eventError6);
-
-        this.eventService.$eventError7.subscribe(
-            eventError7 => this.eventContactNumberMessage = eventError7);
-
-        this.eventService.$eventError8.subscribe(
-            eventError8 => this.eventContactNumberMessage = eventError8);
-
-        this.eventService.$eventError9.subscribe(
-            eventError9 => this.eventCostMessage = eventError9);
-
-        this.eventService.$eventError0.subscribe(
-            eventError0 => this.eventNoteMessage = eventError0);
-
-        this.eventService.$eventFailureHttp.subscribe(
+        this.updateEventService.$eventFailureHttp.subscribe(
             eventFailureMessage => this.eventFailureMessage = eventFailureMessage);
 
-        this.eventService.$eventSuccessHttp.subscribe(
+        this.updateEventService.$eventSuccessHttp.subscribe(
             eventSuccessMessage => this.eventSuccessMessage = eventSuccessMessage);
       
       

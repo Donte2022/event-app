@@ -6,10 +6,10 @@ export interface IEvents
     eventTimeStart: string;
     eventTimeEnd: string;
     location: string;
-    contactPersonName: string;
-        contactPersonNumber: string;
-        contactPersonEmail: string;
-        costToAttend: string;
-        notes: string;
+    // contactPersonName: string;
+    //     contactPersonNumber: string;
+    //     contactPersonEmail: string;
+    //     costToAttend: string;
+    //     notes: string;
 
 }

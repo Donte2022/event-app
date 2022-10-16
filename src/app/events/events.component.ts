@@ -23,6 +23,7 @@ export class EventsComponent implements OnInit {
   eventNoteMessage: string | null = null;
   eventFailureMessage: string | null = null;
   eventSuccessMessage: string | null = null;
+  eventClearSuccessMess: string | null = null;
   // Use to delete an event
   event: any;
 
@@ -44,26 +45,29 @@ export class EventsComponent implements OnInit {
     this.eventService.$eventError5.subscribe(
         eventError5 => this.eventLocationMessage = eventError5);
     
-    this.eventService.$eventError6.subscribe(
-        eventError6 => this.eventContactNameMessage = eventError6);
-
-    this.eventService.$eventError7.subscribe(
-        eventError7 => this.eventContactNumberMessage = eventError7);
-
-    this.eventService.$eventError8.subscribe(
-        eventError8 => this.eventContactNumberMessage = eventError8);
-
-    this.eventService.$eventError9.subscribe(
-        eventError9 => this.eventCostMessage = eventError9);
-
-    this.eventService.$eventError0.subscribe(
-        eventError0 => this.eventNoteMessage = eventError0);
+    // this.eventService.$eventError6.subscribe(
+    //     eventError6 => this.eventContactNameMessage = eventError6);
+    //
+    // this.eventService.$eventError7.subscribe(
+    //     eventError7 => this.eventContactNumberMessage = eventError7);
+    //
+    // this.eventService.$eventError8.subscribe(
+    //     eventError8 => this.eventContactNumberMessage = eventError8);
+    //
+    // this.eventService.$eventError9.subscribe(
+    //     eventError9 => this.eventCostMessage = eventError9);
+    //
+    // this.eventService.$eventError0.subscribe(
+    //     eventError0 => this.eventNoteMessage = eventError0);
 
     this.eventService.$eventFailureHttp.subscribe(
         eventFailureMessage => this.eventFailureMessage = eventFailureMessage);
 
     this.eventService.$eventSuccessHttp.subscribe(
         eventSuccessMessage => this.eventSuccessMessage = eventSuccessMessage);
+
+    this.eventService.$clearEventSuccessMessage.subscribe(
+        eventEmptySuccessMessage => this.eventSuccessMessage = eventEmptySuccessMessage);
 
   }
 
