@@ -199,6 +199,7 @@ export class UpdateEventService {
         next: (account) => {
           //Send a confirmation message if event was created
           this.$eventSuccessHttp.next(this.eventSuccessMessage)
+          console.log("updated was successful")
           console.log(eventForm)
           console.log(eventForm.id)
         },
