@@ -38,11 +38,20 @@
         {{listOfEvents.location}}
                 <br>
     <br>
-    <div class="d-flex justify-content-around">
+    <div class="d-flex justify-content-around" class="input-group">
+
+        <div class="m-3">
         <button (click)="manageInvite(listOfEvents.id)" class="btn btn-success">Send Invite</button>
-        <button (click)="updateEvent(listOfEvents)" class="btn btn-primary">Update Event</button>
-        <button (click)="deleteEvent(listOfEvents.id)" class="btn btn-danger">Delete Event</button>
-    </div>
+        </div>
+
+        <div class="m-3">
+            <button (click)="updateEvent(listOfEvents)" class="btn btn-primary">Update Event</button>
+        </div>
+
+        <div class="m-3">
+            <button (click)="deleteEvent(listOfEvents.id)" class="btn btn-danger">Delete Event</button>
+        </div>
+        </div>
 </div>
         </ng-template>
     </ngb-panel>
@@ -160,9 +169,13 @@
                 <br>
                 <br>
                 <div class="d-flex justify-content-around">
+                    <div class="m-3">
                     <button class="btn btn-success">Accept</button>
+                    </div>
+                    <div class="m-3">
                     <button (click)="deleteInvitation(listOfInvitations.id)" class="btn btn-danger">Decline</button>
-                </div>
+                    </div>
+                    </div>
             </div>
         </ng-template>
     </ngb-panel>
