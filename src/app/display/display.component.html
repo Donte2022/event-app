@@ -58,9 +58,9 @@
                 <span class="fw-bold">Invites Sent</span>
             </div>
             <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="text-center">
-                <ngb-panel *ngFor="let listOfInvites of updatedEventList">
+                <ngb-panel *ngFor="let listOfInvites of updatedInviteList">
                     <ng-template  ngbPanelTitle>
-                        <span><b>Date: </b> {{listOfInvites.meetingDate}} <b>Invite: </b>{{listOfInvites.eventName}} </span>
+                        <span><b>Date: </b> {{listOfInvites.meetingDate}} <b>Event: </b>{{listOfInvites.eventName}} </span>
                     </ng-template>
 
                     <ng-template ngbPanelContent >
@@ -68,7 +68,7 @@
                         <div class="container">
 
                             <div>
-                                <span class="fw-bold" >ID: </span> </div>
+                                <span class="fw-bold" >Event ID: </span> </div>
                             {{listOfInvites.id}}
 
                             <div>
@@ -78,22 +78,39 @@
                             <div>
                                 <span class="fw-bold">Meeting Date:  </span> </div>
                             {{listOfInvites.meetingDate}}
+
                             <div>
                                 <span class="fw-bold">Event Time Start: </span> </div>
                             {{listOfInvites.eventTimeStart}}
+
                             <div>
                                 <span class="fw-bold">Event Time End: </span> </div>
                             {{listOfInvites.eventTimeEnd}}
+
                             <div>
                                 <span class="fw-bold">Location: </span> </div>
                             {{listOfInvites.location}}
+
+                            <div>
+                                <span class="fw-bold" > Attendees Invited: </span> </div>
+
+                            <div class="text-success">
+                                <span class="fw-bold" > Accepted Invite: </span> </div>
+
+                            <div class="text-warning">
+                                <span class="fw-bold" > Pending Invite: </span> </div>
+
+                            <div class="text-danger">
+                                <span class="fw-bold" > Declined Invite: </span> </div>
+
+                            <div class="text-primary">
+                                <span class="fw-bold" > Total Participants: </span> </div>
 
                             <br>
                             <br>
                             <div class="d-flex justify-content-around">
                                 <!--                    <button (click)="manageInvite()" class="btn btn-success">Manage Invite</button>-->
                                 <button (click)="updateInvite(listOfInvites.id)" class="btn btn-primary">Update Invite</button>
-                                <button (click)="deleteInvite(listOfInvites.id)" class="btn btn-danger">Delete Invite</button>
                             </div>
                         </div>
                     </ng-template>
@@ -110,7 +127,7 @@
         <span class="fw-bold">Invitations Received</span>
         </div>
     <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="text-center">
-    <ngb-panel *ngFor="let listOfInvitations of updatedEventList">
+    <ngb-panel *ngFor="let listOfInvitations of updatedInvitation">
         <ng-template  ngbPanelTitle>
             <span><b>Date: </b> {{listOfInvitations.meetingDate}} <b>Invitation: </b>{{listOfInvitations.eventName}}</span>
         </ng-template>
@@ -119,8 +136,8 @@
 
             <div class="container">
 
-                <div>
-                    <span class="fw-bold" >ID: </span> </div>
+                <div >
+                    <span class="fw-bold" >Event ID: </span> </div>
                 {{listOfInvitations.id}}
 
                 <div>

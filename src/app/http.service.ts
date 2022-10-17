@@ -11,9 +11,6 @@ export class HttpService {
 
 
   constructor(private httpClient: HttpClient) {
-
-
-
   }
 
 
@@ -26,9 +23,28 @@ export class HttpService {
   
   getAccounts() {
     //return an observable for data
-    return this.httpClient.get("http://localhost:3000/Accounts",
+    return this.httpClient.get(
+        "http://localhost:3000/Accounts",
         )as Observable<IAccount>;
   }
+
+    getEvents() {
+        return this.httpClient.get(
+            "http://localhost:3000/Events",
+        ) as Observable<IEvents[]>;
+    }
+
+    getInvites() {
+        return this.httpClient.get(
+            "http://localhost:3000/Invites",
+        ) as Observable<IEvents[]>;
+    }
+
+    getInvitations() {
+        return this.httpClient.get(
+            "http://localhost:3000/Invitations",
+        ) as Observable<IEvents[]>;
+    }
 
   registerAccount(IRegistrationForm: IAccount) {
     return this.httpClient.post(
@@ -37,11 +53,8 @@ export class HttpService {
         ) as Observable<IAccount>;
       }
 
-  getEvents() {
-   return this.httpClient.get(
-       "http://localhost:3000/Events",
-       ) as Observable<IEvents[]>;
-  }
+
+
 
   addNewEvent(eventForm: IEvents) {
     return this.httpClient.post(

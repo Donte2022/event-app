@@ -14,8 +14,9 @@ import { UpdateEventService } from '../update-event.service';
 })
 export class DisplayComponent implements OnInit {
 
-
+  updatedInviteList!: IEvents[];
   updatedEventList!: IEvents[];
+  updatedInvitation!: IEvents[];
 
   //Delete and Update Messages
   deleteFailMessage: string | null = null;
@@ -40,11 +41,39 @@ export class DisplayComponent implements OnInit {
         console.log(this.updatedEventList)
       },
       //this func is executed if request fails
-      error: (error) => {
-        console.log(error)
+      error: (eventError) => {
+        console.log(eventError)
       }
     })
-    
+
+    this.httpService.getInvites()
+        // pipe(first())
+        .subscribe( {
+          //this func is executed if data is received
+          next: (data) => {
+            this.updatedInviteList = data;
+            console.log(this.updatedInviteList)
+          },
+          //this func is executed if request fails
+          error: (inviteError) => {
+            console.log(inviteError)
+          }
+        })
+
+    this.httpService.getInvitations()
+        // pipe(first())
+        .subscribe( {
+          //this func is executed if data is received
+          next: (data) => {
+            this.updatedInvitation = data;
+            console.log(this.updatedInvitation)
+          },
+          //this func is executed if request fails
+          error: (invitationError) => {
+            console.log(invitationError)
+          }
+        })
+
   }
 
   ngOnInit(): void {
@@ -68,9 +97,6 @@ export class DisplayComponent implements OnInit {
   }
 
 
-  deleteInvite(deleteThisInvite:string) {
-  }
-
   updateInvite(updateThisInvite:string) {
     this.inviteService.$isViewingMainPage.next(false),
      this.inviteService.$isupdatingInvite.next(true)
@@ -79,6 +105,5 @@ export class DisplayComponent implements OnInit {
 
   deleteInvitation(deleteThisInvitation:string) {
     this.displayService.deleteMyInvitation(deleteThisInvitation);
-
   }
 }

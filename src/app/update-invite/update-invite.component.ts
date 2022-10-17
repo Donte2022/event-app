@@ -20,6 +20,16 @@ export class UpdateInviteComponent implements OnInit {
         emailAddress: ""
       };
 
+  userIdInfo: IAccount = {
+      id:"",
+      firstName: "",
+      lastName: "",
+      userId: "",
+      password: "",
+      emailAddress: ""
+
+  };
+
   constructor(private inviteService: InvitesService,
               private httpService: HttpService) {
 
@@ -28,6 +38,9 @@ export class UpdateInviteComponent implements OnInit {
       //this func is executed if data is received
       next: (data) => {
         this.accounts = data;
+        const getUserNames = Object.values(this.accounts)
+          console.log(getUserNames)
+
       },
       //this func is executed if request fails
       error: (err) => {
