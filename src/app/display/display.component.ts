@@ -17,7 +17,6 @@ export class DisplayComponent implements OnInit {
 
   updatedEventList!: IEvents[];
 
-
   //Delete and Update Messages
   deleteFailMessage: string | null = null;
   deleteSuccessMessage: string | null = null;
@@ -29,14 +28,14 @@ export class DisplayComponent implements OnInit {
               private inviteService: InvitesService,
               private displayService: DisplayService,
               private updateEventService: UpdateEventService) {
-    
+
+
     //retrieve data from observable(promise)
     this.httpService.getEvents()
     // pipe(first())
      .subscribe( {
       //this func is executed if data is received
       next: (data) => {
-        console.log(data)
         this.updatedEventList = data;
         console.log(this.updatedEventList)
       },
@@ -51,17 +50,12 @@ export class DisplayComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  manageInvite(sendInvite:any) {
-    console.log("Inviting others")
-    console.log(sendInvite)
+  manageInvite(sendInvite:string) {
     this.inviteService.$isViewingMainPage.next(false),
     this.inviteService.$manageInvites.next(true);
-
   }
 
-  updateEvent(updateThisEventInfo: any) {
-    console.log("Updating event..")
-    console.log(updateThisEventInfo)
+  updateEvent(updateThisEventInfo: IEvents) {
     this.updateEventService.$isUpdatingEvent.next(true)
         this.updateEventService.$isViewingMainPage.next(false),
         this.updateEventService.$isCreatingEvent.next(false)
@@ -69,21 +63,21 @@ export class DisplayComponent implements OnInit {
    
   }
 
-  deleteEvent(deleteThisEvent:any) {
+  deleteEvent(deleteThisEvent:string) {
      this.displayService.deleteMyEvent(deleteThisEvent);
   }
 
 
-  deleteInvite(deleteThisInvite:any) {
+  deleteInvite(deleteThisInvite:string) {
   }
 
-  updateInvite(updateThisInvite:any) {
+  updateInvite(updateThisInvite:string) {
     this.inviteService.$isViewingMainPage.next(false),
      this.inviteService.$isupdatingInvite.next(true)
 
   }
 
-  deleteInvitation(deleteThisInvitation:any) {
+  deleteInvitation(deleteThisInvitation:string) {
     this.displayService.deleteMyInvitation(deleteThisInvitation);
 
   }

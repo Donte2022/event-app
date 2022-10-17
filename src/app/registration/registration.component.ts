@@ -82,12 +82,9 @@ export class RegistrationComponent implements OnInit {
   cancelRegistration() {
     //cancel registration and bring user back to the login
     this.accountService.$creatingNewUser.next(false);
-
-
   }
 
   backToLogin() {
     this.accountService.$creatingNewUser.next(false);
-
   }
 }

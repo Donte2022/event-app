@@ -24,8 +24,7 @@ export class EventsComponent implements OnInit {
   eventFailureMessage: string | null = null;
   eventSuccessMessage: string | null = null;
   eventClearSuccessMess: string | null = null;
-  // Use to delete an event
-  event: any;
+
   
   constructor(private eventService: EventsService) {
 
@@ -58,7 +57,6 @@ export class EventsComponent implements OnInit {
   }
 
   leaveEventPage() {
-    console.log("leaving event page")
       //cancel registration and bring user back to the login
       this.eventService.$createNewEvent.next(false);
       // this.eventService.$createInvites.next(false);

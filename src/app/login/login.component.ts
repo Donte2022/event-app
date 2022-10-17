@@ -4,6 +4,8 @@ import {HttpService} from "../http.service";
 import {NgForm} from "@angular/forms";
 import {AccountService} from "../account.service";
 import {ILoginForm} from "../Interface/ILoginForm";
+import { IEvents } from '../Interface/IEvents';
+import { IAccount } from '../Interface/IAccount';
 
 @Component({
   selector: 'app-login',
@@ -14,14 +16,26 @@ export class LoginComponent implements OnInit {
 
     isLoggedIn: boolean = false;
     isRegistering: boolean = false;
+
     //change any to specific type after creating a UI
-    accounts: any = null;
+    accounts:IAccount =
+        {
+            id:"",
+            firstName: "",
+            lastName: "",
+            userId: "",
+            password: "",
+            emailAddress: ""
+        };
+
     userId: string = "";
     password: string = "";
+
     //Login Error Messages
     loginUserError: string | null = null;
     passwordUserError: string | null = null;
     loginAccountError: string | null = null;
+
     //Login data from user
     httpLoginUserError: string | null = null;
 
@@ -32,7 +46,6 @@ export class LoginComponent implements OnInit {
       this.httpService.getAccounts().subscribe( {
           //this func is executed if data is received
           next: (data) => {
-                console.log(data)
               this.accounts = data;
           },
           //this func is executed if request fails
@@ -62,8 +75,6 @@ export class LoginComponent implements OnInit {
 
     onJoinClick() {
       this.accountService.$creatingNewUser.next(true);
-    console.log("Joining EO")
-
     }
 
     onLoginClick(loginForm: NgForm) {

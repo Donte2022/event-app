@@ -11,40 +11,12 @@
   ],
   "Events": [
     {
-      "eventName": "Crew cuts 3",
-      "meetingDate": "2022-10-04",
-      "eventTimeStart": "13:06",
-      "eventTimeEnd": "17:10",
-      "location": "kyukuykyu",
-      "id": "2c7135f6-5e45-4baa-ae2f-427f369db0cf"
-    },
-    {
-      "eventName": "true blue event",
-      "meetingDate": "2022-10-19",
-      "eventTimeStart": "10:17",
-      "eventTimeEnd": "22:17",
-      "location": "Farm Valley",
-      "costToAttend": "23",
-      "notes": "none",
-      "id": "1811ecc6-004f-4e2c-83e7-ed71029df77e"
-    },
-    {
-      "id": "40f11f49-4698-4dbf-8b90-86e9c16b8cbb",
-      "eventName": "Halloween",
-      "meetingDate": "2022-10-31",
-      "eventTimeStart": "18:41",
-      "eventTimeEnd": "10:41",
-      "location": "Neighborhood",
-      "costToAttend": "0.00",
-      "notes": "none"
-    },
-    {
-      "id": "b2e28453-4495-407d-adf9-548125f8aa11",
       "eventName": "Bull Riding",
       "meetingDate": "2022-10-18",
       "eventTimeStart": "00:00",
       "eventTimeEnd": "17:00",
-      "location": "Apple Farms, Tx"
+      "location": "Apple Farms, Mn",
+      "id": "b2e28453-4495-407d-adf9-548125f8aa11"
     },
     {
       "id": "b9123e9c-81ce-480a-9333-954d96bc8fed",

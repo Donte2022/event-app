@@ -17,11 +17,10 @@ export class UpdateEventService {
   $isViewingMainPage = new BehaviorSubject<boolean>(false);
   $updatedEventData = new BehaviorSubject<string | null>(null);
 
-  updateThisEvent(eventInfo:any) {
+  updateThisEvent(eventInfo: any) {
     this.updatedEventData = eventInfo;
     // @ts-ignore
     this.$oldEventName = this.updatedEventData.eventName
-    console.log(this.$oldEventName)
   }
 
   //Error messages for empty fields while creating an event
@@ -70,14 +69,19 @@ export class UpdateEventService {
   eventFailureMessage = "Sorry your event was not updated. Please try again later."
   clearEventSuccessMessage = "";
 
+  constructor(private httpService: HttpService) {
+
+    this.getEvents()
+    {
+    }
+  }
+
+  getEvents() {
+    this.httpService.getEvents()
+  }
 
   //function to update an event
   sendUpdatedValues(eventForm:IEvents) {
-    console.log ("sending updated event info to http")
-    console.log(eventForm)
-    console.log("eventName",eventForm.eventName)
-    console.log("timeStart",eventForm.eventTimeStart)
-    console.log("timeEnd",eventForm.eventTimeEnd)
 
     //conditions to check for empty fields in before creating the event
     if (eventForm.eventName.length < 1) {
@@ -150,24 +154,14 @@ export class UpdateEventService {
         next: (account) => {
           //Send a confirmation message if event was created
           this.$eventSuccessHttp.next(this.eventSuccessMessage)
-          console.log("updated was successful")
-          console.log(eventForm)
-          console.log(eventForm.id)
-        },
+          this.getEvents()        },
         error: (error) => {
           //Send a message to the user if the event created was a failure
           this.$eventFailureHttp.next(this.eventFailureMessage)
-          console.log(eventForm)
-          console.log(eventForm.id)
+        console.log(error)
         },
       });
     }
     return true;
   }
-  
-  constructor(private httpService: HttpService) {
-
-}
-  
-  
 }

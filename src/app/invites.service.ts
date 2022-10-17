@@ -14,12 +14,6 @@ export class InvitesService {
 
 
   manageInvites() {
-    console.log("managing invites")
-    //     this.$lookAtEventList.next(false);
-    // this.$createNewEvents.next(false);
-    // this.$manageInvites.next(true);
-
-
   }
 
   

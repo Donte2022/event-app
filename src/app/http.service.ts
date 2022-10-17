@@ -8,11 +8,14 @@ import { IEvents } from './Interface/IEvents';
   providedIn: 'root'
 })
 export class HttpService {
-    
+
 
   constructor(private httpClient: HttpClient) {
 
+
+
   }
+
 
   findUserAccounts(userId: string) {
     //return an observable for data to retrieve usernames for login validation
@@ -34,11 +37,6 @@ export class HttpService {
         ) as Observable<IAccount>;
       }
 
-  getContacts() {
-    this.httpClient.get("http://localhost:3000/Contacts");
-
-  }
-
   getEvents() {
    return this.httpClient.get(
        "http://localhost:3000/Events",
@@ -53,7 +51,6 @@ export class HttpService {
   }
 
   deleteSelectedEvent(deleteThisEvent:IEvents) {
-    console.log(deleteThisEvent)
     return this.httpClient.delete(
         "http://localhost:3000/Events/" + deleteThisEvent,
     ) as Observable<IEvents[]>
@@ -61,7 +58,6 @@ export class HttpService {
 
 
   updateSelectedEvent(eventForm:IEvents) {
-    console.log(eventForm.id)
     return this.httpClient.put(
         "http://localhost:3000/Events/" + `${eventForm.id}`, 
         {"eventName":eventForm.eventName,
@@ -73,7 +69,6 @@ export class HttpService {
   }
 
   deleteSelectedInvitation(deleteThisInvitaion:any) {
-    console.log(deleteThisInvitaion)
     return this.httpClient.delete(
         "http://localhost:3000/Events/" + deleteThisInvitaion,
     ) as Observable<IEvents[]>

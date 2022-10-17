@@ -4,26 +4,42 @@
     </div>
 </nav>
 
-<div><b>Invitations</b></div>
 
-<button (click)="leaveUpdateInvitePage()">Back
-</button>
+<div>
+<button (click)="leaveUpdateInvitePage()" class="btn btn-secondary">Back to Events</button>
+</div>
+
+<br>
+<div>
+    <b> Update Invite</b>
+</div>
 
 
 <div>
+<div class="input-group mb-0">
+        <span class="input-group-text">Add Attendee: </span>
+        <input class="form-control" type="text" name="Guess" placeholder="Type in userId here">
+        <button (click)="onClickAddPerson()" class="btn btn-success">Add</button>
+        <button (click)="onClickDeletePerson()" class="btn btn-danger"> Delete</button>
+    </div>
+<br>
+<br>
+
+    <div class="text-success">
+        <b>Guess List:</b>
+    </div>
+    <br>
+    <br>
+
+    <div class="text-secondary">
+    <b>List of Members: </b>
+    </div>
+    {{accounts}}
+
+    <br>
+    <br>
 
     <div>
-        <button (click)="onClickAddPerson()">Add Attendee</button>
-        <input type="text">
+        <button (click)="updateInvite()" class="btn btn-success">Send Invite</button>
     </div>
-
-    <div>
-        <button (click)="onClickDeletePerson()"> Delete Attendee</button>
-        <input type="text">
-    </div>
-
-    <div>
-    <b>List of Users: </b>
-    </div>
-
 </div>

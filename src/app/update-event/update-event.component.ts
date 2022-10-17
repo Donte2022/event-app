@@ -43,7 +43,6 @@ export class UpdateEventComponent implements OnInit {
 
       // @ts-ignore
       this.updatedEventDataValues = this.updateEventService.updatedEventData
-      console.log(this.updatedEventDataValues)
 
       //http Error Message from service
         this.updateEventService.$eventFailureHttp.subscribe(
@@ -84,17 +83,11 @@ export class UpdateEventComponent implements OnInit {
   }
 
     onClickBack() {
-        console.log("going back")
       this.updateEventService.$isUpdatingEvent.next(false)
       this.updateEventService.$isViewingMainPage.next(true)
-
     }
 
   onUpdateEventClick(eventForm:IEvents) {
-    console.log("retrieving data")
-    console.log(eventForm)
     this.updateEventService.sendUpdatedValues(eventForm as IEvents)
-    
-
   };
 }
