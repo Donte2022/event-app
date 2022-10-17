@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, first} from "rxjs";
 import {IAccount} from "./Interface/IAccount";
 import {v4 as uuidv4} from 'uuid';
 import {ILoginForm} from "./Interface/ILoginForm";
@@ -115,7 +115,7 @@ export class AccountService {
         loginForm.password.length > 1
     )
       //Look for account in json database
-    this.httpService.findUserAccounts(loginForm.userId).subscribe({
+    this.httpService.findUserAccounts(loginForm.userId).pipe(first()).subscribe({
       next: (accountList) => {
 
         const foundaccounts = accountList.find(

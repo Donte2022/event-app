@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, first, Subject } from 'rxjs';
 import { HttpService } from './http.service';
 import { IEvents } from './Interface/IEvents';
 import {v4 as uuidv4} from 'uuid';
@@ -42,7 +42,6 @@ export class EventsService {
   clearEventSuccessMessage = "";
   //function to create an event
   
-  
   newEvent(eventForm: IEvents) {
 
     //conditions to check for empty fields in before creating the event
@@ -55,14 +54,13 @@ export class EventsService {
         this.$eventError.next(this.eventNameEmpty);
       }
     
-      if (eventForm.meetingDate === undefined) {
+      if (!eventForm.meetingDate.length) {
         this.$eventError2.next(this.eventMeetingDateError)
         this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
 
       } else if
       (eventForm.meetingDate.length > 1) {
         this.$eventError2.next(this.eventMeetingDateEmpty)
-
       }
 
       if (eventForm.eventTimeStart.length < 1) {
@@ -95,7 +93,7 @@ export class EventsService {
  
                 if 
                 (eventForm.eventName.length > 1 &&
-                eventForm.meetingDate !== null &&
+                eventForm.meetingDate.length &&
                 eventForm.eventTimeStart.length > 1 &&
                 eventForm.eventTimeEnd.length > 1 &&
                 eventForm.location.length > 1
@@ -113,7 +111,7 @@ export class EventsService {
               }
 
               //Set of instructions to run if creating an event was succesful or a failure
-            this.httpService.addNewEvent(account).subscribe({
+            this.httpService.addNewEvent(account).pipe(first()).subscribe({
               next: (account) => {
                 //Send a confirmation message if event was created
                 this.$eventSuccessHttp.next(this.eventSuccessMessage)
@@ -129,11 +127,12 @@ export class EventsService {
 
   switchToEventPage() {
     this.$createNewEvent.next(true);
-    // this.$createInvites.next(false);
     this.$isViewingMainPage.next(false);
     
   }
 
+  
+  
   constructor(private httpService: HttpService) {
 
   }

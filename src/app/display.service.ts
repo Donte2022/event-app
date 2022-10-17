@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, first } from 'rxjs';
 import { HttpService } from './http.service';
 import { UpdateEventService } from './update-event.service';
 
@@ -31,7 +31,7 @@ export class DisplayService {
 
     // // //returns an observable
     this.httpService.deleteSelectedEvent(deleteThisEvent)
-        .subscribe({
+        .pipe(first()).subscribe({
           next: (deleteEventSuccess) => {
             this.$deleteMyEventSuccess.next(this.deleteIdSuccess)
           },
@@ -45,7 +45,7 @@ export class DisplayService {
 
   deleteMyInvitation(deleteThisInvitation:any) {
     this.httpService.deleteSelectedInvitation(deleteThisInvitation)
-        .subscribe({
+        .pipe(first()).subscribe({
           next: (deleteThisInvitationSuccess) => {
             this.$deleteMyInvitationSuccess.next(this.deleteIdSuccess)
           },

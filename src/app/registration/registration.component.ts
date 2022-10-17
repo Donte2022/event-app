@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {Subject, takeUntil } from 'rxjs';
 import {AccountService} from "../account.service";
 import {IRegistrationForm} from "../Interface/IRegistrationForm";
 
@@ -26,51 +27,58 @@ export class RegistrationComponent implements OnInit {
   registerNewUserMessageFailure: string | null = null;
   registerClearSuccessMess: string | null = null;
 
+  onDestroy = new Subject();
 
   constructor(private accountService: AccountService) {
 
-    this.accountService.$firstNameError.subscribe(
+    this.accountService.$firstNameError.pipe(takeUntil(this.onDestroy)).subscribe(
         firstNameRegError => this.firstNameErrorMessages = firstNameRegError);
 
-    this.accountService.$lastNameError.subscribe(
+    this.accountService.$lastNameError.pipe(takeUntil(this.onDestroy)).subscribe(
         lastNameRegError => this.lastNameErrorMessages = lastNameRegError);
 
-    this.accountService.$email0Error.subscribe(
+    this.accountService.$email0Error.pipe(takeUntil(this.onDestroy)).subscribe(
         email0RegError => this.email0NameErrorMessages = email0RegError);
 
-    this.accountService.$emailError.subscribe(
+    this.accountService.$emailError.pipe(takeUntil(this.onDestroy)).subscribe(
         emailRegError => this.emailNameErrorMessages = emailRegError);
 
-    this.accountService.$email2Error.subscribe(
+    this.accountService.$email2Error.pipe(takeUntil(this.onDestroy)).subscribe(
         email2RegError => this.email2NameErrorMessages = email2RegError);
 
-    this.accountService.$email3Error.subscribe(
+    this.accountService.$email3Error.pipe(takeUntil(this.onDestroy)).subscribe(
         email3RegError => this.email3NameErrorMessages = email3RegError);
 
-    this.accountService.$userIdError.subscribe(
+    this.accountService.$userIdError.pipe(takeUntil(this.onDestroy)).subscribe(
         userIdRegError => this.userIdErrorMessages = userIdRegError);
 
-    this.accountService.$passwordError.subscribe(
+    this.accountService.$passwordError.pipe(takeUntil(this.onDestroy)).subscribe(
         passwordRegError => this.passwordErrorMessages = passwordRegError);
 
-    this.accountService.$password2Error.subscribe(
+    this.accountService.$password2Error.pipe(takeUntil(this.onDestroy)).subscribe(
         password2RegError => this.password2ErrorMessages = password2RegError);
 
-    this.accountService.$password3Error.subscribe(
+    this.accountService.$password3Error.pipe(takeUntil(this.onDestroy)).subscribe(
         password3RegError => this.password3ErrorMessages = password3RegError);
 
-    this.accountService.$RegSuccessHttp.subscribe(
+    this.accountService.$RegSuccessHttp.pipe(takeUntil(this.onDestroy)).subscribe(
         $RegSuccessHttp => this.registerNewUserMessageSuccess = $RegSuccessHttp);
 
-    this.accountService.$RegErrorHttp.subscribe(
+    this.accountService.$RegErrorHttp.pipe(takeUntil(this.onDestroy)).subscribe(
         $RegErrorHttp => this.registerNewUserMessageFailure = $RegErrorHttp);
 
-    this.accountService.$RegSuccessHttp.subscribe(
+    this.accountService.$RegSuccessHttp.pipe(takeUntil(this.onDestroy)).subscribe(
         RegSuccessClearMessage => this.registerNewUserMessageSuccess = RegSuccessClearMessage);
   }
+
+  ngOnDestroy(): void {
+    this.onDestroy.next(null);
+    this.onDestroy.complete();
+  }
+    
+  
   ngOnInit(): void {
   }
-
   
   //sends data from user input 'registration form' to be validated
   registerUser(registrationForm: NgForm) {

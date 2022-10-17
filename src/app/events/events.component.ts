@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import {Subject, takeUntil } from 'rxjs';
 import { EventsService } from '../events.service';
 import { IEvents } from '../Interface/IEvents';
 
@@ -25,37 +26,43 @@ export class EventsComponent implements OnInit {
   eventSuccessMessage: string | null = null;
   eventClearSuccessMess: string | null = null;
 
+  onDestroy = new Subject();
   
   constructor(private eventService: EventsService) {
 
-    this.eventService.$eventError.subscribe(
+    this.eventService.$eventError.pipe(takeUntil(this.onDestroy)).subscribe(
         eventError => this.eventNameMessage = eventError);
 
-    this.eventService.$eventError2.subscribe(
+    this.eventService.$eventError2.pipe(takeUntil(this.onDestroy)).subscribe(
         eventError2 => this.eventMeetingDateMessage = eventError2);
 
-    this.eventService.$eventError3.subscribe(
+    this.eventService.$eventError3.pipe(takeUntil(this.onDestroy)).subscribe(
         eventError3 => this.eventTimeStartMessage = eventError3);
 
-    this.eventService.$eventError4.subscribe(
+    this.eventService.$eventError4.pipe(takeUntil(this.onDestroy)).subscribe(
         eventError4 => this.eventTimeEndMessage = eventError4);
 
-    this.eventService.$eventError5.subscribe(
+    this.eventService.$eventError5.pipe(takeUntil(this.onDestroy)).subscribe(
         eventError5 => this.eventLocationMessage = eventError5);
     
-    this.eventService.$eventFailureHttp.subscribe(
+    this.eventService.$eventFailureHttp.pipe(takeUntil(this.onDestroy)).subscribe(
         eventFailureMessage => this.eventFailureMessage = eventFailureMessage);
 
-    this.eventService.$eventSuccessHttp.subscribe(
+    this.eventService.$eventSuccessHttp.pipe(takeUntil(this.onDestroy)).subscribe(
         eventSuccessMessage => this.eventSuccessMessage = eventSuccessMessage);
 
-    this.eventService.$clearEventSuccessMessage.subscribe(
+    this.eventService.$clearEventSuccessMessage.pipe(takeUntil(this.onDestroy)).subscribe(
         eventEmptySuccessMessage => this.eventSuccessMessage = eventEmptySuccessMessage);
   }
 
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+    this.onDestroy.next(null);
+    this.onDestroy.complete();
+  }
+  
   leaveEventPage() {
       //cancel registration and bring user back to the login
       this.eventService.$createNewEvent.next(false);

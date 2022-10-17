@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, first } from 'rxjs';
 import { HttpService } from './http.service';
 import { IEvents } from './Interface/IEvents';
 
@@ -94,7 +94,7 @@ export class UpdateEventService {
       this.$eventError.next(this.eventNameEmpty);
     }
 
-    if (eventForm.meetingDate === undefined) {
+    if (!eventForm.meetingDate.length) {
       this.$eventError2.next(this.eventMeetingDateError)
       this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
 
@@ -132,7 +132,7 @@ export class UpdateEventService {
     
     if
     (eventForm.eventName.length > 1 &&
-        eventForm.meetingDate !== null &&
+        eventForm.meetingDate.length &&
         eventForm.eventTimeStart.length > 1 &&
         eventForm.eventTimeEnd.length > 1 &&
         eventForm.location.length > 1
@@ -150,7 +150,7 @@ export class UpdateEventService {
       }
 
       //Set of instructions to run if creating an event was succesful or a failure
-      this.httpService.updateSelectedEvent(eventForm).subscribe({
+      this.httpService.updateSelectedEvent(eventForm).pipe(first()).subscribe({
         next: (account) => {
           //Send a confirmation message if event was created
           this.$eventSuccessHttp.next(this.eventSuccessMessage)

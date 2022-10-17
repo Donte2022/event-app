@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs';
 import { HttpService } from '../http.service';
 import { IAccount } from '../Interface/IAccount';
 import { InvitesService } from '../invites.service';
@@ -24,10 +25,9 @@ export class InvitationComponent implements OnInit {
               private httpService: HttpService) {
 
     //retrieve data from observable(promise)
-    this.httpService.getAccounts().subscribe( {
+    this.httpService.getAccounts().pipe(first()).subscribe( {
       //this func is executed if data is received
       next: (data) => {
-        console.log(data)
         this.accounts = data;
       },
       //this func is executed if request fails

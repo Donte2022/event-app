@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { AccountService } from '../account.service';
 import { DisplayService } from '../display.service';
 import { EventsService } from '../events.service';
@@ -25,6 +25,7 @@ export class MainComponent implements OnInit {
   eventFromDatabase: any = [];
   sortedData: any = [];
 
+  onDestroy = new Subject();
   
   constructor(private eventService: EventsService,
               private inviteService: InvitesService,
@@ -32,24 +33,25 @@ export class MainComponent implements OnInit {
               private displayService: DisplayService,
               private httpService: HttpService) {
 
-    this.displayService.$deleteMyEventError.subscribe(
+    this.displayService.$deleteMyEventError.pipe(takeUntil(this.onDestroy)).subscribe(
         deleteIdFail => this.deleteFailMessage = deleteIdFail);
 
-    this.displayService.$deleteMyEventSuccess.subscribe(
+    this.displayService.$deleteMyEventSuccess.pipe(takeUntil(this.onDestroy)).subscribe(
         deleteIdSuccess => this.deleteSuccessMessage = deleteIdSuccess);
-
   }
 
   ngOnInit(): void {
   }
-
+  
+  ngOnDestroy(): void {
+    this.onDestroy.next(null);
+    this.onDestroy.complete();
+  }
   
   createEvent() {
     this.eventService.switchToEventPage()
-    
   }
-
-
+  
   logOut() {
     this.accountService.logOutUser()
   }

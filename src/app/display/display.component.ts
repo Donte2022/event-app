@@ -33,12 +33,10 @@ export class DisplayComponent implements OnInit {
 
     //retrieve data from observable(promise)
     this.httpService.getEvents()
-    // pipe(first())
-     .subscribe( {
+        .pipe(first()).subscribe( {
       //this func is executed if data is received
       next: (data) => {
         this.updatedEventList = data;
-        console.log(this.updatedEventList)
       },
       //this func is executed if request fails
       error: (eventError) => {
@@ -47,12 +45,10 @@ export class DisplayComponent implements OnInit {
     })
 
     this.httpService.getInvites()
-        // pipe(first())
-        .subscribe( {
+        .pipe(first()).subscribe( {
           //this func is executed if data is received
           next: (data) => {
             this.updatedInviteList = data;
-            console.log(this.updatedInviteList)
           },
           //this func is executed if request fails
           error: (inviteError) => {
@@ -61,12 +57,10 @@ export class DisplayComponent implements OnInit {
         })
 
     this.httpService.getInvitations()
-        // pipe(first())
-        .subscribe( {
+        .pipe(first()).subscribe( {
           //this func is executed if data is received
           next: (data) => {
             this.updatedInvitation = data;
-            console.log(this.updatedInvitation)
           },
           //this func is executed if request fails
           error: (invitationError) => {

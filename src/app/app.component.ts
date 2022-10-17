@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Subject, takeUntil } from 'rxjs';
 import {AccountService} from "./account.service";
 import { DisplayService } from './display.service';
 import { EventsService } from './events.service';
@@ -22,6 +23,8 @@ export class AppComponent {
     NewUser: boolean = false;
     isLoggedIn: boolean = false;
 
+    onDestroy = new Subject();
+    
     constructor(private accountService: AccountService,
                 private eventService: EventsService,
                 private inviteService: InvitesService,
@@ -36,60 +39,66 @@ export class AppComponent {
             });
 
         //accountService switch
-        this.accountService.$account.subscribe(account => {
+        this.accountService.$account.pipe(takeUntil(this.onDestroy)).subscribe(account => {
             this.isLoggedIn = account ? true : false;
         });
 
         //eventService Switch
-        this.eventService.$createNewEvent.subscribe(event => {
+        this.eventService.$createNewEvent.pipe(takeUntil(this.onDestroy)).subscribe(event => {
             this.isCreatingEvent = event ? true : false;
         });
 
-        this.eventService.$isViewingMainPage.subscribe(event => {
+        this.eventService.$isViewingMainPage.pipe(takeUntil(this.onDestroy)).subscribe(event => {
             this.isViewingMainPage = event ? true : false;
         });
         
         //inviteService switch
-        this.inviteService.$manageInvites.subscribe(event => {
+        this.inviteService.$manageInvites.pipe(takeUntil(this.onDestroy)).subscribe(event => {
             this.isCreatingInvite = event ? true : false;
         });
 
-        this.inviteService.$createNewEvents.subscribe(event => {
+        this.inviteService.$createNewEvents.pipe(takeUntil(this.onDestroy)).subscribe(event => {
             this.isCreatingEvent = event ? true : false;
         });
         
-        this.inviteService.$isViewingMainPage.subscribe(event => {
+        this.inviteService.$isViewingMainPage.pipe(takeUntil(this.onDestroy)).subscribe(event => {
             this.isViewingMainPage = event ? true : false;
         })
 
-        this.inviteService.$isupdatingInvite.subscribe(event => {
+        this.inviteService.$isupdatingInvite.pipe(takeUntil(this.onDestroy)).subscribe(event => {
             this.isUpdatingInvite = event ? true : false;
         })
 
         //displayService Switch
-        this.displayService.$createNewEvents.subscribe(event => {
+        this.displayService.$createNewEvents.pipe(takeUntil(this.onDestroy)).subscribe(event => {
             this.isCreatingEvent = event ? true : false;
         });
 
-        this.displayService.$lookAtEventList.subscribe(event => {
+        this.displayService.$lookAtEventList.pipe(takeUntil(this.onDestroy)).subscribe(event => {
             this.isViewingMainPage = event ? true : false;
         });
 
-        this.displayService.$manageInvites.subscribe(event => {
+        this.displayService.$manageInvites.pipe(takeUntil(this.onDestroy)).subscribe(event => {
             this.isCreatingInvite = event ? true : false;
         });
 
         //updateService Switch
-        this.updateEventService.$isViewingMainPage.subscribe(event => {
+        this.updateEventService.$isViewingMainPage.pipe(takeUntil(this.onDestroy)).subscribe(event => {
             this.isViewingMainPage = event ? true : false;
         });
 
-        this.updateEventService.$isCreatingEvent.subscribe(event => {
+        this.updateEventService.$isCreatingEvent.pipe(takeUntil(this.onDestroy)).subscribe(event => {
             this.isCreatingEvent = event ? true : false;
         });
         
-        this.updateEventService.$isUpdatingEvent.subscribe(event => {
+        this.updateEventService.$isUpdatingEvent.pipe(takeUntil(this.onDestroy)).subscribe(event => {
             this.isUpdatingEvent = event ? true : false;
         });
+        
+        }
+
+        ngOnDestroy(): void {
+            this.onDestroy.next(null);
+            this.onDestroy.complete();
+        }
     }
-}

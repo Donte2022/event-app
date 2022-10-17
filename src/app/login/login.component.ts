@@ -6,6 +6,7 @@ import {AccountService} from "../account.service";
 import {ILoginForm} from "../Interface/ILoginForm";
 import { IEvents } from '../Interface/IEvents';
 import { IAccount } from '../Interface/IAccount';
+import {first, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -39,11 +40,13 @@ export class LoginComponent implements OnInit {
     //Login data from user
     httpLoginUserError: string | null = null;
 
+    onDestroy = new Subject();
+    
   constructor(private httpService: HttpService,
               private accountService: AccountService) {
 
       //retrieve data from observable(promise)
-      this.httpService.getAccounts().subscribe( {
+      this.httpService.getAccounts().pipe(first()).subscribe( {
           //this func is executed if data is received
           next: (data) => {
               this.accounts = data;
@@ -55,21 +58,24 @@ export class LoginComponent implements OnInit {
           }
       })
 
-      this.accountService.$userLoginError.subscribe(
+      this.accountService.$userLoginError.pipe(takeUntil(this.onDestroy)).subscribe(
           userLoginError => this.loginUserError = userLoginError)
 
-
-      this.accountService.$passwordLoginError.subscribe(
+      this.accountService.$passwordLoginError.pipe(takeUntil(this.onDestroy)).subscribe(
           passwordLoginError => this.passwordUserError = passwordLoginError);
       
-      this.accountService.$invalidLoginError.subscribe(
+      this.accountService.$invalidLoginError.pipe(takeUntil(this.onDestroy)).subscribe(
           loginError => this.loginAccountError = loginError);
       
-      this.accountService.$httpLoginError.subscribe(
+      this.accountService.$httpLoginError.pipe(takeUntil(this.onDestroy)).subscribe(
           httpErrorMessage => this.httpLoginUserError = httpErrorMessage);
-
   }
 
+    ngOnDestroy(): void {
+        this.onDestroy.next(null);
+        this.onDestroy.complete();
+    }
+  
   ngOnInit(): void {
   }
 

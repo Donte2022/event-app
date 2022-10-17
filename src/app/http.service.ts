@@ -52,10 +52,7 @@ export class HttpService {
         IRegistrationForm
         ) as Observable<IAccount>;
       }
-
-
-
-
+      
   addNewEvent(eventForm: IEvents) {
     return this.httpClient.post(
         "http://localhost:3000/Events",
