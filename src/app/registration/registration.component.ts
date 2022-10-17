@@ -24,6 +24,7 @@ export class RegistrationComponent implements OnInit {
   password4ErrorMessages: string | null = null;
   registerNewUserMessageSuccess: string | null = null;
   registerNewUserMessageFailure: string | null = null;
+  registerClearSuccessMess: string | null = null;
 
 
   constructor(private accountService: AccountService) {
@@ -64,7 +65,8 @@ export class RegistrationComponent implements OnInit {
     this.accountService.$RegErrorHttp.subscribe(
         $RegErrorHttp => this.registerNewUserMessageFailure = $RegErrorHttp);
 
-
+    this.accountService.$RegSuccessHttp.subscribe(
+        RegSuccessClearMessage => this.registerNewUserMessageSuccess = RegSuccessClearMessage);
   }
   ngOnInit(): void {
   }
@@ -81,6 +83,11 @@ export class RegistrationComponent implements OnInit {
     //cancel registration and bring user back to the login
     this.accountService.$creatingNewUser.next(false);
 
+
+  }
+
+  backToLogin() {
+    this.accountService.$creatingNewUser.next(false);
 
   }
 }

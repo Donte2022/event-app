@@ -7,13 +7,14 @@
 <div>
     <button (click)="leaveEventPage()" class="btn btn-secondary">Back to main</button>
 </div>
-
+<br>
 <div>
     <b>Create Event</b>
 </div>
 
 <div name="event" >
     <form #eventForm="ngForm" (ngSubmit)="onNewEventClick(eventForm)">
+
 
         <div class="input-group mb-0">
             <span class="input-group-text">Event Name: </span>

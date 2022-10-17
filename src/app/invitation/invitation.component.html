@@ -1,14 +1,41 @@
-<p>invitation works!</p>
-
-
+<nav class="navbar navbar-light bg-success">
+    <div>
+        <h1>Event Creator</h1>
+    </div>
+</nav>
 
 <div>
-<button (click)="backToEventList()">Back</button>
+<button (click)="backToEventList()" class="btn btn-secondary">Back to Events</button>
 </div>
-
-<span>Add Guess</span>
-<input type="text">
+<br>
 
 <div>
-<button (click)="sendInvite()">Send Invite</button>
+    <b>Invite</b>
+</div>
+<br>
+
+<div class="input-group mb-0">
+<span class="input-group-text">Add guess: </span>
+<input class="form-control" type="text" name="Guess"placeholder="Type in userId here">
+    <button class="btn btn-primary">Add</button>
+    <button class="btn btn-danger">Remove</button>
+</div>
+<br>
+
+<br>
+
+<div class="text-success">
+    <b>Guess List: </b>
+</div>
+<br>
+<br>
+
+<div class="text-secondary">
+<b>List of Members: </b>
+</div>
+<br>
+<br>
+
+<div>
+    <button (click)="sendInvite()" class="btn btn-success">Send Invite</button>
 </div>

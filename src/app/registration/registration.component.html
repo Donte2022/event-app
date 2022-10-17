@@ -3,11 +3,15 @@
         <h1>Event Creator</h1>
     </div>
 </nav>
+
+<button type="button" (click)="backToLogin()" class="btn btn-secondary">Back to Login</button>
+<br>
+
 <form #registrationForm="ngForm" (ngSubmit)="registerUser(registrationForm)">
 
 
     <div>
-
+    <br>
         <div class="input-group mb-0">
             <span class="input-group-text">First Name: </span>
         <input class="form-control" name="firstName" ngModel type="text">

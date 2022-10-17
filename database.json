@@ -1,79 +1,7 @@
 {
   "Accounts": [
     {
-      "id": "2e4dab7b-51f6-4574-83c3-556c2868322f",
-      "firstName": "Dontavious",
-      "lastName": "Green",
-      "userId": "tyjtydr",
-      "password": "password123",
-      "emailAddress": "dontavious.o.green@gmail.com"
-    },
-    {
-      "id": "dd5f5dfe-afdf-4708-9144-1daa5bca6ada",
-      "firstName": "amy",
-      "lastName": "Lee",
-      "userId": "AmyLee2022",
-      "password": "password321",
-      "emailAddress": "AmyLee@gmail.com"
-    },
-    {
-      "id": "8b745638-4cd3-49f4-af2c-5489f24b606d",
-      "firstName": "David",
-      "lastName": "Larner",
-      "userId": "DLarner23",
-      "password": "pasword246",
-      "emailAddress": "Dlarner@gmail.com"
-    },
-    {
-      "id": "d1ad4ed4-1e8a-473c-b0c0-84fcfd690c60",
-      "firstName": "Kimberlee",
-      "lastName": "Jones",
-      "userId": "KJones",
-      "password": "password357",
-      "emailAddress": "KJones@gmail.com"
-    },
-    {
-      "id": "28c884bd-66f4-4af1-a6e9-e52bda2eeec9",
-      "firstName": "Mandy",
-      "lastName": "Peoples",
-      "userId": "MPeoples02",
-      "password": "password1458",
-      "emailAddress": "MandyP@gmail.com"
-    },
-    {
-      "id": "4292bf54-8bed-4bf4-a124-8ce01dae5bac",
-      "firstName": "Bob",
-      "lastName": "Ross",
-      "userId": "BRoss2022",
-      "password": "bobtheboss",
-      "emailAddress": "BRoss@gmail.com"
-    },
-    {
-      "id": "e510207a-ab22-470a-a339-967a4124dedf",
-      "firstName": "Dontavious",
-      "lastName": "Green",
-      "userId": "tyjtydr",
-      "password": "erherheth",
-      "emailAddress": "dontavious.o.green@gmail.com"
-    },
-    {
-      "id": "79498b05-e8ed-44b8-b2eb-4914fbeebb21",
-      "firstName": "Cathrine",
-      "lastName": "Letter",
-      "userId": "CLetter",
-      "password": "password9876",
-      "emailAddress": "CathrineL@gmail.com"
-    },
-    {
-      "id": "d2e8f9c6-69e0-4c10-8416-b20f21c3cfa6",
-      "firstName": "Peter",
-      "lastName": "Griffin",
-      "userId": "PeteGriff",
-      "password": "peter",
-      "emailAddress": "PeterG@gmail.com"
-    },
-    {
-      "id": "819941a1-6120-4345-9f78-de9f06fd67fb",
+      "id": "b4af0b44-5d7d-44e2-944a-a96a5b5d05af",
       "firstName": "Dontavious",
       "lastName": "Green",
       "userId": "DontaviousG2022",
@@ -133,42 +61,9 @@
       "eventTimeStart": "08:00",
       "eventTimeEnd": "18:00",
       "location": "Market Square"
-    },
-    {
-      "id": "43cb2c92-445f-4da1-8584-4d7515c33315",
-      "eventName": "Ultimate Paintball Tournament",
-      "meetingDate": "2022-10-28",
-      "eventTimeStart": "00:00",
-      "eventTimeEnd": "17:45",
-      "location": "Sky Arena"
-    },
-    {
-      "eventName": "wefewfew",
-      "meetingDate": "2022-10-08",
-      "eventTimeStart": "12:35",
-      "eventTimeEnd": "00:35",
-      "location": "Farm Valley",
-      "id": "7c3e39d8-52b2-4f93-b716-9b3bedc8a07f"
-    },
-    {
-      "id": "d6d89ac2-9b23-4959-9358-53d3448cacea",
-      "eventName": "Crew cuts 2",
-      "meetingDate": "2022-10-07",
-      "eventTimeStart": "12:36",
-      "eventTimeEnd": "00:36",
-      "location": "ergerger"
-    },
-    {
-      "id": "cb98af23-8641-4250-9a48-98f2b84c1538",
-      "eventName": "true blue event",
-      "meetingDate": "2022-10-15",
-      "eventTimeStart": "12:38",
-      "eventTimeEnd": "00:38",
-      "location": "fghddhghfhdf"
     }
   ],
   "Invites": [
-    {},
     {}
   ]
 }

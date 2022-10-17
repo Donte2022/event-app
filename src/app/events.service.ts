@@ -90,7 +90,7 @@ export class EventsService {
         } else if
         (eventForm.location.length > 1) {
           this.$eventError5.next(this.eventLocationEmpty)
-          this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage)
+          this.$clearEventSuccessMessage.next(this.clearEventSuccessMessage);
         }
  
                 if 

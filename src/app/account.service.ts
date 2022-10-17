@@ -31,6 +31,7 @@ export class AccountService {
   $emailError = new BehaviorSubject<string | null>(null);
   $email2Error = new BehaviorSubject<string | null>(null);
   $email3Error = new BehaviorSubject<string | null>(null);
+  $RegSuccessEmptyMessage = new BehaviorSubject<string | null>(null);
   $RegSuccessHttp = new BehaviorSubject<string | null>(null);
   $RegErrorHttp = new BehaviorSubject<string | null>(null);
 
@@ -54,9 +55,10 @@ export class AccountService {
   private RegErrorUserNameMinLength = "You must include a username.";
   private RegErrorPasswordShort = "You must include a password.";
   private RegErrorPasswordMaxLength = "Your password must not contain no more than 15 characters total.";
+  private RegSuccessEmptyMessage = "";
   private RegHttpSuccessMessage = "Account Created! Welcome to Event Organiser!";
  private RegHttpErrorMessage = "Unable to login into your account please try again.";
-
+  
   //Registration validated fields
   private RegValidEmailEmpty = null;
   private RegValidEmaillength = null;
@@ -139,14 +141,18 @@ export class AccountService {
 
     //check to see if email field is blank
     if (registrationForm.email.length < 1) {
-      this.$email0Error.next(this.RegErrorEmailEmpty);
+      this.$email0Error.next(this.RegErrorEmailEmpty)
+      this.$RegSuccessHttp.next(this.RegSuccessEmptyMessage);
+
     } else if
     (registrationForm.email.length > 1) {
       this.$email0Error.next(this.RegValidEmailEmpty);
     }
     //first name length is less than 0 end an error to user
     if (registrationForm.firstName.length < 1) {
-      this.$firstNameError.next(this.RegErrorFirstName);
+      this.$firstNameError.next(this.RegErrorFirstName)
+      this.$RegSuccessHttp.next(this.RegSuccessEmptyMessage);
+
     } else if
     (registrationForm.firstName.length > 1) {
       this.$firstNameError.next(this.RegValidFirstName);
@@ -154,7 +160,9 @@ export class AccountService {
 
     //password length less than 0 send an error to user
     if (registrationForm.lastName.length < 1) {
-      this.$lastNameError.next(this.RegErrorLastName);
+      this.$lastNameError.next(this.RegErrorLastName)
+      this.$RegSuccessHttp.next(this.RegSuccessEmptyMessage);
+
     } else if
     (registrationForm.lastName.length > 1) {
       this.$lastNameError.next(this.RegValidLastName);
@@ -162,42 +170,55 @@ export class AccountService {
 
     //if username length less than 0 send an error to user
     if (registrationForm.userId.length < 1) {
-      this.$userIdError.next(this.RegErrorUserNameMinLength);
+      this.$userIdError.next(this.RegErrorUserNameMinLength)
+      this.$RegSuccessHttp.next(this.RegSuccessEmptyMessage);
+
     } else if
     (registrationForm.userId.length > 1) {
       this.$userIdError.next(this.RegValidUserNameMinLength);
     }
     //check to see if email is less than 5 characters long
     if (registrationForm.email.length <= 4) {
-      this.$emailError.next(this.RegErrorEmaillength);
+      this.$emailError.next(this.RegErrorEmaillength)
+      this.$RegSuccessHttp.next(this.RegSuccessEmptyMessage);
+
     } else if
     (registrationForm.email.length >= 4) {
       this.$emailError.next(this.RegValidEmaillength);
     }
     //check for special character in email address
     if (!registrationForm.email.includes('@')) {
-      this.$email2Error.next(this.RegErrorEmailAtSymbol);
+      this.$email2Error.next(this.RegErrorEmailAtSymbol)
+      this.$RegSuccessHttp.next(this.RegSuccessEmptyMessage);
+
     } else if
     (registrationForm.email.includes('@')) {
       this.$email2Error.next(this.RegValidEmailAtSymbol);
     }
     //check if email contain the period in address
     if (!registrationForm.email.includes('.')) {
-      this.$email3Error.next(this.RegErrorEmailDotSymbol);
+      this.$email3Error.next(this.RegErrorEmailDotSymbol)
+      this.$RegSuccessHttp.next(this.RegSuccessEmptyMessage);
+
     } else if
     (registrationForm.email.includes('.')) {
       this.$email3Error.next(this.RegValidEmailDotSymbol);
     }
     //check to see if password meet minimum length if not return an error
     if (registrationForm.password.length < 1) {
-      this.$password2Error.next(this.RegErrorPasswordShort);
+      this.$password2Error.next(this.RegErrorPasswordShort)
+      this.$RegSuccessHttp.next(this.RegSuccessEmptyMessage);
+      
     } else if
     (registrationForm.password.length > 1) {
-      this.$password2Error.next(this.RegValidPasswordShort);
+      this.$password2Error.next(this.RegValidPasswordShort)
+
     }
     //check to see if password is too long if so return this error
     if (registrationForm.password.length >= 15) {
-      this.$password3Error.next(this.RegErrorPasswordMaxLength);
+      this.$password3Error.next(this.RegErrorPasswordMaxLength)
+      this.$RegSuccessHttp.next(this.RegSuccessEmptyMessage);
+      
     } else if
     (registrationForm.password.length <= 15) {
       this.$password3Error.next(this.RegValidPasswordMaxLength);
